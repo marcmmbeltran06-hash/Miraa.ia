@@ -358,6 +358,164 @@ footer{border-top:1px solid var(--gray-200);padding:40px 48px;display:flex;justi
 
 @media(max-width:900px){.scenario-grid{columns:2}}
 @media(max-width:580px){.scenario-grid{columns:1}}
+
+/* ============================================================
+   RESPONSIVE — mobile-first overrides
+   ============================================================ */
+
+/* ── NAV ── */
+@media(max-width:768px){
+  nav{padding:14px 20px;gap:12px}
+  .nav-links{display:none}
+  .nav-cta{font-size:11px;padding:8px 14px}
+}
+
+/* ── HERO ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:32px;padding:48px 24px 40px}
+  .hero-h1{font-size:44px}
+  /* Switch product stage from absolute stack to normal flow on mobile */
+  .hero-product-stage{min-height:0;position:static;display:block}
+  .product-panel{position:static;opacity:1 !important;transform:none !important;pointer-events:all !important;width:100%;align-items:center}
+  .product-panel.hidden{display:none}
+  .product-panel.active{display:flex}
+}
+@media(max-width:580px){
+  .hero{padding:32px 16px 28px}
+  .hero-h1{font-size:36px}
+  .hero-p{font-size:14px;max-width:100%}
+  .hero-btns{flex-direction:column;gap:8px}
+  .btn-black,.btn-border{width:100%;text-align:center;padding:13px 20px;display:block}
+  .ptab{font-size:9px;padding:5px 9px}
+  #virt-flow-widget{width:100%;max-width:340px}
+  #panel-concept > div{width:100%;max-width:340px}
+}
+
+/* ── STEPS ── */
+@media(max-width:768px){
+  .step-row{grid-template-columns:1fr}
+  .step-left{padding:32px 20px;border-right:none;border-bottom:1px solid var(--gray-200)}
+  .step-right{padding:24px 20px;border-top:none}
+  /* Hide visual panel on inactive steps (too heavy on mobile) */
+  .step-row:not(.active) .step-right{display:none}
+  .step-h{font-size:26px}
+  .step-desc{max-width:100%}
+}
+@media(max-width:480px){
+  .step-left{padding:24px 16px}
+  .step-right{padding:20px 16px}
+  .step-h{font-size:22px}
+}
+
+/* ── CONNECTOR BRIDGE ── */
+@media(max-width:600px){
+  section[style*="padding:48px 48px"]{padding:40px 16px !important}
+}
+
+/* ── SCENARIOS ── */
+@media(max-width:768px){
+  .scenarios{padding:48px 16px}
+  .sec-h{font-size:32px}
+  .sec-sub{font-size:14px}
+}
+@media(max-width:900px){.scenario-grid{columns:2;column-gap:10px}}
+@media(max-width:580px){.scenario-grid{columns:1}}
+
+/* ── FEATURES ── */
+@media(max-width:768px){
+  .feat-row{grid-template-columns:1fr}
+  .feat-content{padding:36px 20px;border-right:none;border-bottom:1px solid var(--gray-200)}
+  .feat-visual{padding:32px 20px}
+  .feat-h{font-size:26px}
+  /* swap order so visual goes below text on mobile */
+  .feat-row .feat-visual.reveal-left{order:2}
+  .feat-row .feat-content.reveal-right{order:1;border-right:none;border-left:none !important;border-bottom:1px solid var(--gray-200)}
+}
+@media(max-width:480px){
+  .feat-content{padding:28px 16px}
+  .feat-visual{padding:24px 16px}
+  .feat-h{font-size:22px}
+  .feat-p{max-width:100%}
+}
+
+/* ── PRICING ── */
+@media(max-width:900px){
+  .pricing-section{padding:48px 20px}
+  .pricing-grid{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto}
+}
+@media(max-width:580px){
+  .pricing-section{padding:40px 16px}
+  .pricing-grid{max-width:100%}
+  /* billing toggle inline text */
+  .pricing-toggle{gap:8px}
+  /* install badge wraps */
+  div[style*="inline-flex"][style*="border-radius:99px"]{flex-wrap:wrap;text-align:center;justify-content:center}
+}
+
+/* Elite card */
+@media(max-width:900px){
+  #elite div[style*="grid-template-columns:1fr 1fr"]{display:flex !important;flex-direction:column !important;gap:24px !important}
+  #elite div[style*="padding:20px 40px"]{padding:16px 20px !important;flex-wrap:wrap}
+  #elite div[style*="padding:36px 40px"]{padding:24px 20px !important}
+}
+@media(max-width:580px){
+  #elite div[style*="padding:20px 40px"],
+  #elite div[style*="padding:16px 20px"]{padding:14px 14px !important}
+  #elite div[style*="padding:36px 40px"],
+  #elite div[style*="padding:24px 20px"]{padding:18px 14px !important}
+  /* pricing steps */
+  div[style*="min-width:100px"]{min-width:72px !important;padding:8px 10px !important}
+  /* features grid inside elite */
+  #elite div[style*="grid-template-columns:1fr 1fr"][style*="gap:8px"]{grid-template-columns:1fr !important}
+  /* CTA row */
+  #elite div[style*="display:flex;align-items:center;gap:12px"]{flex-direction:column !important}
+  #elite a[style*="flex:2"]{width:100%}
+}
+
+/* SIM explainer */
+@media(max-width:600px){
+  .reveal[style*="padding:28px 32px"]{padding:20px 16px !important}
+  .reveal[style*="padding:28px 32px"] div[style*="display:flex;align-items:flex-start;gap:16px"]{flex-direction:column !important;gap:12px !important}
+}
+
+/* ── SIMULATOR DRAWER ── */
+@media(max-width:600px){
+  .sim-drawer-inner{padding:28px 20px}
+  .sim-d-title{font-size:26px}
+  .sim-stores{grid-template-columns:1fr}
+  .sim-banner{grid-template-columns:1fr;gap:16px}
+  .sim-cta{width:100%;justify-content:center}
+}
+
+/* ── FOOTER ── */
+@media(max-width:580px){
+  footer{padding:28px 20px;flex-direction:column;gap:12px;text-align:center}
+}
+
+/* ── GENERAL SECTION PADDING ── */
+@media(max-width:768px){
+  .section-border{padding:40px 20px}
+  .sb-h{font-size:24px}
+}
+@media(max-width:480px){
+  .section-border{padding:32px 16px}
+}
+
+/* ── HAMBURGER MENU ── */
+.nav-hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:6px;border:none;background:none}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px;transition:all 0.25s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.nav-mobile-menu{display:none;position:fixed;top:57px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);z-index:199;padding:16px 20px;flex-direction:column;gap:4px}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{font-size:13px;text-transform:uppercase;letter-spacing:0.14em;color:var(--gray-500);padding:11px 8px;border-bottom:1px solid var(--gray-100);transition:color 0.2s}
+.nav-mobile-menu a:last-child{border-bottom:none}
+.nav-mobile-menu a:hover{color:var(--black)}
+@media(max-width:768px){
+  .nav-hamburger{display:flex}
+}
+
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
@@ -382,8 +540,18 @@ footer{border-top:1px solid var(--gray-200);padding:40px 48px;display:flex;justi
   <div style="display:flex;align-items:center;gap:10px">
     <a href="https://www.instagram.com/miragroup.ia?igsh=NjVoNDJ5eHJ4eTBz" target="_blank" rel="noopener" style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);display:flex;align-items:center;justify-content:center;color:#fff;transition:opacity 0.2s" title="Instagram" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><i class="ti ti-brand-instagram" style="font-size:16px"></i></a>
     <a href="#precios" class="nav-cta">Empezar gratis</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="#proceso" onclick="closeMobileNav()">Proceso</a>
+  <a href="#escenarios" onclick="closeMobileNav()">Escenarios</a>
+  <a href="#funciones" onclick="closeMobileNav()">Funciones</a>
+  <a href="#precios" onclick="closeMobileNav()">Precios</a>
+  <a href="#precios" onclick="closeMobileNav()" style="color:var(--black);font-weight:600;margin-top:4px">Empezar gratis →</a>
+</div>
 
 <!-- HERO -->
 <section style="border-bottom:1px solid var(--gray-200);overflow:hidden">
@@ -1191,6 +1359,25 @@ const RULES=[
   updateCountdown();
   setInterval(updateCountdown, 1000);
 })();
+
+// ── MOBILE NAV ──
+function toggleMobileNav(){
+  const menu=document.getElementById('nav-mobile-menu');
+  const btn=document.getElementById('nav-hamburger');
+  const open=menu.classList.toggle('open');
+  btn.classList.toggle('open',open);
+}
+function closeMobileNav(){
+  document.getElementById('nav-mobile-menu').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+}
+document.addEventListener('click',function(e){
+  const nav=document.querySelector('nav');
+  const menu=document.getElementById('nav-mobile-menu');
+  if(menu.classList.contains('open')&&!nav.contains(e.target)&&!menu.contains(e.target)){
+    closeMobileNav();
+  }
+});
 
 let activeF='all',activeM='all',openId=null,searchQ='';
 
