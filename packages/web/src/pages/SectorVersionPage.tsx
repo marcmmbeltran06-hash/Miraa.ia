@@ -182,45 +182,97 @@ function SalesApplications() {
 function TryOnDemo({ demo, businessName }: { demo: NonNullable<PersonalizedAnalysis['tryOn']>; businessName: string }) {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const productSpecificResult = demo.resultKind === 'generated_product_specific' || (!demo.resultKind && Boolean(demo.resultImage));
+  const catalogProductDetected = demo.resultKind === 'catalog_product_detected';
   const genericResult = demo.resultKind === 'generic_female' || demo.resultKind === 'generic_male';
+  const versionLabel = demo.resultKind === 'generic_male'
+    ? 'Versión genérica masculina'
+    : demo.resultKind === 'generic_female'
+      ? 'Versión genérica femenina'
+      : catalogProductDetected
+        ? 'Producto real detectado en el catálogo'
+        : 'Demostración personalizada';
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setStep((current) => (current === 3 ? 1 : current + 1) as 1 | 2 | 3);
+    }, 3200);
+    return () => window.clearTimeout(timer);
+  }, [step]);
+
   return (
     <section className="tryon-demo">
       <div className="tryon-demo-heading">
         <p className="report-kicker">Demostración interactiva · probador virtual</p>
         <h2>Así viviría el cliente la prueba dentro de {businessName}.</h2>
-        <p>La prenda se obtiene del catálogo de la tienda. La persona sube una fotografía y recibe una simulación con esa misma pieza de ropa.</p>
+        <p>No se envía a la clienta a otra aplicación. El probador se integra dentro de la ficha de producto de la propia tienda, conserva su diseño y devuelve a la compra cuando termina la prueba.</p>
+        <span className="tryon-version-badge">{versionLabel} · secuencia automática</span>
+      </div>
+      <div className="tryon-embed-explainer">
+        <article><span>Dentro de la ficha</span><b>La clienta pulsa «Pruébatelo» junto a talla y compra.</b></article>
+        <i>→</i>
+        <article><span>Sin salir de la web</span><b>Se abre un panel adaptado al móvil con foto, prenda y resultado.</b></article>
+        <i>→</i>
+        <article><span>Vuelta a la venta</span><b>Puede elegir talla, añadir al carrito o pedir ayuda por WhatsApp.</b></article>
       </div>
       <div className="tryon-demo-shell">
         <div className="tryon-demo-progress">
           {[
-            ['1', 'Sube su foto'],
-            ['2', 'Elige la prenda'],
-            ['3', 'Recibe el resultado'],
+            ['1', 'Sube su foto a la web'],
+            ['2', 'Elige el producto'],
+            ['3', 'Lo recibe por WhatsApp'],
           ].map(([number, label], index) => (
-            <button key={number} className={step === index + 1 ? 'active' : step > index + 1 ? 'done' : ''} onClick={() => setStep((index + 1) as 1 | 2 | 3)}>
+            <div key={number} className={step === index + 1 ? 'active' : step > index + 1 ? 'done' : ''}>
               <span>{step > index + 1 ? '✓' : number}</span><b>{label}</b>
-            </button>
+            </div>
           ))}
         </div>
 
         {step === 1 && (
           <div className="tryon-demo-stage">
-            <div className="tryon-photo"><img src={demo.personImage} alt="Fotografía genérica de una cliente antes de probarse la prenda" /><span>Foto de la clienta</span></div>
-            <div className="tryon-demo-copy"><small>Paso 1 de 3</small><h3>Sube una foto frontal.</h3><p>Sin registros ni aplicaciones. Desde el móvil, la persona selecciona una fotografía donde se vea el cuerpo completo.</p><button onClick={() => setStep(2)}>Simular subida de foto →</button><em>La demostración utiliza una persona genérica. En el uso real se emplearía la fotografía elegida por el cliente.</em></div>
+            <div className="tryon-upload-card">
+              <div className="tryon-window-bar"><i /><i /><i /><b>Probador dentro de la tienda</b></div>
+              <div className="tryon-upload-zone">
+                <div className="tryon-photo"><img src={demo.personImage} alt="Fotografía genérica de una cliente antes de probarse la prenda" /><span>Vista previa</span></div>
+                <div className="tryon-file-info"><strong>foto-prueba.jpg</strong><small>Imagen preparada · cuerpo completo</small><div><span /></div><em>100% subida</em></div>
+              </div>
+              <p><span>✓</span> La clienta acepta generar esta prueba antes de continuar.</p>
+            </div>
+            <div className="tryon-demo-copy"><small>Paso 1 de 3 · dentro de la ficha de producto</small><h3>La clienta toca «Pruébatelo» y sube su foto.</h3><p>Se abre una ventana integrada en la tienda, sin registros ni descargas. En móvil puede usar la cámara o seleccionar una fotografía frontal de cuerpo completo.</p><div className="tryon-auto-note"><span />La demostración avanza sola</div><em>La imagen se utiliza para crear la prueba solicitada. La versión definitiva deberá informar del tratamiento y del tiempo de conservación antes de aceptar la fotografía.</em></div>
           </div>
         )}
 
         {step === 2 && (
           <div className="tryon-demo-stage">
-            <div className="tryon-photo product"><img src={demo.productImage} alt={`Producto ${demo.productName} del catálogo`} /><span>Producto del catálogo</span></div>
-            <div className="tryon-demo-copy"><small>Paso 2 de 3</small><h3>{demo.productName}</h3><p>{demo.productPrice}. El producto seleccionado conserva su nombre, talla, precio y enlace real dentro de la tienda.</p><button onClick={() => setStep(3)}>Probar esta prenda →</button><em>Para cada informe podremos sustituir esta imagen por productos reales encontrados en la web analizada.</em></div>
+            <div className="tryon-product-panel">
+              <div className="tryon-window-bar"><i /><i /><i /><b>Producto conectado al catálogo</b></div>
+              <div className="tryon-photo product"><img src={demo.productImage} alt={`Producto ${demo.productName} del catálogo`} /><span>{genericResult ? 'Ejemplo identificado' : 'Producto real detectado'}</span></div>
+              <div className="tryon-product-controls"><strong>{demo.productName}</strong><div><span>XS</span><span className="selected">S</span><span>M</span><span>L</span></div><p><i /> Aplicando producto y variante a la fotografía…</p></div>
+            </div>
+            <div className="tryon-demo-copy"><small>Paso 2 de 3 · selección conectada al catálogo</small><h3>{demo.productName}</h3><p>{demo.productPrice}. {genericResult ? 'Esta prenda pertenece exclusivamente a la demostración y no se presenta como producto real de la tienda.' : 'El sistema recibe desde la ficha el producto real, su variante, talla, precio y enlace; la clienta no tiene que buscarlo de nuevo.'}</p><div className="tryon-auto-note"><span />Aplicando la prenda a la fotografía</div><em>Cuando existe una fotografía de producto compatible se utiliza esa prenda. Si no puede verificarse, el informe lo identifica claramente como ejemplo genérico.</em></div>
           </div>
         )}
 
         {step === 3 && (
           <div className="tryon-demo-stage result">
-            <div className="tryon-photo"><img src={demo.resultImage ?? demo.productImage} alt={productSpecificResult ? `Simulación virtual generada con ${demo.productName}` : `Demostración genérica del probador para ${businessName}`} /><span>{productSpecificResult ? 'Simulación visual generada' : genericResult ? 'Ejemplo genérico' : 'Demostración propuesta'}</span></div>
-            <div className="tryon-demo-copy"><small>Paso 3 de 3</small><h3>{productSpecificResult ? 'La clienta ya puede verse con una versión visual de la prenda.' : 'Ejemplo del resultado que podría recibir.'}</h3><p>{productSpecificResult ? 'La composición aplica visualmente una prenda detectada en la web sobre una persona genérica y muestra cómo funcionaría el recorrido comercial.' : 'La web no ofrecía una prenda válida para generar una composición fiable. Por eso mostramos una demostración genérica, sin utilizar logos ni presentar productos inventados como reales.'}</p><div className="whatsapp-result"><span>✓</span><div><small>{productSpecificResult ? 'WhatsApp · simulación preparada' : 'WhatsApp · ejemplo genérico'}</small><b>{demo.productName} · Ver propuesta →</b></div></div><button className="secondary" onClick={() => setStep(1)}>Volver a empezar</button></div>
+            <div className="tryon-result-panel">
+              <div className="tryon-window-bar"><i /><i /><i /><b>Resultado dentro de la ficha</b></div>
+              <div className={`tryon-photo ${catalogProductDetected ? 'catalog-processing' : ''}`}>
+                <img src={demo.resultImage ?? (catalogProductDetected ? demo.personImage : demo.productImage)} alt={productSpecificResult ? `Simulación virtual generada con ${demo.productName}` : catalogProductDetected ? `Producto real preparado para el probador de ${businessName}` : `Demostración genérica del probador para ${businessName}`} />
+                {catalogProductDetected && <img className="tryon-garment-chip" src={demo.productImage} alt={`Prenda real ${demo.productName}`} />}
+                <span>{productSpecificResult ? 'Simulación visual generada' : catalogProductDetected ? 'Producto real · generación preparada' : genericResult ? 'Ejemplo genérico' : 'Demostración propuesta'}</span>
+              </div>
+              <div className="tryon-whatsapp-phone">
+                <div className="tryon-wa-header"><span>{businessName.slice(0, 1)}</span><div><b>{businessName}</b><small>Asistente de la tienda · en línea</small></div><i>•••</i></div>
+                <div className="tryon-wa-chat">
+                  <p>Hola, tu prueba virtual ya está lista. Así puedes ver cómo quedaría la prenda que has elegido.</p>
+                  <div className="tryon-wa-result"><img src={demo.resultImage ?? demo.productImage} alt={`Resultado enviado por WhatsApp para ${demo.productName}`} /><strong>{demo.productName}</strong><small>Resultado de muestra · talla S</small><button>Volver a la ficha del producto</button></div>
+                  <em>Entregado ✓✓</em>
+                </div>
+                <div className="tryon-wa-compose"><span>＋</span><p>Escribe un mensaje</p><b>➤</b></div>
+              </div>
+              <div className="tryon-result-actions"><button>Elegir otra talla</button><button className="primary">Añadir al carrito</button><button>Hablar con una asesora</button></div>
+            </div>
+            <div className="tryon-demo-copy"><small>Paso 3 de 3 · entrega por WhatsApp</small><h3>La clienta recibe su resultado y vuelve directamente a comprar.</h3><p>Cuando la prueba termina, el asistente envía un mensaje de WhatsApp al número autorizado por la clienta. El mensaje incluye la imagen, el nombre del producto y un enlace directo a su ficha para elegir talla, comprar o pedir ayuda.</p><div className="whatsapp-result"><span>✓</span><div><small>Resultado entregado con contexto de compra</small><b>{demo.productName} · talla · ficha · ayuda</b></div></div><div className="tryon-auto-note"><span />La secuencia volverá a comenzar</div><em>WhatsApp solo se utiliza cuando la persona facilita su número y acepta recibir el resultado por este canal.</em></div>
           </div>
         )}
       </div>

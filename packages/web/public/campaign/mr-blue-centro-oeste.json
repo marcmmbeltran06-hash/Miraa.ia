@@ -1,0 +1,65 @@
+{
+  "slug": "mr-blue-centro-oeste",
+  "name": "Mr Blue Centro Oeste",
+  "sector": "tiendas",
+  "website": "https://mrblue.es/",
+  "phone": "+34 681 26 63 00",
+  "city": "C\\ Las Morenas 2, Centro Comercial Centro Oeste, Local 75, 28220 Majadahonda, Madrid",
+  "analysis": {
+    "summary": "Hemos comprobado la portada real de Mr Blue Centro Oeste y sus señales principales de visibilidad y venta. Las mejoras se basan únicamente en lo encontrado durante esta revisión. La propuesta incluye una demostración genérica y transparente del recorrido foto, selección de prenda y entrega del resultado por WhatsApp.",
+    "pagesAnalyzed": 1,
+    "seoScore": 90,
+    "croScore": 90,
+    "seo": [
+      {
+        "title": "La portada no explica su oferta con un titular principal",
+        "detail": "El cliente y el buscador necesitan entender rápidamente qué vende la tienda.",
+        "evidence": "No se detectó un encabezado H1.",
+        "action": "Añadir un único titular principal orientado a la intención de compra.",
+        "level": "medium",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "cro": [
+      {
+        "title": "Las dudas comerciales pueden perderse al salir de la web",
+        "detail": "WhatsApp ayuda a recuperar consultas de talla, entrega o disponibilidad.",
+        "evidence": "No se detectó acceso contextual a WhatsApp.",
+        "action": "Añadir ayuda consentida vinculada a la prenda o página consultada.",
+        "level": "medium",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Vestido floral lavanda · demostración",
+      "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
+      "personImage": "/campaign-assets/generic-female-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-female-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-female-v2/result.jpg",
+      "resultKind": "generic_female"
+    },
+    "auditMethod": "http_fallback",
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta vuelve a una categoría o producto de la tienda.",
+          "decision": "Resolver una duda concreta mientras mantiene el interés.",
+          "message": "Hola, Lucía. ¿Quieres que te ayudemos con talla, disponibilidad o entrega?"
+        },
+        "cart": {
+          "signal": "La clienta inicia una compra y no la termina.",
+          "decision": "Ofrecer ayuda útil sin enviar promociones automáticas.",
+          "message": "Hola, Lucía. Si tienes alguna duda antes de terminar tu compra, te ayudamos."
+        },
+        "return": {
+          "signal": "La clienta regresa y ha aceptado recibir comunicaciones.",
+          "decision": "Mostrar novedades relacionadas con su interés real.",
+          "message": "Hola, Lucía. Tenemos novedades que pueden encajar contigo. ¿Quieres verlas?"
+        }
+      }
+    }
+  }
+}

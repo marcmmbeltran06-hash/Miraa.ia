@@ -29,11 +29,11 @@
     ],
     "captures": [],
     "tryOn": {
-      "productName": "Ejemplo genérico masculino",
+      "productName": "Sobrecamisa azul marino · demostración",
       "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
-      "personImage": "/tryon-models/male-neutral.webp",
-      "productImage": "/probador-virtual-referencia.png",
-      "resultImage": "/campaign-assets/generic-male/tryon-result.jpg",
+      "personImage": "/campaign-assets/generic-male-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-male-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-male-v2/result.jpg",
       "resultKind": "generic_male"
     },
     "marketing": {

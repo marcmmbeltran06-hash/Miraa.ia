@@ -1,0 +1,73 @@
+{
+  "slug": "lola-torero",
+  "name": "Lola Torero",
+  "sector": "tiendas",
+  "website": "https://lolatorero.com/",
+  "phone": "+34 669 38 66 83",
+  "city": "Calle Miguel Hernández, Pl. de la Constitución, 1, 03730 Jávea, Alicante",
+  "analysis": {
+    "summary": "Hemos comprobado la portada real de Lola Torero y sus señales principales de visibilidad y venta. Las mejoras se basan únicamente en lo encontrado durante esta revisión. La propuesta incluye una demostración genérica y transparente del recorrido foto, selección de prenda y entrega del resultado por WhatsApp.",
+    "pagesAnalyzed": 1,
+    "seoScore": 100,
+    "croScore": 72,
+    "seo": [
+      {
+        "title": "La base de visibilidad está presente",
+        "detail": "El siguiente paso es ampliar el análisis a categorías y productos.",
+        "evidence": "Portada accesible con título: Lola Torero tienda de ropa y complementos en Jávea",
+        "action": "Auditar categorías, fichas y datos estructurados antes de publicar cambios.",
+        "level": "low",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "cro": [
+      {
+        "title": "La compra no muestra una acción inmediata",
+        "detail": "Una llamada clara reduce dudas y pasos antes de comprar.",
+        "evidence": "No se detectó una llamada de carrito o compra en el HTML inicial.",
+        "action": "Mostrar una acción de compra visible y repetirla después de los argumentos clave.",
+        "level": "high",
+        "source": "auditoría HTTP"
+      },
+      {
+        "title": "Las dudas comerciales pueden perderse al salir de la web",
+        "detail": "WhatsApp ayuda a recuperar consultas de talla, entrega o disponibilidad.",
+        "evidence": "No se detectó acceso contextual a WhatsApp.",
+        "action": "Añadir ayuda consentida vinculada a la prenda o página consultada.",
+        "level": "medium",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Vestido floral lavanda · demostración",
+      "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
+      "personImage": "/campaign-assets/generic-female-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-female-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-female-v2/result.jpg",
+      "resultKind": "generic_female"
+    },
+    "auditMethod": "http_fallback",
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta vuelve a una categoría o producto de la tienda.",
+          "decision": "Resolver una duda concreta mientras mantiene el interés.",
+          "message": "Hola, Lucía. ¿Quieres que te ayudemos con talla, disponibilidad o entrega?"
+        },
+        "cart": {
+          "signal": "La clienta inicia una compra y no la termina.",
+          "decision": "Ofrecer ayuda útil sin enviar promociones automáticas.",
+          "message": "Hola, Lucía. Si tienes alguna duda antes de terminar tu compra, te ayudamos."
+        },
+        "return": {
+          "signal": "La clienta regresa y ha aceptado recibir comunicaciones.",
+          "decision": "Mostrar novedades relacionadas con su interés real.",
+          "message": "Hola, Lucía. Tenemos novedades que pueden encajar contigo. ¿Quieres verlas?"
+        }
+      }
+    }
+  }
+}

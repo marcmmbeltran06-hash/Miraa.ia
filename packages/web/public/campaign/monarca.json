@@ -1,0 +1,65 @@
+{
+  "slug": "monarca",
+  "name": "Monarca",
+  "sector": "tiendas",
+  "website": "http://lacasadelgranel.com/",
+  "phone": "+34 657 13 24 47",
+  "city": "Carrer del Mestre Ramón Ramia Querol, 4, 46980 Paterna, Valencia",
+  "analysis": {
+    "summary": "Hemos comprobado la portada real de Monarca y sus señales principales de visibilidad y venta. Las mejoras se basan únicamente en lo encontrado durante esta revisión. La propuesta incluye una demostración genérica y transparente del recorrido foto, selección de prenda y entrega del resultado por WhatsApp.",
+    "pagesAnalyzed": 1,
+    "seoScore": 100,
+    "croScore": 100,
+    "seo": [
+      {
+        "title": "La base de visibilidad está presente",
+        "detail": "El siguiente paso es ampliar el análisis a categorías y productos.",
+        "evidence": "Portada accesible con título: Inicio - Monarca",
+        "action": "Auditar categorías, fichas y datos estructurados antes de publicar cambios.",
+        "level": "low",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "cro": [
+      {
+        "title": "Conviene medir qué llamadas generan ventas",
+        "detail": "La medición permite mejorar con datos y no por intuición.",
+        "evidence": "La revisión ligera confirma elementos comerciales básicos.",
+        "action": "Medir clics de producto, carrito, WhatsApp y solicitud de información.",
+        "level": "low",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Vestido floral lavanda · demostración",
+      "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
+      "personImage": "/campaign-assets/generic-female-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-female-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-female-v2/result.jpg",
+      "resultKind": "generic_female"
+    },
+    "auditMethod": "http_fallback",
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta vuelve a una categoría o producto de la tienda.",
+          "decision": "Resolver una duda concreta mientras mantiene el interés.",
+          "message": "Hola, Lucía. ¿Quieres que te ayudemos con talla, disponibilidad o entrega?"
+        },
+        "cart": {
+          "signal": "La clienta inicia una compra y no la termina.",
+          "decision": "Ofrecer ayuda útil sin enviar promociones automáticas.",
+          "message": "Hola, Lucía. Si tienes alguna duda antes de terminar tu compra, te ayudamos."
+        },
+        "return": {
+          "signal": "La clienta regresa y ha aceptado recibir comunicaciones.",
+          "decision": "Mostrar novedades relacionadas con su interés real.",
+          "message": "Hola, Lucía. Tenemos novedades que pueden encajar contigo. ¿Quieres verlas?"
+        }
+      }
+    }
+  }
+}

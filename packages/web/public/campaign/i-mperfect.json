@@ -1,0 +1,105 @@
+{
+  "slug": "i-mperfect",
+  "name": "I'mperfect",
+  "sector": "tiendas",
+  "website": "https://modaimperfect.com/",
+  "phone": "+34 690 09 46 68",
+  "city": "Av. San Ignacio, 14, 31002 Pamplona, Navarra",
+  "analysis": {
+    "summary": "Hemos comprobado la portada real de I'mperfect y sus señales principales de visibilidad y venta. Las mejoras se basan únicamente en lo encontrado durante esta revisión. La propuesta incluye una demostración genérica y transparente del recorrido foto, selección de prenda y entrega del resultado por WhatsApp.",
+    "pagesAnalyzed": 1,
+    "seoScore": 9,
+    "croScore": 17,
+    "seo": [
+      {
+        "title": "La tienda no responde correctamente al análisis",
+        "detail": "Google y posibles clientes pueden encontrar la misma barrera.",
+        "evidence": "La web no respondió dentro del tiempo máximo de verificación.",
+        "action": "Revisar alojamiento, certificado, redirecciones y bloqueo de robots.",
+        "level": "high",
+        "source": "auditoría HTTP"
+      },
+      {
+        "title": "Falta un título claro para Google",
+        "detail": "La página pierde una de sus señales principales para aparecer en búsquedas.",
+        "evidence": "No se encontró una etiqueta title legible en la portada.",
+        "action": "Añadir un título con marca, tipo de producto y ubicación.",
+        "level": "high",
+        "source": "auditoría HTTP"
+      },
+      {
+        "title": "Google no tiene un resumen comercial preparado",
+        "detail": "Una descripción clara puede aumentar los clics desde los resultados.",
+        "evidence": "No se encontró una meta description en la portada.",
+        "action": "Escribir un resumen de 140–160 caracteres con propuesta y llamada a la acción.",
+        "level": "medium",
+        "source": "auditoría HTTP"
+      },
+      {
+        "title": "La portada no explica su oferta con un titular principal",
+        "detail": "El cliente y el buscador necesitan entender rápidamente qué vende la tienda.",
+        "evidence": "No se detectó un encabezado H1.",
+        "action": "Añadir un único titular principal orientado a la intención de compra.",
+        "level": "medium",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "cro": [
+      {
+        "title": "La experiencia móvil necesita una configuración básica",
+        "detail": "La mayoría de destinatarios abrirá el informe y la tienda desde el móvil.",
+        "evidence": "No se detectó meta viewport.",
+        "action": "Configurar la vista móvil y revisar botones, textos e imágenes en 360 px.",
+        "level": "high",
+        "source": "auditoría HTTP"
+      },
+      {
+        "title": "La compra no muestra una acción inmediata",
+        "detail": "Una llamada clara reduce dudas y pasos antes de comprar.",
+        "evidence": "No se detectó una llamada de carrito o compra en el HTML inicial.",
+        "action": "Mostrar una acción de compra visible y repetirla después de los argumentos clave.",
+        "level": "high",
+        "source": "auditoría HTTP"
+      },
+      {
+        "title": "Las dudas comerciales pueden perderse al salir de la web",
+        "detail": "WhatsApp ayuda a recuperar consultas de talla, entrega o disponibilidad.",
+        "evidence": "No se detectó acceso contextual a WhatsApp.",
+        "action": "Añadir ayuda consentida vinculada a la prenda o página consultada.",
+        "level": "medium",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Vestido floral lavanda · demostración",
+      "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
+      "personImage": "/campaign-assets/generic-female-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-female-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-female-v2/result.jpg",
+      "resultKind": "generic_female"
+    },
+    "auditMethod": "http_fallback",
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta vuelve a una categoría o producto de la tienda.",
+          "decision": "Resolver una duda concreta mientras mantiene el interés.",
+          "message": "Hola, Lucía. ¿Quieres que te ayudemos con talla, disponibilidad o entrega?"
+        },
+        "cart": {
+          "signal": "La clienta inicia una compra y no la termina.",
+          "decision": "Ofrecer ayuda útil sin enviar promociones automáticas.",
+          "message": "Hola, Lucía. Si tienes alguna duda antes de terminar tu compra, te ayudamos."
+        },
+        "return": {
+          "signal": "La clienta regresa y ha aceptado recibir comunicaciones.",
+          "decision": "Mostrar novedades relacionadas con su interés real.",
+          "message": "Hola, Lucía. Tenemos novedades que pueden encajar contigo. ¿Quieres verlas?"
+        }
+      }
+    }
+  }
+}

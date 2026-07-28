@@ -40,11 +40,11 @@
     ],
     "captures": [],
     "tryOn": {
-      "productName": "Ejemplo genérico femenino",
+      "productName": "Vestido floral lavanda · demostración",
       "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
-      "personImage": "/tryon-models/female-neutral.png",
-      "productImage": "/probador-virtual-referencia.png",
-      "resultImage": "/campaign-assets/generic-female/tryon-result.jpg",
+      "personImage": "/campaign-assets/generic-female-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-female-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-female-v2/result.jpg",
       "resultKind": "generic_female"
     },
     "auditMethod": "http_fallback",

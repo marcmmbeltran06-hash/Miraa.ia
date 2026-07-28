@@ -57,12 +57,12 @@
     ],
     "captures": [],
     "tryOn": {
-      "productName": "RROMANCO",
-      "productPrice": "Prenda real detectada en la web · simulación visual generada",
-      "personImage": "/tryon-models/female-neutral.png",
-      "productImage": "/campaign-assets/rromanco/product.webp",
-      "resultImage": "/campaign-assets/rromanco/tryon-result.jpg",
-      "resultKind": "generated_product_specific"
+      "productName": "Vestido floral lavanda · demostración",
+      "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
+      "personImage": "/campaign-assets/generic-female-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-female-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-female-v2/result.jpg",
+      "resultKind": "generic_female"
     },
     "marketing": {
       "customerName": "Lucía",
