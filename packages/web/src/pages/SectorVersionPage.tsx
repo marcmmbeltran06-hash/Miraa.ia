@@ -280,6 +280,88 @@ function TryOnDemo({ demo, businessName }: { demo: NonNullable<PersonalizedAnaly
   );
 }
 
+function FloatingTryOnPreview({ demo, businessName }: { demo: NonNullable<PersonalizedAnalysis['tryOn']>; businessName: string }) {
+  const [open, setOpen] = useState(false);
+  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const isMale = demo.resultKind === 'generic_male';
+  const customer = isMale ? 'el cliente' : 'la clienta';
+  const category = isMale ? 'Moda masculina' : 'Moda femenina';
+  const productNames = isMale
+    ? ['Camisa de colección', 'Chaqueta de temporada', 'Pantalón de vestir', 'Look casual']
+    : ['Vestido de colección', 'Chaqueta de temporada', 'Look para eventos', 'Nueva incorporación'];
+  const [selectedProduct, setSelectedProduct] = useState(productNames[0]);
+
+  function close() {
+    setOpen(false);
+    setStep(1);
+  }
+
+  return (
+    <>
+      <button className="floating-tryon-launcher" onClick={() => setOpen(true)}>
+        <span>✦</span><div><b>Conoce el probador virtual</b><small>{category} · demostración</small></div>
+      </button>
+      <div className={`floating-tryon-shade ${open ? 'open' : ''}`} onClick={close} />
+      <aside className={`floating-tryon-drawer ${open ? 'open' : ''}`} aria-hidden={!open}>
+        <header className="floating-tryon-header">
+          <div><span>PROBADOR VIRTUAL</span><b>{businessName} · experiencia integrada</b></div>
+          <button onClick={close} aria-label="Cerrar probador">×</button>
+        </header>
+        <ol className="floating-tryon-progress">
+          {[
+            ['1', 'Sube su foto'],
+            ['2', 'Elige y prueba'],
+            ['3', 'WhatsApp'],
+          ].map(([number, label], index) => {
+            const itemStep = (index + 1) as 1 | 2 | 3;
+            return <li key={number} className={step === itemStep ? 'active' : step > itemStep ? 'done' : ''}><span>{step > itemStep ? '✓' : number}</span><b>{label}</b></li>;
+          })}
+        </ol>
+        <div className="floating-tryon-guide">
+          <span>PASO {step} DE 3 · {category.toUpperCase()}</span>
+          <h2>{step === 1 ? `${customer} sube su fotografía.` : step === 2 ? 'Elige una prenda y pulsa «Probar».' : 'El resultado llega por WhatsApp.'}</h2>
+          <p>{step === 1
+            ? 'La ficha se abre sobre la web real, sin abandonar el momento de compra.'
+            : step === 2
+              ? `Mostraremos únicamente productos de ${category.toLowerCase()} cuando el informe corresponda a esta categoría.`
+              : 'La prueba, el producto y el enlace de compra llegan juntos para facilitar la vuelta al carrito.'}</p>
+        </div>
+
+        {step === 1 && <section className="floating-tryon-panel">
+          <div className="floating-tryon-reason"><span>↗</span><div><b>Por qué convierte más</b><small>La acción es breve y ocurre cuando ya existe intención de compra.</small></div></div>
+          <div className="floating-upload-preview"><img src={demo.personImage} alt={`Modelo de demostración para ${category.toLowerCase()}`} /><span>FOTO PREPARADA</span></div>
+          <div className="floating-file-row"><i>✓</i><div><b>foto-modelo.jpg</b><small>Imagen lista para utilizar</small></div></div>
+          <button className="floating-primary" onClick={() => setStep(2)}>Siguiente: elegir producto →</button>
+        </section>}
+
+        {step === 2 && <section className="floating-tryon-panel">
+          <div className="floating-tryon-reason"><span>↗</span><div><b>Por qué convierte más</b><small>{customer} compara prendas sin abandonar la tienda ni perder el contexto.</small></div></div>
+          <div className="floating-product-grid">
+            {productNames.map((name, index) => <article key={name} className={selectedProduct === name ? 'selected' : ''}>
+              <div><img src={demo.productImage} alt={`${name} · ${category}`} />{index === 0 && <span>RECOMENDADO</span>}</div>
+              <b>{name}</b><small>{category} · tallas disponibles</small>
+              <button onClick={() => { setSelectedProduct(name); setStep(3); }}>PROBAR ESTA PRENDA</button>
+            </article>)}
+          </div>
+          <button className="floating-secondary" onClick={() => setStep(1)}>← Volver a la fotografía</button>
+        </section>}
+
+        {step === 3 && <section className="floating-tryon-panel">
+          <div className="floating-tryon-reason"><span>↗</span><div><b>Por qué convierte más</b><small>WhatsApp recupera la conversación cuando la duda principal ya está resuelta.</small></div></div>
+          <div className="floating-result-summary"><img src={demo.resultImage ?? demo.personImage} alt={`Resultado de ${selectedProduct}`} /><div><span>PRUEBA COMPLETADA</span><b>{selectedProduct}</b><small>{category} · talla y enlace de compra incluidos</small></div></div>
+          <div className="floating-whatsapp">
+            <header><i>‹</i><span>{businessName.slice(0, 1)}</span><div><b>{businessName}</b><small>Asistente de la tienda · en línea</small></div><strong>⌕ · ⋮</strong></header>
+            <main><div><p>¡Hola! Ya está lista tu prueba con <b>{selectedProduct}</b> ✨</p><img src={demo.resultImage ?? demo.personImage} alt="" /><button>VER PRODUCTO Y ELEGIR TALLA</button><small>12:42 · <span>✓✓</span></small></div></main>
+            <footer><i>＋</i><span>Mensaje</span><b>➤</b></footer>
+          </div>
+          <button className="floating-primary">Volver a la tienda y comprar →</button>
+          <button className="floating-secondary" onClick={() => setStep(2)}>← Probar otro producto</button>
+        </section>}
+      </aside>
+    </>
+  );
+}
+
 function MarketingAutomation({ business }: { business: MiraBusiness }) {
   const [scenario, setScenario] = useState<'interest' | 'cart' | 'return'>('interest');
   const fallbackScenarios = {
@@ -354,10 +436,12 @@ function ReportPage() {
   if (!business && !campaignMissing) return <div className="campaign-loading">Preparando el informe personalizado…</div>;
   if (!business) return <div className="campaign-loading">No hemos encontrado este informe.</div>;
   const analysis: PersonalizedAnalysis = business.analysis;
+  const floatingTryOnEnabled = Boolean(analysis.tryOn);
 
   return (
     <div className="mira-report">
       <EngagementTracker business={business} />
+      {floatingTryOnEnabled && analysis.tryOn && <FloatingTryOnPreview demo={analysis.tryOn} businessName={business.name} />}
       <header className="report-nav">
         <Link to="/versiones" className="report-brand"><BrandMark /><span>mira</span></Link>
         <span className="report-nav-label">Informe personalizado · diseñado para vender más</span>
@@ -387,7 +471,7 @@ function ReportPage() {
         </section>
 
         <ApplicationDefinition />
-        {analysis.tryOn && <TryOnDemo demo={analysis.tryOn} businessName={business.name} />}
+        {analysis.tryOn && !floatingTryOnEnabled && <TryOnDemo demo={analysis.tryOn} businessName={business.name} />}
 
         <SalesApplications />
 
