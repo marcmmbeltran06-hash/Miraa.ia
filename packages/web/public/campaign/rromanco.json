@@ -1,0 +1,89 @@
+{
+  "slug": "rromanco",
+  "name": "Rromanco",
+  "sector": "tiendas",
+  "website": "http://romancoshop.com/",
+  "phone": "+34 618 04 53 52",
+  "city": "C. Prta Carmona, 2, 41930 Bormujos, Sevilla",
+  "analysis": {
+    "summary": "Hemos analizado 7 páginas reales de Rromanco. La propuesta se basa en los problemas y productos encontrados durante ese rastreo.",
+    "pagesAnalyzed": 7,
+    "seoScore": 0,
+    "croScore": 75,
+    "seo": [
+      {
+        "title": "Page has no meta description",
+        "detail": "Este problema puede impedir que posibles clientes encuentren o utilicen correctamente esta página.",
+        "evidence": "DESCRIPTION_MISSING detectado en http://romancoshop.com.",
+        "action": "Corregir description missing y volver a medir el resultado.",
+        "level": "high",
+        "source": "crawler",
+        "order": 0
+      },
+      {
+        "title": "Page has no meta description",
+        "detail": "Este problema puede impedir que posibles clientes encuentren o utilicen correctamente esta página.",
+        "evidence": "DESCRIPTION_MISSING detectado en http://romancoshop.com/pages/contact.",
+        "action": "Corregir description missing y volver a medir el resultado.",
+        "level": "high",
+        "source": "crawler",
+        "order": 1
+      },
+      {
+        "title": "Page has no meta description",
+        "detail": "Este problema puede impedir que posibles clientes encuentren o utilicen correctamente esta página.",
+        "evidence": "DESCRIPTION_MISSING detectado en http://romancoshop.com/policies/privacy-policy.",
+        "action": "Corregir description missing y volver a medir el resultado.",
+        "level": "high",
+        "source": "crawler",
+        "order": 2
+      }
+    ],
+    "cro": [
+      {
+        "title": "El catálogo necesita una ayuda de compra más visual",
+        "detail": "No hemos encontrado una prenda compatible con el probador en las páginas analizadas.",
+        "evidence": "No se detectó un producto compatible con imagen utilizable en la muestra rastreada.",
+        "action": "Revisar el catálogo completo antes de activar el probador.",
+        "level": "high"
+      },
+      {
+        "title": "La conversación comercial puede continuar después de la visita",
+        "detail": "Una atención contextual permite resolver dudas sin enviar mensajes genéricos.",
+        "evidence": "No se encontró un acceso contextual a WhatsApp en las páginas rastreadas.",
+        "action": "Conectar cada consulta consentida con la prenda y la página que originaron el interés.",
+        "level": "medium"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "RROMANCO",
+      "productPrice": "Prenda real detectada en la web · simulación visual generada",
+      "personImage": "/tryon-models/female-neutral.png",
+      "productImage": "/campaign-assets/rromanco/product.webp",
+      "resultImage": "/campaign-assets/rromanco/tryon-result.jpg",
+      "resultKind": "generated_product_specific"
+    },
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta ha consultado varias veces una prenda real del catálogo.",
+          "decision": "Resolver la duda de talla mientras el interés sigue activo.",
+          "message": "Hola, Lucía. una prenda real del catálogo sigue en tu selección. ¿Quieres que te ayudemos con la talla?"
+        },
+        "cart": {
+          "signal": "Ha añadido una prenda real del catálogo al carrito y no ha terminado la compra.",
+          "decision": "Ofrecer ayuda útil sin recurrir automáticamente a un descuento.",
+          "message": "Hola, Lucía. Hemos guardado una prenda real del catálogo. Si dudas con la talla o la entrega, te ayudamos."
+        },
+        "return": {
+          "signal": "Ya compró anteriormente y ha aceptado recibir recomendaciones.",
+          "decision": "Mostrar novedades reales relacionadas con sus intereses.",
+          "message": "Hola, Lucía. Hemos preparado una selección de novedades que encaja con tu estilo. ¿Quieres verla?"
+        }
+      }
+    }
+  }
+}

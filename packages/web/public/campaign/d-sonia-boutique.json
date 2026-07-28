@@ -1,0 +1,89 @@
+{
+  "slug": "d-sonia-boutique",
+  "name": "D'Sonia Boutique",
+  "sector": "tiendas",
+  "website": "http://www.dsoniaboutique.es/",
+  "phone": "+34 646 04 89 38",
+  "city": "C. Navarro Caro, 32, 41940 Tomares, Sevilla",
+  "analysis": {
+    "summary": "Hemos analizado 4 páginas reales de D'Sonia Boutique. La propuesta se basa en los problemas y productos encontrados durante ese rastreo.",
+    "pagesAnalyzed": 4,
+    "seoScore": 48,
+    "croScore": 78,
+    "seo": [
+      {
+        "title": "Page has no canonical URL",
+        "detail": "Esta mejora ayuda a presentar mejor la tienda y reducir fricción.",
+        "evidence": "CANONICAL_MISSING detectado en http://www.dsoniaboutique.es.",
+        "action": "Corregir canonical missing y volver a medir el resultado.",
+        "level": "medium",
+        "source": "crawler",
+        "order": 0
+      },
+      {
+        "title": "Open Graph tags are incomplete",
+        "detail": "Esta mejora ayuda a presentar mejor la tienda y reducir fricción.",
+        "evidence": "OPEN_GRAPH_INCOMPLETE detectado en http://www.dsoniaboutique.es.",
+        "action": "Corregir open graph incomplete y volver a medir el resultado.",
+        "level": "medium",
+        "source": "crawler",
+        "order": 1
+      },
+      {
+        "title": "Page response time is high",
+        "detail": "Esta mejora ayuda a presentar mejor la tienda y reducir fricción.",
+        "evidence": "SLOW_RESPONSE detectado en http://www.dsoniaboutique.es.",
+        "action": "Corregir slow response y volver a medir el resultado.",
+        "level": "medium",
+        "source": "crawler",
+        "order": 2
+      }
+    ],
+    "cro": [
+      {
+        "title": "El catálogo necesita una ayuda de compra más visual",
+        "detail": "No hemos encontrado una prenda compatible con el probador en las páginas analizadas.",
+        "evidence": "No se detectó un producto compatible con imagen utilizable en la muestra rastreada.",
+        "action": "Revisar el catálogo completo antes de activar el probador.",
+        "level": "high"
+      },
+      {
+        "title": "La conversación comercial puede continuar después de la visita",
+        "detail": "Una atención contextual permite resolver dudas sin enviar mensajes genéricos.",
+        "evidence": "No se encontró un acceso contextual a WhatsApp en las páginas rastreadas.",
+        "action": "Conectar cada consulta consentida con la prenda y la página que originaron el interés.",
+        "level": "medium"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Moda con personalidad en Tomares",
+      "productPrice": "Prenda real detectada en la web · simulación visual generada",
+      "personImage": "/tryon-models/female-neutral.png",
+      "productImage": "/campaign-assets/d-sonia-boutique/product.png",
+      "resultImage": "/campaign-assets/d-sonia-boutique/tryon-result.jpg",
+      "resultKind": "generated_product_specific"
+    },
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta ha consultado varias veces una prenda real del catálogo.",
+          "decision": "Resolver la duda de talla mientras el interés sigue activo.",
+          "message": "Hola, Lucía. una prenda real del catálogo sigue en tu selección. ¿Quieres que te ayudemos con la talla?"
+        },
+        "cart": {
+          "signal": "Ha añadido una prenda real del catálogo al carrito y no ha terminado la compra.",
+          "decision": "Ofrecer ayuda útil sin recurrir automáticamente a un descuento.",
+          "message": "Hola, Lucía. Hemos guardado una prenda real del catálogo. Si dudas con la talla o la entrega, te ayudamos."
+        },
+        "return": {
+          "signal": "Ya compró anteriormente y ha aceptado recibir recomendaciones.",
+          "decision": "Mostrar novedades reales relacionadas con sus intereses.",
+          "message": "Hola, Lucía. Hemos preparado una selección de novedades que encaja con tu estilo. ¿Quieres verla?"
+        }
+      }
+    }
+  }
+}

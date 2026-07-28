@@ -1,0 +1,502 @@
+{
+  "startedAt": 1785245408.8663778,
+  "finishedAt": 1785247121.8273802,
+  "total": 50,
+  "completed": [
+    {
+      "name": "El Vestidor de Concha",
+      "website": "http://www.elvestidordeconcha.com/",
+      "phone": "+34 657 26 76 17",
+      "address": "C. Peñaflor, 1, local 5, 41010 Sevilla",
+      "slug": "el-vestidor-de-concha",
+      "url": "http://www.elvestidordeconcha.com/",
+      "jobId": "c82ae62a-7f6e-4db4-8691-5517823e8f9c",
+      "durationMs": 20497
+    },
+    {
+      "name": "HISTORIKA STUDIO SHOP",
+      "website": "https://historikashop.com/",
+      "phone": "+34 678 29 00 00",
+      "address": "Av. del Camí Nou, 198, 46950 Xirivella, Valencia",
+      "slug": "historika-studio-shop",
+      "url": "https://historikashop.com/",
+      "jobId": "800b0dd1-725c-42c2-b9aa-a6847156c5d6",
+      "durationMs": 16546
+    },
+    {
+      "name": "Modas Mímate",
+      "website": "https://mimatesevilla.es/",
+      "phone": "+34 641 18 18 83",
+      "address": "C. Comunidad Valenciana, 13, 41008 Sevilla",
+      "slug": "modas-mimate",
+      "url": "https://mimatesevilla.es/",
+      "jobId": "0e3f8790-76e7-433c-94a1-a590943e1bdc",
+      "durationMs": 32370
+    },
+    {
+      "name": "V&C Modas",
+      "website": "http://www.vcmodas.es/",
+      "phone": "+34 635 84 63 61",
+      "address": "C. San Sebastián, 3, 41701 Dos Hermanas, Sevilla",
+      "slug": "v-c-modas",
+      "url": "http://www.vcmodas.es/",
+      "jobId": "d1690e6b-b625-4918-8388-df51a1a83cc2",
+      "durationMs": 27190
+    },
+    {
+      "name": "Moda hippie, boho y bohemia chic para hombre y mujer | Grecca By Mia",
+      "website": "https://greccabymia.com/",
+      "phone": "+34 627 07 58 69",
+      "address": "C. Silos, 95, 41500 Alcalá de Guadaíra, Sevilla",
+      "slug": "moda-hippie-boho-y-bohemia-chic-para-hombre-y-mujer-grecca-by-mia",
+      "url": "https://greccabymia.com/",
+      "jobId": "90e2f65c-4632-4cde-8685-4565fcd5e192",
+      "durationMs": 29836
+    },
+    {
+      "name": "Vakano Store",
+      "website": "https://a2dbfa-06.myshopify.com/?_ab=0&_fd=0&_sc=1",
+      "phone": "+34 614 19 22 54",
+      "address": "C. Duquesa de Talavera, 29, 41500 Alcalá de Guadaíra, Sevilla",
+      "slug": "vakano-store",
+      "url": "https://a2dbfa-06.myshopify.com/?_ab=0&_fd=0&_sc=1",
+      "jobId": "a0f8c3cb-353f-4846-80b2-80fb16d2e5d1",
+      "durationMs": 23058
+    },
+    {
+      "name": "NUMABELA",
+      "website": "https://www.numabela.com/",
+      "phone": "+34 689 23 02 30",
+      "address": "C. Perú, 49, 41930 Bormujos, Sevilla",
+      "slug": "numabela",
+      "url": "https://www.numabela.com/",
+      "jobId": "b71bb900-d995-4271-bbd9-808b11594a69",
+      "durationMs": 19039
+    },
+    {
+      "name": "lokitos moda mujer de vestir",
+      "website": "https://lokitos-1.yupopstore.com/",
+      "phone": "+34 691 64 99 02",
+      "address": "C. Juan Ramon Jimenez, 18, 41930 Bormujos, Sevilla",
+      "slug": "lokitos-moda-mujer-de-vestir",
+      "url": "https://lokitos-1.yupopstore.com/",
+      "jobId": "4e78f35e-2e82-4cb5-b9e6-924d7fa68ec3",
+      "durationMs": 39726
+    },
+    {
+      "name": "El Armario Del Barrio 🌺",
+      "website": "http://www.elarmariodelbarrio.es/",
+      "phone": "+34 665 20 50 95",
+      "address": "C. de las Delicias, 75, Delicias, 50017 Zaragoza",
+      "slug": "el-armario-del-barrio",
+      "url": "http://www.elarmariodelbarrio.es/",
+      "jobId": "144bf116-77d0-406e-8286-caeba329d2f3",
+      "durationMs": 47672
+    },
+    {
+      "name": "FamilyGlam",
+      "website": "http://www.familyglam.com/",
+      "phone": "+34 645 64 44 79",
+      "address": "C. del Monasterio de Sta. Catalina, 2, 50002 Zaragoza",
+      "slug": "familyglam",
+      "url": "http://www.familyglam.com/",
+      "jobId": "47a8e223-0e20-454e-82be-08f993b148a2",
+      "durationMs": 45086
+    },
+    {
+      "name": "Buona Fortuna Selection",
+      "website": "http://www.buonafortuna.es/",
+      "phone": "+34 600 49 01 85",
+      "address": "Calle de la Cruz del Sur, 9, Local 1, 50012 Zaragoza",
+      "slug": "buona-fortuna-selection",
+      "url": "http://www.buonafortuna.es/",
+      "jobId": "57576506-cebf-4f91-ab55-d6c79d19036e",
+      "durationMs": 52402
+    },
+    {
+      "name": "La Boutique Málaga",
+      "website": "http://www.laboutiquemalaga.com/",
+      "phone": "+34 616 52 14 83",
+      "address": "C. Alcalde Joaquín Quiles, 13, Cdad. Jardín, 29014 Málaga",
+      "slug": "la-boutique-malaga",
+      "url": "http://www.laboutiquemalaga.com/",
+      "jobId": "2bc1ebf1-8931-43af-b7c2-ea7c3c76efbb",
+      "durationMs": 34233
+    },
+    {
+      "name": "Carmela Moda Sevilla",
+      "website": "http://www.carmelamodasevilla.es/",
+      "phone": "+34 651 97 10 97",
+      "address": "C. Rioja, 13, Casco Antiguo, 41001 Sevilla",
+      "slug": "carmela-moda-sevilla",
+      "url": "http://www.carmelamodasevilla.es/",
+      "jobId": "6c878144-836f-4003-98e3-4f691c544ec7",
+      "durationMs": 57410
+    },
+    {
+      "name": "Sharma",
+      "website": "https://carlosvegadesigner.com/",
+      "phone": "+34 744 46 38 56",
+      "address": "C. Granada, 49, Loc, Distrito Centro, 29015 Málaga",
+      "slug": "sharma",
+      "url": "https://carlosvegadesigner.com/",
+      "jobId": "956aa832-4b28-4da1-b0ed-640a7d301c2e",
+      "durationMs": 46521
+    },
+    {
+      "name": "Tanita",
+      "website": "http://www.tanitaestilo.com/",
+      "phone": "+34 690 93 63 99",
+      "address": "C. Virgen de la Fuensanta, 41011 Sevilla",
+      "slug": "tanita",
+      "url": "http://www.tanitaestilo.com/",
+      "jobId": "effc6495-8c71-4242-a92d-d01c7e055a47",
+      "durationMs": 34488
+    },
+    {
+      "name": "Koala Bay C.C.Plaza Mayor",
+      "website": "https://www.koalabay.com/",
+      "phone": "+34 664 17 62 97",
+      "address": "C. Alfonso Ponce de León, 51 - 52, Churriana, 29004 Churriana, Málaga",
+      "slug": "koala-bay-c-c-plaza-mayor",
+      "url": "https://www.koalabay.com/",
+      "jobId": "e2c8a5c8-e7bb-48d1-949f-d9fef71e3475",
+      "durationMs": 14122
+    },
+    {
+      "name": "Baloo Marbella 🌴🥥",
+      "website": "http://www.balooshop.com/es",
+      "phone": "+34 622 65 81 48",
+      "address": "Pl. de la Victoria, 7, 29601 Marbella, Málaga",
+      "slug": "baloo-marbella",
+      "url": "http://www.balooshop.com/es",
+      "jobId": "91e61694-17f5-47f6-b8bb-a53788519471",
+      "durationMs": 9133
+    },
+    {
+      "name": "Strava Boutique",
+      "website": "http://marstrava.com/",
+      "phone": "+34 669 62 05 15",
+      "address": "Av. Pío Baroja, 13, Málaga-Este, 29017 Málaga",
+      "slug": "strava-boutique",
+      "url": "http://marstrava.com/",
+      "jobId": "a683065d-b094-4c6c-b109-9205807765b3",
+      "durationMs": 76050
+    },
+    {
+      "name": "ATELIER TAMAR",
+      "website": "http://www.kucamarbella.com/",
+      "phone": "+34 655 44 15 20",
+      "address": "Av. Ricardo Soriano, 45, Loc 5, 29602 Marbella, Málaga",
+      "slug": "atelier-tamar",
+      "url": "http://www.kucamarbella.com/",
+      "jobId": "e1e965ef-d856-4038-842d-81d7ccd26504",
+      "durationMs": 5288
+    },
+    {
+      "name": "Moda Davani Por Mayor y Particular",
+      "website": "https://davanii.com/",
+      "phone": "+34 643 63 60 09",
+      "address": "Avinguda de la Cova, 64E, 46940 Manises, Valencia",
+      "slug": "moda-davani-por-mayor-y-particular",
+      "url": "https://davanii.com/",
+      "jobId": "9ae5dc5d-8557-4996-8bb1-54b4c9dc538a",
+      "durationMs": 135650
+    },
+    {
+      "name": "hilos & hilanderas",
+      "website": "https://www.hiloshilanderas.com/",
+      "phone": "+34 644 92 65 64",
+      "address": "C. Juan Ramon Jimenez, 6, 41930 Bormujos, Sevilla",
+      "slug": "hilos-hilanderas",
+      "url": "https://www.hiloshilanderas.com/",
+      "jobId": "389af9da-7710-4421-b8be-d6db139f3b71",
+      "durationMs": 104707
+    },
+    {
+      "name": "D'Sonia Boutique",
+      "website": "http://www.dsoniaboutique.es/",
+      "phone": "+34 646 04 89 38",
+      "address": "C. Navarro Caro, 32, 41940 Tomares, Sevilla",
+      "slug": "d-sonia-boutique",
+      "url": "http://www.dsoniaboutique.es/",
+      "jobId": "c9c39d62-0274-4c4d-b9bb-a04abbfc3e65",
+      "durationMs": 92458
+    },
+    {
+      "name": "New Blanco",
+      "website": "https://newblanco.es/",
+      "phone": "+34 626 90 73 62",
+      "address": "CC. Metromar, Av. de los Descubrimientos, S / N, 41927 Mairena del Aljarafe, Sevilla",
+      "slug": "new-blanco",
+      "url": "https://newblanco.es/",
+      "jobId": "7948113c-bfc4-45ce-8261-e0c6df72eb51",
+      "durationMs": 172413
+    },
+    {
+      "name": "Taller Guasinei",
+      "website": "http://www.guasinei.es/",
+      "phone": "+34 600 50 31 31",
+      "address": "C. Alfarería, 108, 41010 Sevilla",
+      "slug": "taller-guasinei",
+      "url": "http://www.guasinei.es/",
+      "jobId": "b33ad9f9-76ea-4a05-badc-4d54dd88edf9",
+      "durationMs": 183170
+    },
+    {
+      "name": "Sabel Shop",
+      "website": "https://sabelramirezshop.wixsite.com/website",
+      "phone": "+34 603 76 40 28",
+      "address": "Sabel Ramirez, C. Evangelista, 34, 41010 Sevilla",
+      "slug": "sabel-shop",
+      "url": "https://sabelramirezshop.wixsite.com/website",
+      "jobId": "5759dba1-75cd-4486-bf78-f07f04833e9f",
+      "durationMs": 177147
+    },
+    {
+      "name": "Brigadoon",
+      "website": "https://www.brigadoon.shop/",
+      "phone": "+34 623 06 34 93",
+      "address": "C. de Antonio Candalija, 6, Casco Antiguo, 50003 Zaragoza",
+      "slug": "brigadoon",
+      "url": "https://www.brigadoon.shop/",
+      "jobId": "6e1bd8b3-f7c4-4183-98ce-9edb385aa37a",
+      "durationMs": 141584
+    },
+    {
+      "name": "Pompeu",
+      "website": "https://www.pompeu.es/",
+      "phone": "+34 664 83 68 84",
+      "address": "Paseo del Muelle Uno Local L042B-L042C, Distrito Centro, 29016 Málaga",
+      "slug": "pompeu",
+      "url": "https://www.pompeu.es/",
+      "jobId": "c07bb0ba-d727-4eb9-b60a-bd4f9a520fba",
+      "durationMs": 59896
+    },
+    {
+      "name": "40 GRADOS PATERNA",
+      "website": "https://www.40grados.eu/",
+      "phone": "+34 671 91 22 50",
+      "address": "Carrer Major, 32, 46980 Paterna, Valencia",
+      "slug": "40-grados-paterna",
+      "url": "https://www.40grados.eu/",
+      "jobId": "edd29f2d-7d88-4cef-a179-a986cca6626c",
+      "durationMs": 146735
+    },
+    {
+      "name": "The Family Monkey",
+      "website": "https://thefamilymonkey.com/",
+      "phone": "+34 611 44 52 78",
+      "address": "C/ Asunción, 38, 41011 Sevilla",
+      "slug": "the-family-monkey",
+      "url": "https://thefamilymonkey.com/",
+      "jobId": "0311d6bd-88f9-4b53-a6be-8f52c68e5f2a",
+      "durationMs": 194361
+    },
+    {
+      "name": "Dania Moda y Complementos",
+      "website": "https://daniamoda.es/",
+      "phone": "+34 636 98 57 41",
+      "address": "Av. de los Descubrimientos, S / N, 41927 Mairena del Aljarafe, Sevilla",
+      "slug": "dania-moda-y-complementos",
+      "url": "https://daniamoda.es/",
+      "jobId": "ad9eee0e-dce4-4265-a97d-6f6a558934a7",
+      "durationMs": 168187
+    },
+    {
+      "name": "Hippytana Marbella",
+      "website": "http://hippytana.es/",
+      "phone": "+34 686 86 20 90",
+      "address": "Av. Trapiche, 30, 29601 Marbella, Málaga",
+      "slug": "hippytana-marbella",
+      "url": "http://hippytana.es/",
+      "jobId": "519e4763-b387-465f-8e98-6b8e7e282b81",
+      "durationMs": 75905
+    },
+    {
+      "name": "CENTROMODA MÁLAGA",
+      "website": "https://centromodamalaga.com/",
+      "phone": "+34 640 14 49 20",
+      "address": "Calle Especería, 14, Distrito Centro, 29005 Málaga",
+      "slug": "centromoda-malaga",
+      "url": "https://centromodamalaga.com/",
+      "jobId": "2a2b1fce-8c6d-4f98-9c8d-cb16d86af73b",
+      "durationMs": 133353
+    },
+    {
+      "name": "Podium Marbella Boutique",
+      "website": "https://t.me/podium_marbella",
+      "phone": "+34 615 01 01 61",
+      "address": "Av. del Mar, 2, 29602 Marbella, Málaga",
+      "slug": "podium-marbella-boutique",
+      "url": "https://t.me/podium_marbella",
+      "jobId": "2f46f28c-8d6a-4bd8-87e8-e7829e963ae4",
+      "durationMs": 140386
+    },
+    {
+      "name": "Azahar Marbella",
+      "website": "http://mahimarbella.com/",
+      "phone": "+34 688 85 93 13",
+      "address": "C. Padre Francisco Echamendi, 8B, 29601 Marbella, Málaga",
+      "slug": "azahar-marbella",
+      "url": "http://mahimarbella.com/",
+      "jobId": "cff80ac1-a5ec-4e00-bbcc-d6f70598b433",
+      "durationMs": 69044
+    },
+    {
+      "name": "Ginger Y Limon - Tienda de Moda Marbella",
+      "website": "http://www.gingerylimon.es/",
+      "phone": "+34 696 86 11 59",
+      "address": "Caridad 4, 29601, 29601 Marbella, Málaga",
+      "slug": "ginger-y-limon-tienda-de-moda-marbella",
+      "url": "http://www.gingerylimon.es/",
+      "jobId": "4cdd5fbe-043d-4483-b438-7b16f0fb9e59",
+      "durationMs": 41406
+    },
+    {
+      "name": "Tricotra",
+      "website": "http://tricotra.com/",
+      "phone": "+34 645 51 40 06",
+      "address": "Ctra. Coín, 39, Churriana, 29140 Málaga",
+      "slug": "tricotra",
+      "url": "http://tricotra.com/",
+      "jobId": "fff29701-b4fd-41dc-b8c0-d77939ee64ed",
+      "durationMs": 140632
+    },
+    {
+      "name": "Clouté Spain",
+      "website": "https://cloute.es/",
+      "phone": "+34 611 58 50 04",
+      "address": "Pl. de las Flores, 4, 1B, Distrito Centro, 29005 Málaga",
+      "slug": "cloute-spain",
+      "url": "https://cloute.es/",
+      "jobId": "ec470c0f-751e-4abe-a731-fc303c7e6f7a",
+      "durationMs": 54063
+    },
+    {
+      "name": "Rromanco",
+      "website": "http://romancoshop.com/",
+      "phone": "+34 618 04 53 52",
+      "address": "C. Prta Carmona, 2, 41930 Bormujos, Sevilla",
+      "slug": "rromanco",
+      "url": "http://romancoshop.com/",
+      "jobId": "0eb1fceb-66f7-42fb-9195-f5588f0f22d8",
+      "durationMs": 201599
+    },
+    {
+      "name": "Belleza Real Moda",
+      "website": "http://www.bellezarealmoda.es/",
+      "phone": "+34 604 91 83 04",
+      "address": "C. Granaderos, 2, 41010 Sevilla",
+      "slug": "belleza-real-moda",
+      "url": "http://www.bellezarealmoda.es/",
+      "jobId": "f885bcba-a761-4896-be91-0faf546f8240",
+      "durationMs": 15709
+    },
+    {
+      "name": "Bambolea Tallas grandes",
+      "website": "http://www.bamboleatallasgrandes.es/",
+      "phone": "+34 668 56 92 96",
+      "address": "Av. Dr. Fedriani, 11, Loc 2, 41009 Sevilla",
+      "slug": "bambolea-tallas-grandes",
+      "url": "http://www.bamboleatallasgrandes.es/",
+      "jobId": "a37b2111-9dab-4add-8415-820aba983a4e",
+      "durationMs": 37918
+    },
+    {
+      "name": "El Armario de Carmen",
+      "website": "https://el-armario-de-carmen.ueniweb.com/?utm_campaign=gmb",
+      "phone": "+34 695 66 03 04",
+      "address": "Av. Reyes Católicos, 83, 41702 Dos Hermanas, Sevilla",
+      "slug": "el-armario-de-carmen",
+      "durationMs": null,
+      "method": "http_fallback"
+    },
+    {
+      "name": "Decar Amelo",
+      "website": "https://decar-amelo.es/",
+      "phone": "+34 636 17 76 28",
+      "address": "Carrer Ribarroja, 48, 46940 Manises, Valencia",
+      "slug": "decar-amelo",
+      "durationMs": null,
+      "method": "http_fallback"
+    },
+    {
+      "name": "Oh La La!",
+      "website": "https://oh-la-la-2.ueniweb.com/?utm_campaign=gmb",
+      "phone": "+34 722 12 75 70",
+      "address": "C. Pepe Luces, 2, 41500 Alcalá de Guadaíra, Sevilla",
+      "slug": "oh-la-la",
+      "durationMs": null,
+      "method": "http_fallback"
+    },
+    {
+      "name": "Azar (Desiré Vega) ropa y complementos de fiestas, bodas, bautizos y comuniones para mujer, moda, bolsos y regalos",
+      "website": "http://azaharsilos.es/",
+      "phone": "+34 691 26 21 80",
+      "address": "Calle Mairena, 3, 41500 Alcalá de Guadaíra, Sevilla",
+      "slug": "azar-desire-vega-ropa-y-complementos-de-fiestas-bodas-bautizos-y-comunio",
+      "durationMs": null,
+      "method": "http_fallback"
+    },
+    {
+      "name": "Casa Herrera",
+      "website": "http://www.casaherrera.es/",
+      "phone": "+34 658 82 10 73",
+      "address": "n°2, Zarza, 11178 Paterna de Rivera, Cádiz",
+      "slug": "casa-herrera",
+      "durationMs": null,
+      "method": "http_fallback"
+    },
+    {
+      "name": "Alba Lencería",
+      "website": "http://albalenceria.es/",
+      "phone": "+34 669 39 47 49",
+      "address": "Calle de Jaime, C. de Jaume García Soria, 9, 46950 Xirivella, Valencia",
+      "slug": "alba-lenceria",
+      "durationMs": null,
+      "method": "http_fallback"
+    },
+    {
+      "name": "Massari Tomares",
+      "website": "https://sites.google.com/view/massari/inicio",
+      "phone": "+34 637 26 08 35",
+      "address": "C. Clara Campoamor, 5, 41940 Tomares, Sevilla",
+      "slug": "massari-tomares",
+      "durationMs": null,
+      "method": "http_fallback"
+    },
+    {
+      "name": "Maria Salas Modista",
+      "website": "https://www.mariasalasmodista.com/",
+      "phone": "+34 690 96 23 43",
+      "address": "Av. San Juan de Dios, 41930 Bormujos, Sevilla",
+      "slug": "maria-salas-modista",
+      "durationMs": null,
+      "method": "http_fallback"
+    },
+    {
+      "name": "María Sancho Boutique",
+      "website": "https://mariasanchoboutique.com/",
+      "phone": "+34 699 35 43 14",
+      "address": "Calle Cervantes, P.º de Sagasta, 30, local 2 (entrada por, 50006 Zaragoza",
+      "slug": "maria-sancho-boutique",
+      "durationMs": null,
+      "method": "http_fallback"
+    },
+    {
+      "name": "Modas Ana's",
+      "website": "https://www.modasanasonline.com/",
+      "phone": "+34 601 37 91 29",
+      "address": "Polígono Ind. PISA, C. Gestión, 3, 41927 Mairena del Aljarafe, Sevilla",
+      "slug": "modas-ana-s",
+      "durationMs": null,
+      "method": "http_fallback"
+    }
+  ],
+  "failed": [],
+  "remaining": 0,
+  "status": "completed",
+  "publicBaseUrl": "https://www.miraia.space",
+  "published": false
+}

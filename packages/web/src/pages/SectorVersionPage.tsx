@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   findMiraBusiness,
@@ -13,49 +13,58 @@ function BrandMark() {
   return <span className="report-orb" aria-hidden="true" />;
 }
 
-function sendFormspree(endpoint: string, event: Record<string, unknown>) {
-  const payload = JSON.stringify({ ...event, sentAt: new Date().toISOString() });
-  if (navigator.sendBeacon) {
-    navigator.sendBeacon(endpoint, new Blob([payload], { type: 'application/json' }));
-    return;
-  }
-  void fetch(endpoint, { method: 'POST', headers: { 'content-type': 'application/json' }, body: payload, keepalive: true });
-}
-
 function EngagementTracker({ business }: { business: MiraBusiness }) {
-  const [consent, setConsent] = useState(() => localStorage.getItem('mira-analytics-consent'));
-  const startedAt = useRef(Date.now());
-  const sessionId = useRef(crypto.randomUUID());
-  const leadClicked = useRef(false);
+  const [open, setOpen] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
+  const endpoint = (import.meta.env.VITE_LEAD_ENDPOINT as string | undefined) ?? 'https://formspree.io/f/maqrvwvd';
 
-  useEffect(() => {
-    if (consent !== 'accepted') return;
-    const endpoint = (import.meta.env.VITE_ENGAGEMENT_ENDPOINT as string | undefined) ?? 'https://formspree.io/f/mbdnwrbg';
-    const markLead = () => { leadClicked.current = true; };
-    window.addEventListener('mira:lead-clicked', markLead);
-    const timer = window.setTimeout(() => {
-      if (leadClicked.current) return;
-      sendFormspree(endpoint, {
-        tipo: 'Visita de más de 30 segundos sin solicitar información',
-        sessionId: sessionId.current,
-        negocio: business.name,
-        telefonoNegocio: business.phone ?? 'No disponible',
-        webNegocio: business.website ?? 'No disponible',
-        informe: location.href,
-        durationSeconds: Math.round((Date.now() - startedAt.current) / 1000),
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    setSending(true);
+    setError('');
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { accept: 'application/json', 'content-type': 'application/json' },
+        body: JSON.stringify({
+          tipo: 'Solicitud rápida de información',
+          business: business.name,
+          businessPhone: business.phone ?? 'No disponible',
+          businessSlug: business.slug,
+          sourceWebsite: business.website ?? 'No disponible',
+          contactName: data.get('contactName'),
+          phone: data.get('phone'),
+          page: location.href,
+        }),
       });
-    }, 30_000);
-    return () => {
-      window.clearTimeout(timer);
-      window.removeEventListener('mira:lead-clicked', markLead);
-    };
-  }, [business.name, business.phone, business.website, consent]);
+      if (!response.ok) throw new Error('Lead endpoint rejected the request');
+      setSent(true);
+      window.dispatchEvent(new Event('mira:lead-clicked'));
+    } catch {
+      setError('No hemos podido enviar la solicitud. Inténtalo de nuevo.');
+    } finally {
+      setSending(false);
+    }
+  }
 
-  if (consent) return null;
   return (
-    <aside className="analytics-consent">
-      <div><b>Medición transparente</b><p>Con tu permiso mediremos esta visita y el tiempo de lectura para mejorar nuestros informes. No usamos publicidad ni seguimiento oculto.</p></div>
-      <div><button onClick={() => { localStorage.setItem('mira-analytics-consent', 'declined'); setConsent('declined'); }}>Solo lo necesario</button><button className="primary" onClick={() => { localStorage.setItem('mira-analytics-consent', 'accepted'); setConsent('accepted'); }}>Aceptar medición</button></div>
+    <aside className={`analytics-consent quick-lead ${open ? 'open' : ''}`}>
+      {!open && !sent && <>
+        <div><b>¿Quieres vender más con estas mejoras?</b><p>Te explicamos la propuesta preparada para {business.name}.</p></div>
+        <div><button className="primary" onClick={() => setOpen(true)}>Quiero más información</button></div>
+      </>}
+      {open && !sent && <form onSubmit={submit}>
+        <div><b>Te llamaremos para explicártelo</b><p>Indica quién eres y tu teléfono.</p></div>
+        <label>Nombre<input name="contactName" required autoComplete="name" /></label>
+        <label>Teléfono<input name="phone" type="tel" required autoComplete="tel" /></label>
+        <label className="quick-lead-consent"><input type="checkbox" required /> Acepto que Mira me contacte sobre esta propuesta.</label>
+        {error && <p className="lead-error" role="alert">{error}</p>}
+        <div className="quick-lead-actions"><button type="button" onClick={() => setOpen(false)}>Ahora no</button><button className="primary" disabled={sending}>{sending ? 'Enviando…' : 'Quiero que me llaméis'}</button></div>
+      </form>}
+      {sent && <div className="quick-lead-success"><span>✓</span><div><b>Solicitud recibida</b><p>Te llamaremos para explicarte las mejoras de {business.name}.</p></div></div>}
     </aside>
   );
 }
@@ -172,6 +181,8 @@ function SalesApplications() {
 
 function TryOnDemo({ demo, businessName }: { demo: NonNullable<PersonalizedAnalysis['tryOn']>; businessName: string }) {
   const [step, setStep] = useState<1 | 2 | 3>(1);
+  const productSpecificResult = demo.resultKind === 'generated_product_specific' || (!demo.resultKind && Boolean(demo.resultImage));
+  const genericResult = demo.resultKind === 'generic_female' || demo.resultKind === 'generic_male';
   return (
     <section className="tryon-demo">
       <div className="tryon-demo-heading">
@@ -208,8 +219,8 @@ function TryOnDemo({ demo, businessName }: { demo: NonNullable<PersonalizedAnaly
 
         {step === 3 && (
           <div className="tryon-demo-stage result">
-            <div className="tryon-photo"><img src={demo.resultImage} alt={`Resultado virtual con ${demo.productName}`} /><span>Resultado generado</span></div>
-            <div className="tryon-demo-copy"><small>Paso 3 de 3</small><h3>La clienta ya puede verse con la prenda.</h3><p>El resultado llega por WhatsApp junto al nombre del producto, la talla seleccionada y un enlace directo para volver a comprar.</p><div className="whatsapp-result"><span>✓</span><div><small>WhatsApp · resultado listo</small><b>{demo.productName} · Ver en tienda →</b></div></div><button className="secondary" onClick={() => setStep(1)}>Volver a empezar</button></div>
+            <div className="tryon-photo"><img src={demo.resultImage ?? demo.productImage} alt={productSpecificResult ? `Simulación virtual generada con ${demo.productName}` : `Demostración genérica del probador para ${businessName}`} /><span>{productSpecificResult ? 'Simulación visual generada' : genericResult ? 'Ejemplo genérico' : 'Demostración propuesta'}</span></div>
+            <div className="tryon-demo-copy"><small>Paso 3 de 3</small><h3>{productSpecificResult ? 'La clienta ya puede verse con una versión visual de la prenda.' : 'Ejemplo del resultado que podría recibir.'}</h3><p>{productSpecificResult ? 'La composición aplica visualmente una prenda detectada en la web sobre una persona genérica y muestra cómo funcionaría el recorrido comercial.' : 'La web no ofrecía una prenda válida para generar una composición fiable. Por eso mostramos una demostración genérica, sin utilizar logos ni presentar productos inventados como reales.'}</p><div className="whatsapp-result"><span>✓</span><div><small>{productSpecificResult ? 'WhatsApp · simulación preparada' : 'WhatsApp · ejemplo genérico'}</small><b>{demo.productName} · Ver propuesta →</b></div></div><button className="secondary" onClick={() => setStep(1)}>Volver a empezar</button></div>
           </div>
         )}
       </div>

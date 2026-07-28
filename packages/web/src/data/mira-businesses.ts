@@ -27,7 +27,8 @@ export type PersonalizedAnalysis = {
     productPrice: string;
     personImage: string;
     productImage: string;
-    resultImage: string;
+    resultImage?: string;
+    resultKind?: 'generated_product_specific' | 'generic_female' | 'generic_male';
   };
   marketing?: {
     customerName: string;

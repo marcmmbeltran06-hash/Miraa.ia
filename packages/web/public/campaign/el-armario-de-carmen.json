@@ -1,0 +1,65 @@
+{
+  "slug": "el-armario-de-carmen",
+  "name": "El Armario de Carmen",
+  "sector": "tiendas",
+  "website": "https://el-armario-de-carmen.ueniweb.com/?utm_campaign=gmb",
+  "phone": "+34 695 66 03 04",
+  "city": "Av. Reyes Católicos, 83, 41702 Dos Hermanas, Sevilla",
+  "analysis": {
+    "summary": "Hemos comprobado la portada real de El Armario de Carmen y sus señales principales de visibilidad y venta. Las mejoras se basan únicamente en lo encontrado durante esta revisión.",
+    "pagesAnalyzed": 1,
+    "seoScore": 100,
+    "croScore": 82,
+    "seo": [
+      {
+        "title": "La base de visibilidad está presente",
+        "detail": "El siguiente paso es ampliar el análisis a categorías y productos.",
+        "evidence": "Portada accesible con título: El Armario de Carmen - Boutique | Dos Hermanas",
+        "action": "Auditar categorías, fichas y datos estructurados antes de publicar cambios.",
+        "level": "low",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "cro": [
+      {
+        "title": "La compra no muestra una acción inmediata",
+        "detail": "Una llamada clara reduce dudas y pasos antes de comprar.",
+        "evidence": "No se detectó una llamada de carrito o compra en el HTML inicial.",
+        "action": "Mostrar una acción de compra visible y repetirla después de los argumentos clave.",
+        "level": "high",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Ejemplo genérico femenino",
+      "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
+      "personImage": "/tryon-models/female-neutral.png",
+      "productImage": "/probador-virtual-referencia.png",
+      "resultImage": "/campaign-assets/generic-female/tryon-result.jpg",
+      "resultKind": "generic_female"
+    },
+    "auditMethod": "http_fallback",
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta vuelve a una categoría o producto de la tienda.",
+          "decision": "Resolver una duda concreta mientras mantiene el interés.",
+          "message": "Hola, Lucía. ¿Quieres que te ayudemos con talla, disponibilidad o entrega?"
+        },
+        "cart": {
+          "signal": "La clienta inicia una compra y no la termina.",
+          "decision": "Ofrecer ayuda útil sin enviar promociones automáticas.",
+          "message": "Hola, Lucía. Si tienes alguna duda antes de terminar tu compra, te ayudamos."
+        },
+        "return": {
+          "signal": "La clienta regresa y ha aceptado recibir comunicaciones.",
+          "decision": "Mostrar novedades relacionadas con su interés real.",
+          "message": "Hola, Lucía. Tenemos novedades que pueden encajar contigo. ¿Quieres verlas?"
+        }
+      }
+    }
+  }
+}

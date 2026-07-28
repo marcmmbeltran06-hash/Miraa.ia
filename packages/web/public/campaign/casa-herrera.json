@@ -1,0 +1,65 @@
+{
+  "slug": "casa-herrera",
+  "name": "Casa Herrera",
+  "sector": "tiendas",
+  "website": "http://www.casaherrera.es/",
+  "phone": "+34 658 82 10 73",
+  "city": "n°2, Zarza, 11178 Paterna de Rivera, Cádiz",
+  "analysis": {
+    "summary": "Hemos comprobado la portada real de Casa Herrera y sus señales principales de visibilidad y venta. Las mejoras se basan únicamente en lo encontrado durante esta revisión.",
+    "pagesAnalyzed": 1,
+    "seoScore": 100,
+    "croScore": 100,
+    "seo": [
+      {
+        "title": "La base de visibilidad está presente",
+        "detail": "El siguiente paso es ampliar el análisis a categorías y productos.",
+        "evidence": "Portada accesible con título: Casa Herrera | Boutique de Moda y Complementos en Paterna",
+        "action": "Auditar categorías, fichas y datos estructurados antes de publicar cambios.",
+        "level": "low",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "cro": [
+      {
+        "title": "Conviene medir qué llamadas generan ventas",
+        "detail": "La medición permite mejorar con datos y no por intuición.",
+        "evidence": "La revisión ligera confirma elementos comerciales básicos.",
+        "action": "Medir clics de producto, carrito, WhatsApp y solicitud de información.",
+        "level": "low",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Casa Herrera | Boutique de Moda y Complementos en Paterna",
+      "productPrice": "Prenda real detectada en la web · simulación visual generada",
+      "personImage": "/tryon-models/female-neutral.png",
+      "productImage": "/campaign-assets/casa-herrera/product.jpg",
+      "resultImage": "/campaign-assets/casa-herrera/tryon-result.jpg",
+      "resultKind": "generated_product_specific"
+    },
+    "auditMethod": "http_fallback",
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta vuelve a una categoría o producto de la tienda.",
+          "decision": "Resolver una duda concreta mientras mantiene el interés.",
+          "message": "Hola, Lucía. ¿Quieres que te ayudemos con talla, disponibilidad o entrega?"
+        },
+        "cart": {
+          "signal": "La clienta inicia una compra y no la termina.",
+          "decision": "Ofrecer ayuda útil sin enviar promociones automáticas.",
+          "message": "Hola, Lucía. Si tienes alguna duda antes de terminar tu compra, te ayudamos."
+        },
+        "return": {
+          "signal": "La clienta regresa y ha aceptado recibir comunicaciones.",
+          "decision": "Mostrar novedades relacionadas con su interés real.",
+          "message": "Hola, Lucía. Tenemos novedades que pueden encajar contigo. ¿Quieres verlas?"
+        }
+      }
+    }
+  }
+}
