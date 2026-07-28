@@ -1,0 +1,450 @@
+{
+  "url": "http://127.0.0.1:50939/category.html",
+  "finalUrl": "http://127.0.0.1:50939/category.html",
+  "status": 200,
+  "depth": 1,
+  "pageType": "category",
+  "confidence": 0.74,
+  "evidence": [
+    "catalog URL"
+  ],
+  "blocks": [
+    {
+      "id": "e1275b3880a0",
+      "type": "header",
+      "selector": "header",
+      "parentId": null,
+      "children": [
+        "4efee19c21d1"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "Home",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<header><nav><a href=\"/\">Home</a></nav></header>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "4efee19c21d1",
+      "type": "navigation",
+      "selector": "nav",
+      "parentId": "e1275b3880a0",
+      "children": [
+        "3f4f3daa4539"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "Home",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<nav><a href=\"/\">Home</a></nav>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "3f4f3daa4539",
+      "type": "link",
+      "selector": "nav > a",
+      "parentId": "4efee19c21d1",
+      "children": [],
+      "content": {
+        "text": "Home",
+        "fullText": "Home",
+        "attributes": {
+          "href": "/"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<a href=\"/\">Home</a>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label",
+          "href"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "8d10245d2e42",
+      "type": "product-grid",
+      "selector": "main.product-grid",
+      "parentId": null,
+      "children": [
+        "7ec6c74eddbd",
+        "4d37db577c47"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "CategoryRed shoe€49Details",
+        "attributes": {
+          "class": "product-grid"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<main class=\"product-grid\"><h1>Category</h1><article class=\"product\"><img src=\"/shoe.svg\"><h2>Red shoe</h2><span class=\"price\">€49</span><a href=\"/product.html\">Details</a></article></main>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "7ec6c74eddbd",
+      "type": "text",
+      "selector": "h1",
+      "parentId": "8d10245d2e42",
+      "children": [],
+      "content": {
+        "text": "Category",
+        "fullText": "Category",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<h1>Category</h1>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "4d37db577c47",
+      "type": "body",
+      "selector": "article.product",
+      "parentId": "8d10245d2e42",
+      "children": [
+        "0231325db31b",
+        "25d6a8f9ff4d",
+        "2890267599b0",
+        "240b82394fbf"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "Red shoe€49Details",
+        "attributes": {
+          "class": "product"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<article class=\"product\"><img src=\"/shoe.svg\"><h2>Red shoe</h2><span class=\"price\">€49</span><a href=\"/product.html\">Details</a></article>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "0231325db31b",
+      "type": "image",
+      "selector": "img",
+      "parentId": "4d37db577c47",
+      "children": [],
+      "content": {
+        "text": "",
+        "fullText": "",
+        "attributes": {
+          "src": "/shoe.svg"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<img src=\"/shoe.svg\">",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label",
+          "src",
+          "alt"
+        ],
+        "styles": true,
+        "image": true
+      }
+    },
+    {
+      "id": "25d6a8f9ff4d",
+      "type": "text",
+      "selector": "h2",
+      "parentId": "4d37db577c47",
+      "children": [],
+      "content": {
+        "text": "Red shoe",
+        "fullText": "Red shoe",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<h2>Red shoe</h2>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "2890267599b0",
+      "type": "price",
+      "selector": "span.price",
+      "parentId": "4d37db577c47",
+      "children": [],
+      "content": {
+        "text": "€49",
+        "fullText": "€49",
+        "attributes": {
+          "class": "price"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<span class=\"price\">€49</span>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "240b82394fbf",
+      "type": "link",
+      "selector": "article.product > a",
+      "parentId": "4d37db577c47",
+      "children": [],
+      "content": {
+        "text": "Details",
+        "fullText": "Details",
+        "attributes": {
+          "href": "/product.html"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<a href=\"/product.html\">Details</a>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label",
+          "href"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "33c315e372e6",
+      "type": "footer",
+      "selector": "footer",
+      "parentId": null,
+      "children": [],
+      "content": {
+        "text": "Footer",
+        "fullText": "Footer",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<footer>Footer</footer>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    }
+  ],
+  "products": [
+    {
+      "sourceUrl": "http://127.0.0.1:50939/category.html",
+      "name": "Category",
+      "regularPrice": "€49",
+      "images": [
+        "http://127.0.0.1:50939/shoe.svg"
+      ],
+      "description": "CategoryRed shoe€49Details",
+      "categories": [],
+      "attributes": [],
+      "variations": [],
+      "stockStatus": ""
+    },
+    {
+      "sourceUrl": "http://127.0.0.1:50939/category.html",
+      "name": "Red shoe",
+      "regularPrice": "€49",
+      "images": [
+        "http://127.0.0.1:50939/shoe.svg"
+      ],
+      "description": "Red shoe€49Details",
+      "categories": [],
+      "attributes": [],
+      "variations": [],
+      "stockStatus": ""
+    }
+  ],
+  "overlays": [],
+  "technology": {
+    "primary": "custom",
+    "confidence": 0.55,
+    "detected": [],
+    "capabilities": {
+      "canAnalyze": true,
+      "canPreview": true,
+      "canApply": false,
+      "connector": null,
+      "applicationMode": "patch_export",
+      "requiresCredentials": false,
+      "reason": "Tecnología personalizada: se permite análisis y preview; la entrega futura será mediante informe o parche."
+    }
+  },
+  "audits": {
+    "axe": {
+      "source": "axe-core",
+      "violations": [
+        {
+          "id": "document-title",
+          "impact": "serious",
+          "help": "Documents must have <title> element to aid in navigation",
+          "description": "Ensure each HTML document contains a non-empty <title> element",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/document-title?application=axeAPI",
+          "selectors": [
+            "html"
+          ],
+          "nodes": 1
+        },
+        {
+          "id": "html-has-lang",
+          "impact": "serious",
+          "help": "<html> element must have a lang attribute",
+          "description": "Ensure every HTML document has a lang attribute",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/html-has-lang?application=axeAPI",
+          "selectors": [
+            "html"
+          ],
+          "nodes": 1
+        },
+        {
+          "id": "image-alt",
+          "impact": "critical",
+          "help": "Images must have alternative text",
+          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/image-alt?application=axeAPI",
+          "selectors": [
+            "img"
+          ],
+          "nodes": 1
+        }
+      ],
+      "passes": 18,
+      "incomplete": 0,
+      "inapplicable": 68,
+      "testedAt": "2026-07-19T16:26:53.976Z"
+    }
+  },
+  "responseHeaders": {
+    "connection": "keep-alive",
+    "content-length": "304",
+    "date": "Sun, 19 Jul 2026 16:26:52 GMT",
+    "keep-alive": "timeout=5",
+    "content-type": "text/html; charset=utf-8"
+  },
+  "navigationAttempts": 1,
+  "diagnostics": {
+    "unknownBlocks": 0,
+    "invalidSelectors": [],
+    "overlapCount": 0,
+    "visibleCoverage": 1
+  }
+}

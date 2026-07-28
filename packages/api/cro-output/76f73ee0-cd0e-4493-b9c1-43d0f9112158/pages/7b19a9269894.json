@@ -1,0 +1,255 @@
+{
+  "url": "http://127.0.0.1:57575/cart.html",
+  "finalUrl": "http://127.0.0.1:57575/cart.html",
+  "status": 200,
+  "depth": 1,
+  "pageType": "cart",
+  "confidence": 0.74,
+  "evidence": [
+    "cart URL"
+  ],
+  "blocks": [
+    {
+      "id": "e1275b3880a0",
+      "type": "header",
+      "selector": "header",
+      "parentId": null,
+      "children": [
+        "4efee19c21d1"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "Home",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<header><nav><a href=\"/\">Home</a></nav></header>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "4efee19c21d1",
+      "type": "navigation",
+      "selector": "nav",
+      "parentId": "e1275b3880a0",
+      "children": [
+        "3f4f3daa4539"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "Home",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<nav><a href=\"/\">Home</a></nav>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "3f4f3daa4539",
+      "type": "link",
+      "selector": "nav > a",
+      "parentId": "4efee19c21d1",
+      "children": [],
+      "content": {
+        "text": "Home",
+        "fullText": "Home",
+        "attributes": {
+          "href": "/"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<a href=\"/\">Home</a>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label",
+          "href"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "c208d0296a56",
+      "type": "body",
+      "selector": "main.cart",
+      "parentId": null,
+      "children": [
+        "7ec6c74eddbd",
+        "3ae38546be54"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "CartCheckout",
+        "attributes": {
+          "class": "cart"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<main class=\"cart\"><h1>Cart</h1><a href=\"/checkout.html\">Checkout</a></main>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "7ec6c74eddbd",
+      "type": "text",
+      "selector": "h1",
+      "parentId": "c208d0296a56",
+      "children": [],
+      "content": {
+        "text": "Cart",
+        "fullText": "Cart",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<h1>Cart</h1>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "3ae38546be54",
+      "type": "link",
+      "selector": "main.cart > a",
+      "parentId": "c208d0296a56",
+      "children": [],
+      "content": {
+        "text": "Checkout",
+        "fullText": "Checkout",
+        "attributes": {
+          "href": "/checkout.html"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<a href=\"/checkout.html\">Checkout</a>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label",
+          "href"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "33c315e372e6",
+      "type": "footer",
+      "selector": "footer",
+      "parentId": null,
+      "children": [],
+      "content": {
+        "text": "Footer",
+        "fullText": "Footer",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<footer>Footer</footer>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    }
+  ],
+  "products": [],
+  "overlays": [],
+  "technology": {
+    "primary": "custom",
+    "confidence": 0.55,
+    "detected": [],
+    "capabilities": {
+      "canAnalyze": true,
+      "canPreview": true,
+      "canApply": false,
+      "connector": null,
+      "applicationMode": "patch_export",
+      "requiresCredentials": false,
+      "reason": "Tecnología personalizada: se permite análisis y preview; la entrega futura será mediante informe o parche."
+    }
+  },
+  "audits": {},
+  "responseHeaders": {
+    "connection": "keep-alive",
+    "content-length": "189",
+    "date": "Sun, 19 Jul 2026 16:24:50 GMT",
+    "keep-alive": "timeout=5",
+    "content-type": "text/html; charset=utf-8"
+  },
+  "navigationAttempts": 1,
+  "diagnostics": {
+    "unknownBlocks": 0,
+    "invalidSelectors": [],
+    "overlapCount": 0,
+    "visibleCoverage": 1
+  }
+}

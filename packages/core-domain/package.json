@@ -1,0 +1,16 @@
+{
+  "name": "@autowp/core-domain",
+  "type": "module",
+
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "@autowp/shared": "workspace:*"
+  },
+  "peerDependencies": {}
+}

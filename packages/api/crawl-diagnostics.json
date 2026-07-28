@@ -1,0 +1,96 @@
+{
+  "urlsDiscovered": 2,
+  "urlsProcessed": 2,
+  "duplicates": 0,
+  "discarded": 0,
+  "duplicateRatio": 0,
+  "urlCategories": {
+    "https://example.com": "Static",
+    "https://example.com/about": "Static"
+  },
+  "maxMemory": {
+    "heapUsed": 32170960,
+    "heapTotal": 44797952,
+    "rss": 693735424,
+    "external": 5211833
+  },
+  "averageSpeedPagesPerSec": 3.773584905660377,
+  "topPageDiscoveries": {
+    "https://example.com": 2
+  },
+  "pagesGeneratingMostUrls": {
+    "https://example.com": 2
+  },
+  "topUrlPatterns": {
+    "/": 1,
+    "/about/*": 1
+  },
+  "pageDuplicateCounts": {},
+  "pageVisitedDuplicateCounts": {},
+  "pagesRediscoveringUrls": {},
+  "pendingUrls": [],
+  "termination": {
+    "timestamp": 1785192397773,
+    "reason": "queue_drained",
+    "invokedBy": "crawl.loop_exit",
+    "pendingAtDecision": {
+      "frontier": 0,
+      "queue": 0,
+      "total": 0
+    },
+    "pendingDiscarded": 0,
+    "discardJustification": "Queue drained naturally after main loop exit.",
+    "metricsAtDecision": {
+      "queueSize": 0,
+      "knowledgeSize": 2,
+      "discovered": 2,
+      "processed": 2,
+      "memoryRss": 693768192,
+      "activeWorkers": 0,
+      "pendingKnowledge": 0,
+      "discoveryNovelty": 2,
+      "pagesVisited": 2,
+      "duplicates": 0,
+      "discarded": 0,
+      "discoveryPaused": false
+    },
+    "pendingUrlSamples": [],
+    "stabilityHistory": []
+  },
+  "discoveryPaused": false,
+  "stabilityHistory": [],
+  "evolution": [
+    {
+      "timestamp": 1785192397259,
+      "frontier": 0,
+      "queue": 2
+    },
+    {
+      "timestamp": 1785192397260,
+      "frontier": 0,
+      "queue": 2
+    },
+    {
+      "timestamp": 1785192397262,
+      "frontier": 0,
+      "queue": 1
+    },
+    {
+      "timestamp": 1785192397773,
+      "frontier": 0,
+      "queue": 0
+    }
+  ],
+  "queueEvolution": [
+    2,
+    2,
+    1,
+    0
+  ],
+  "frontierEvolution": [
+    0,
+    0,
+    0,
+    0
+  ]
+}

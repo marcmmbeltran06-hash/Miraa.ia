@@ -1,0 +1,17 @@
+node_modules/
+**/node_modules/
+**/dist/
+auditoria/
+campaign-input/
+campaign-runs/
+logs/
+.sheet-review/
+packages/**/.env
+tools/mira-fashn-engine/.env
+tools/mira-fashn-engine/weights/
+*.xlsx
+*.xls
+*.csv
+*.db
+*.db-shm
+*.db-wal

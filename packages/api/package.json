@@ -1,0 +1,24 @@
+{
+  "name": "@autowp/api",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run --config vitest.config.ts",
+    "lint": "eslint . --ext .ts",
+    "start": "node dist/app.js"
+  },
+  "dependencies": {
+    "@autowp/browser": "workspace:*",
+    "@autowp/builder": "workspace:*",
+    "@autowp/crawler": "workspace:*",
+    "@autowp/database": "workspace:*",
+    "@autowp/event-bus": "workspace:*",
+    "@autowp/logger": "workspace:*",
+    "@autowp/playwright-adapter": "workspace:*",
+    "@autowp/seo-analyzer": "workspace:*",
+    "fastify": "^4.28.1"
+  }
+}

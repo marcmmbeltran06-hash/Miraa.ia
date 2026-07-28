@@ -1,0 +1,17 @@
+{
+  "name": "@autowp/playwright-adapter",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "@autowp/browser": "workspace:*",
+    "playwright": "^1.61.1"
+  }
+}

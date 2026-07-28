@@ -1,0 +1,345 @@
+{
+  "url": "http://127.0.0.1:50939/checkout.html",
+  "finalUrl": "http://127.0.0.1:50939/checkout.html",
+  "status": 200,
+  "depth": 1,
+  "pageType": "checkout",
+  "confidence": 0.74,
+  "evidence": [
+    "checkout URL"
+  ],
+  "blocks": [
+    {
+      "id": "e1275b3880a0",
+      "type": "header",
+      "selector": "header",
+      "parentId": null,
+      "children": [
+        "4efee19c21d1"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "Home",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<header><nav><a href=\"/\">Home</a></nav></header>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "4efee19c21d1",
+      "type": "navigation",
+      "selector": "nav",
+      "parentId": "e1275b3880a0",
+      "children": [
+        "b68b1d96b7a8"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "Home",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<nav><a href=\"/\">Home</a></nav>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "b68b1d96b7a8",
+      "type": "link",
+      "selector": "a",
+      "parentId": "4efee19c21d1",
+      "children": [],
+      "content": {
+        "text": "Home",
+        "fullText": "Home",
+        "attributes": {
+          "href": "/"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<a href=\"/\">Home</a>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label",
+          "href"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "052fd5bf8434",
+      "type": "body",
+      "selector": "main.checkout",
+      "parentId": null,
+      "children": [
+        "7ec6c74eddbd",
+        "acb6b53fd090"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "CheckoutEmailPlace order",
+        "attributes": {
+          "class": "checkout"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<main class=\"checkout\"><h1>Checkout</h1><form><label>Email<input name=\"email\"></label><button>Place order</button></form></main>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "7ec6c74eddbd",
+      "type": "text",
+      "selector": "h1",
+      "parentId": "052fd5bf8434",
+      "children": [],
+      "content": {
+        "text": "Checkout",
+        "fullText": "Checkout",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<h1>Checkout</h1>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "acb6b53fd090",
+      "type": "form",
+      "selector": "form",
+      "parentId": "052fd5bf8434",
+      "children": [
+        "f106da91bdba",
+        "4086aeaec08b"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "EmailPlace order",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<form><label>Email<input name=\"email\"></label><button>Place order</button></form>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "f106da91bdba",
+      "type": "text",
+      "selector": "label",
+      "parentId": "acb6b53fd090",
+      "children": [
+        "74ca5d951705"
+      ],
+      "content": {
+        "text": "Email",
+        "fullText": "Email",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<label>Email<input name=\"email\"></label>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "74ca5d951705",
+      "type": "input",
+      "selector": "input",
+      "parentId": "f106da91bdba",
+      "children": [],
+      "content": {
+        "text": "",
+        "fullText": "",
+        "attributes": {
+          "name": "email"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<input name=\"email\">",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label",
+          "placeholder",
+          "value"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "4086aeaec08b",
+      "type": "CTA",
+      "selector": "button",
+      "parentId": "acb6b53fd090",
+      "children": [],
+      "content": {
+        "text": "Place order",
+        "fullText": "Place order",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<button>Place order</button>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "33c315e372e6",
+      "type": "footer",
+      "selector": "footer",
+      "parentId": null,
+      "children": [],
+      "content": {
+        "text": "Footer",
+        "fullText": "Footer",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<footer>Footer</footer>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    }
+  ],
+  "products": [],
+  "overlays": [],
+  "technology": {
+    "primary": "custom",
+    "confidence": 0.55,
+    "detected": [],
+    "capabilities": {
+      "canAnalyze": true,
+      "canPreview": true,
+      "canApply": false,
+      "connector": null,
+      "applicationMode": "patch_export",
+      "requiresCredentials": false,
+      "reason": "Tecnología personalizada: se permite análisis y preview; la entrega futura será mediante informe o parche."
+    }
+  },
+  "audits": {},
+  "responseHeaders": {
+    "connection": "keep-alive",
+    "content-length": "241",
+    "date": "Sun, 19 Jul 2026 16:26:54 GMT",
+    "keep-alive": "timeout=5",
+    "content-type": "text/html; charset=utf-8"
+  },
+  "navigationAttempts": 1,
+  "diagnostics": {
+    "unknownBlocks": 0,
+    "invalidSelectors": [],
+    "overlapCount": 0,
+    "visibleCoverage": 1
+  }
+}

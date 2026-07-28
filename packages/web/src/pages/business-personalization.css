@@ -1,0 +1,38 @@
+.business-personalization {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 34px;
+  padding: 15px 18px;
+  border: 1px solid #e7e3f1;
+  border-radius: 12px;
+  background: #faf8ff;
+}
+
+.business-personalization span,
+.business-personalization small {
+  color: #8b8793;
+  font-size: 12px;
+}
+
+.business-personalization strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+}
+
+.business-personalization small {
+  margin-left: auto;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+}
+
+@media (max-width: 600px) {
+  .business-personalization {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .business-personalization small {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,400 @@
+{
+  "url": "http://127.0.0.1:57575/product.html",
+  "finalUrl": "http://127.0.0.1:57575/product.html",
+  "status": 200,
+  "depth": 1,
+  "pageType": "product",
+  "confidence": 0.74,
+  "evidence": [
+    "product signals"
+  ],
+  "blocks": [
+    {
+      "id": "e1275b3880a0",
+      "type": "header",
+      "selector": "header",
+      "parentId": null,
+      "children": [
+        "4efee19c21d1"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "HomeCart",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<header><nav><a href=\"/\">Home</a><a href=\"/cart.html\">Cart</a></nav></header>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "4efee19c21d1",
+      "type": "navigation",
+      "selector": "nav",
+      "parentId": "e1275b3880a0",
+      "children": [
+        "1f98e7a152d8",
+        "84147e60842f"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "HomeCart",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<nav><a href=\"/\">Home</a><a href=\"/cart.html\">Cart</a></nav>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "1f98e7a152d8",
+      "type": "link",
+      "selector": "a:nth-of-type(1)",
+      "parentId": "4efee19c21d1",
+      "children": [],
+      "content": {
+        "text": "Home",
+        "fullText": "Home",
+        "attributes": {
+          "href": "/"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<a href=\"/\">Home</a>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label",
+          "href"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "84147e60842f",
+      "type": "link",
+      "selector": "a:nth-of-type(2)",
+      "parentId": "4efee19c21d1",
+      "children": [],
+      "content": {
+        "text": "Cart",
+        "fullText": "Cart",
+        "attributes": {
+          "href": "/cart.html"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<a href=\"/cart.html\">Cart</a>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label",
+          "href"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "3647d381a2bf",
+      "type": "body",
+      "selector": "main",
+      "parentId": null,
+      "children": [
+        "7ec6c74eddbd",
+        "0231325db31b",
+        "829da3219654",
+        "2890267599b0",
+        "3453a96bdfdc"
+      ],
+      "content": {
+        "text": "",
+        "fullText": "Red shoeA local test product.49Add to cart",
+        "attributes": {
+          "itemscope": "",
+          "itemtype": "https://schema.org/Product"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<main itemscope itemtype=\"https://schema.org/Product\"><h1 itemprop=\"name\">Red shoe</h1><img itemprop=\"image\" src=\"/shoe.svg\"><p itemprop=\"description\">A local test product.</p><span class=\"price\" itemprop=\"price\">49</span><button class=\"add-to-cart\">Add to cart</button></main>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "7ec6c74eddbd",
+      "type": "text",
+      "selector": "h1",
+      "parentId": "3647d381a2bf",
+      "children": [],
+      "content": {
+        "text": "Red shoe",
+        "fullText": "Red shoe",
+        "attributes": {
+          "itemprop": "name"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<h1 itemprop=\"name\">Red shoe</h1>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "0231325db31b",
+      "type": "image",
+      "selector": "img",
+      "parentId": "3647d381a2bf",
+      "children": [],
+      "content": {
+        "text": "",
+        "fullText": "",
+        "attributes": {
+          "itemprop": "image",
+          "src": "/shoe.svg"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<img itemprop=\"image\" src=\"/shoe.svg\">",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label",
+          "src",
+          "alt"
+        ],
+        "styles": true,
+        "image": true
+      }
+    },
+    {
+      "id": "829da3219654",
+      "type": "text",
+      "selector": "p",
+      "parentId": "3647d381a2bf",
+      "children": [],
+      "content": {
+        "text": "A local test product.",
+        "fullText": "A local test product.",
+        "attributes": {
+          "itemprop": "description"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<p itemprop=\"description\">A local test product.</p>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "2890267599b0",
+      "type": "price",
+      "selector": "span.price",
+      "parentId": "3647d381a2bf",
+      "children": [],
+      "content": {
+        "text": "49",
+        "fullText": "49",
+        "attributes": {
+          "class": "price",
+          "itemprop": "price"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<span class=\"price\" itemprop=\"price\">49</span>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "3453a96bdfdc",
+      "type": "add-to-cart",
+      "selector": "button.add-to-cart",
+      "parentId": "3647d381a2bf",
+      "children": [],
+      "content": {
+        "text": "Add to cart",
+        "fullText": "Add to cart",
+        "attributes": {
+          "class": "add-to-cart"
+        }
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<button class=\"add-to-cart\">Add to cart</button>",
+      "confidence": 0.86,
+      "editable": {
+        "text": true,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    },
+    {
+      "id": "33c315e372e6",
+      "type": "footer",
+      "selector": "footer",
+      "parentId": null,
+      "children": [],
+      "content": {
+        "text": "Footer",
+        "fullText": "Footer",
+        "attributes": {}
+      },
+      "styles": {
+        "inline": ""
+      },
+      "responsive": {},
+      "boundingBox": {},
+      "sourceHtml": "<footer>Footer</footer>",
+      "confidence": 0.86,
+      "editable": {
+        "text": false,
+        "attributes": [
+          "title",
+          "aria-label"
+        ],
+        "styles": true,
+        "image": false
+      }
+    }
+  ],
+  "products": [
+    {
+      "sourceUrl": "http://127.0.0.1:57575/product.html",
+      "name": "Red shoe",
+      "regularPrice": "49",
+      "images": [
+        "http://127.0.0.1:57575/shoe.svg"
+      ],
+      "description": "Red shoeA local test product.49Add to cart",
+      "categories": [],
+      "attributes": [],
+      "variations": [],
+      "stockStatus": ""
+    }
+  ],
+  "overlays": [],
+  "technology": {
+    "primary": "custom",
+    "confidence": 0.55,
+    "detected": [],
+    "capabilities": {
+      "canAnalyze": true,
+      "canPreview": true,
+      "canApply": false,
+      "connector": null,
+      "applicationMode": "patch_export",
+      "requiresCredentials": false,
+      "reason": "Tecnología personalizada: se permite análisis y preview; la entrega futura será mediante informe o parche."
+    }
+  },
+  "audits": {},
+  "responseHeaders": {
+    "connection": "keep-alive",
+    "content-length": "419",
+    "date": "Sun, 19 Jul 2026 16:24:51 GMT",
+    "keep-alive": "timeout=5",
+    "content-type": "text/html; charset=utf-8"
+  },
+  "navigationAttempts": 1,
+  "diagnostics": {
+    "unknownBlocks": 0,
+    "invalidSelectors": [],
+    "overlapCount": 0,
+    "visibleCoverage": 1
+  }
+}

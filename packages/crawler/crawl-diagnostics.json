@@ -1,0 +1,182 @@
+{
+  "urlsDiscovered": 2,
+  "urlsProcessed": 2,
+  "duplicates": 2,
+  "discarded": 0,
+  "duplicateRatio": 1,
+  "urlCategories": {
+    "https://example.com": "Static",
+    "https://example.com/page?sort=a": "Functional"
+  },
+  "maxMemory": {
+    "heapUsed": 17950640,
+    "heapTotal": 20156416,
+    "rss": 458817536,
+    "external": 5184015
+  },
+  "averageSpeedPagesPerSec": 3.883495145631068,
+  "topPageDiscoveries": {
+    "https://example.com": 2
+  },
+  "pagesGeneratingMostUrls": {
+    "https://example.com": 2
+  },
+  "topUrlPatterns": {
+    "/": 1,
+    "/page/*?sort=*": 1
+  },
+  "pageDuplicateCounts": {},
+  "pageVisitedDuplicateCounts": {},
+  "pagesRediscoveringUrls": {},
+  "pendingUrls": [],
+  "termination": {
+    "timestamp": 1785176291527,
+    "reason": "queue_drained",
+    "invokedBy": "crawl.loop_exit",
+    "pendingAtDecision": {
+      "frontier": 0,
+      "queue": 0,
+      "total": 0
+    },
+    "pendingDiscarded": 0,
+    "discardJustification": "Queue drained naturally after main loop exit.",
+    "metricsAtDecision": {
+      "queueSize": 0,
+      "knowledgeSize": 2,
+      "discovered": 2,
+      "processed": 2,
+      "memoryRss": 458842112,
+      "activeWorkers": 0,
+      "pendingKnowledge": 0,
+      "discoveryNovelty": 1,
+      "pagesVisited": 2,
+      "duplicates": 2,
+      "discarded": 0,
+      "discoveryPaused": false
+    },
+    "pendingUrlSamples": [],
+    "stabilityHistory": [
+      {
+        "verdict": "continue",
+        "stableWindows": 0,
+        "criteria": {
+          "queueStable": false,
+          "knowledgeStable": false,
+          "discoveryStable": false,
+          "processedStable": false,
+          "workersHealthy": true,
+          "memoryStable": true
+        },
+        "metrics": {
+          "previous": {
+            "queueSize": 0,
+            "knowledgeSize": 2,
+            "discovered": 2,
+            "processed": 2,
+            "memoryRss": 458838016,
+            "activeWorkers": 0,
+            "pendingKnowledge": 0,
+            "discoveryNovelty": 2
+          },
+          "current": {
+            "queueSize": 0,
+            "knowledgeSize": 2,
+            "discovered": 2,
+            "processed": 2,
+            "memoryRss": 458838016,
+            "activeWorkers": 0,
+            "pendingKnowledge": 0,
+            "discoveryNovelty": 2
+          },
+          "deltas": {
+            "queueSize": 0,
+            "knowledgeSize": 0,
+            "discovered": 0,
+            "processed": 0,
+            "memoryRss": 0
+          }
+        },
+        "justification": "Initial observation window – collecting baseline metrics."
+      }
+    ]
+  },
+  "discoveryPaused": false,
+  "stabilityHistory": [
+    {
+      "verdict": "continue",
+      "stableWindows": 0,
+      "criteria": {
+        "queueStable": false,
+        "knowledgeStable": false,
+        "discoveryStable": false,
+        "processedStable": false,
+        "workersHealthy": true,
+        "memoryStable": true
+      },
+      "metrics": {
+        "previous": {
+          "queueSize": 0,
+          "knowledgeSize": 2,
+          "discovered": 2,
+          "processed": 2,
+          "memoryRss": 458838016,
+          "activeWorkers": 0,
+          "pendingKnowledge": 0,
+          "discoveryNovelty": 2
+        },
+        "current": {
+          "queueSize": 0,
+          "knowledgeSize": 2,
+          "discovered": 2,
+          "processed": 2,
+          "memoryRss": 458838016,
+          "activeWorkers": 0,
+          "pendingKnowledge": 0,
+          "discoveryNovelty": 2
+        },
+        "deltas": {
+          "queueSize": 0,
+          "knowledgeSize": 0,
+          "discovered": 0,
+          "processed": 0,
+          "memoryRss": 0
+        }
+      },
+      "justification": "Initial observation window – collecting baseline metrics."
+    }
+  ],
+  "evolution": [
+    {
+      "timestamp": 1785176291017,
+      "frontier": 1,
+      "queue": 1
+    },
+    {
+      "timestamp": 1785176291017,
+      "frontier": 1,
+      "queue": 1
+    },
+    {
+      "timestamp": 1785176291020,
+      "frontier": 0,
+      "queue": 1
+    },
+    {
+      "timestamp": 1785176291526,
+      "frontier": 0,
+      "queue": 0
+    }
+  ],
+  "queueEvolution": [
+    1,
+    1,
+    1,
+    0
+  ],
+  "frontierEvolution": [
+    1,
+    1,
+    0,
+    0
+  ]
+}

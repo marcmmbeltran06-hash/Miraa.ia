@@ -1,0 +1,19 @@
+{
+  "name": "@autowp/builder",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "autowp-builder": "dist/cli.js",
+    "autowp": "dist/cli.js"
+  },
+  "dependencies": {
+    "linkedom": "^0.18.12"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run",
+    "lint": "eslint . --ext .ts"
+  }
+}

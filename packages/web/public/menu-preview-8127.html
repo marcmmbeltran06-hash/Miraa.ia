@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vista previa del menú — Anna Cabané</title>
+  <style>
+    :root { --ink:#171717; --paper:#f8f7f2; --line:#dedbd1; --accent:#d8b28b; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; min-height:100%; color:var(--ink); background:#ececec; font-family:Arial,Helvetica,sans-serif; }
+    .notice { position:sticky; top:0; z-index:50; padding:10px 18px; background:#fff3cd; border-bottom:1px solid #ead48b; color:#6f5311; font-size:14px; text-align:center; }
+    .preview-shell { min-height:100vh; background:var(--paper); }
+    .site-header { position:relative; z-index:20; background:var(--paper); border-bottom:1px solid var(--line); }
+    .logo-row { height:84px; display:flex; align-items:center; justify-content:center; padding:15px 28px; }
+    .logo-row img { display:block; width:200px; height:auto; max-height:54px; object-fit:contain; }
+    .desktop-nav { max-width:1200px; height:84px; margin:0 auto; padding:0 18px; display:flex; align-items:center; justify-content:space-between; gap:clamp(18px,3.1vw,46px); white-space:nowrap; }
+    .desktop-nav a, .language-button { color:var(--ink); text-decoration:none; text-transform:uppercase; letter-spacing:.12em; font-size:15px; line-height:1; padding:34px 0; border:0; background:none; cursor:pointer; }
+    .desktop-nav a:hover, .desktop-nav a:focus-visible, .language-button:hover, .language-button:focus-visible { color:#9d7958; outline:none; }
+    .language { position:relative; }
+    .language-menu { display:none; position:absolute; right:0; top:68px; min-width:140px; padding:9px 0; background:#fff; border:1px solid var(--line); box-shadow:0 12px 30px rgba(0,0,0,.12); }
+    .language:focus-within .language-menu, .language:hover .language-menu { display:block; }
+    .language-menu a { display:block; padding:11px 18px; text-transform:none; letter-spacing:.04em; }
+    .cart { font-size:22px!important; letter-spacing:0!important; }
+    .mobile-bar, .mobile-panel { display:none; }
+    .hero { min-height:calc(100vh - 189px); position:relative; display:grid; place-items:center; overflow:hidden; background:#171717; }
+    .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(110deg,rgba(0,0,0,.68),rgba(0,0,0,.12)),url('http://127.0.0.1:8127/wp-content/uploads/Captura-de-pantalla-2025-02-04-a-les-13.57.16.png') center/cover no-repeat; filter:grayscale(1); }
+    .hero-copy { position:relative; z-index:1; max-width:780px; padding:48px 28px; color:white; text-align:center; }
+    .hero-copy p { margin:0 0 16px; letter-spacing:.16em; text-transform:uppercase; font-size:13px; }
+    .hero-copy h1 { margin:0; font-family:Georgia,'Times New Roman',serif; font-size:clamp(42px,6vw,84px); font-weight:400; }
+    .meta { position:fixed; left:18px; bottom:18px; z-index:30; max-width:360px; padding:12px 15px; background:rgba(255,255,255,.94); border:1px solid #ddd; box-shadow:0 8px 24px rgba(0,0,0,.14); font-size:13px; line-height:1.45; }
+    .meta strong { display:block; margin-bottom:4px; }
+    @media (max-width:1279px) {
+      .logo-row, .desktop-nav { display:none; }
+      .mobile-bar { height:84px; display:grid; grid-template-columns:48px 1fr 48px; align-items:center; padding:0 18px; }
+      .mobile-logo { display:block; width:min(220px,62vw); max-height:58px; margin:auto; object-fit:contain; }
+      .icon-button { width:44px; height:44px; border:0; background:transparent; color:var(--ink); font-size:27px; cursor:pointer; }
+      .mobile-panel { display:block; position:absolute; left:0; right:0; top:84px; max-height:0; overflow:hidden; background:var(--paper); border-top:1px solid transparent; opacity:0; transition:max-height .28s ease,opacity .2s ease,border-color .2s ease; }
+      .mobile-panel.is-open { max-height:620px; opacity:1; border-color:var(--line); box-shadow:0 18px 30px rgba(0,0,0,.13); }
+      .mobile-panel a, .mobile-language { display:block; width:100%; padding:15px 24px; color:var(--ink); border:0; border-bottom:1px solid var(--line); background:transparent; text-align:left; text-decoration:none; text-transform:uppercase; letter-spacing:.12em; font-size:14px; }
+      .mobile-submenu { display:none; background:#fff; }
+      .mobile-submenu.is-open { display:block; }
+      .mobile-submenu a { padding-left:46px; text-transform:none; }
+      .hero { min-height:calc(100vh - 109px); }
+      .meta { left:12px; right:12px; bottom:12px; max-width:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="notice"><strong>VISTA PREVIA AISLADA</strong> · todavía no se ha modificado WordPress</div>
+  <div class="preview-shell">
+    <header class="site-header">
+      <div class="logo-row">
+        <img src="http://127.0.0.1:8127/wp-content/uploads/logo-anna-cabane-sti-png--e46xcw.png" alt="Anna Cabané Atelier">
+      </div>
+      <nav class="desktop-nav" aria-label="Menú principal propuesto">
+        <a href="#">Colección</a><a href="#">Atelier</a><a href="#">Sobre mi</a><a href="#">Galería</a><a href="#">Probar colección</a><a href="#">Reserva tu cita</a>
+        <div class="language"><button class="language-button" type="button">Español ▾</button><div class="language-menu"><a href="#">Català</a><a href="#">English</a></div></div>
+        <a class="cart" href="#" aria-label="Carrito">♧</a>
+      </nav>
+      <div class="mobile-bar">
+        <button id="mobileToggle" class="icon-button" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+        <img class="mobile-logo" src="http://127.0.0.1:8127/wp-content/uploads/-03-logo-anna-cabane-png--6xm5ay.png" alt="Anna Cabané Atelier">
+        <button class="icon-button" type="button" aria-label="Carrito">♧</button>
+      </div>
+      <nav id="mobilePanel" class="mobile-panel" aria-label="Menú móvil propuesto">
+        <a href="#">Colección</a><a href="#">Atelier</a><a href="#">Sobre mi</a><a href="#">Galería</a><a href="#">Probar colección</a><a href="#">Reserva tu cita</a>
+        <button id="languageToggle" class="mobile-language" type="button" aria-expanded="false">Español ▾</button>
+        <div id="mobileSubmenu" class="mobile-submenu"><a href="#">Català</a><a href="#">English</a></div>
+      </nav>
+    </header>
+    <main class="hero"><div class="hero-copy"><p>Menú corregido sin invadir el contenido</p><h1>Anna Cabané</h1></div></main>
+  </div>
+  <aside class="meta"><strong>Qué muestra esta vista previa</strong>Escritorio: una sola fila dentro de 1.200 px. Pantallas medianas y móvil: menú plegado y funcional, sin superposición sobre la portada.</aside>
+  <script>
+    const toggle=document.getElementById('mobileToggle');
+    const panel=document.getElementById('mobilePanel');
+    toggle.addEventListener('click',()=>{const open=panel.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰';});
+    const languageToggle=document.getElementById('languageToggle');
+    const submenu=document.getElementById('mobileSubmenu');
+    languageToggle.addEventListener('click',()=>{const open=submenu.classList.toggle('is-open');languageToggle.setAttribute('aria-expanded',String(open));});
+  </script>
+</body>
+</html>

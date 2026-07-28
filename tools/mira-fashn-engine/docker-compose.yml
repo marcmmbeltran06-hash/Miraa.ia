@@ -1,0 +1,25 @@
+services:
+  mira-fashn:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      MIRA_ENGINE_TOKEN: "${MIRA_ENGINE_TOKEN}"
+      MIRA_WEIGHTS_DIR: /app/weights
+      MIRA_DEVICE: cuda
+      MIRA_TIMESTEPS: "30"
+      MIRA_GUIDANCE_SCALE: "1.5"
+    volumes:
+      - ./weights:/app/weights
+      - huggingface-cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  huggingface-cache:
