@@ -27,6 +27,13 @@ export type PersonalizedAnalysis = {
     evidence: string;
     policy: string;
   };
+  competitors?: {
+    status: 'verified' | 'not_found' | 'location_missing' | 'unavailable';
+    location: string;
+    businesses: Array<{ name: string; category: string; website?: string; source: string }>;
+    evidence: string;
+    policy: string;
+  };
   captures: ReportCapture[];
   tryOn?: {
     productName: string;

@@ -21,6 +21,8 @@ from openpyxl.styles import Alignment, Font
 
 
 TERMINAL = {"finished", "completed", "ready", "needs_review", "partially_completed", "failed", "cancelled"}
+PUBLIC_GEO_USER_AGENT = "MiraBusinessReports/1.0 (public business competitor research)"
+COMPETITOR_CACHE: dict[str, dict] = {}
 
 
 def slugify(value: str) -> str:
@@ -38,6 +40,129 @@ def request_json(url: str, payload: dict | None = None) -> dict:
     request = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json", "Accept": "application/json"})
     with urllib.request.urlopen(request, timeout=120) as response:
         return json.load(response)
+
+
+def request_public_json(url: str, payload: bytes | None = None) -> object:
+    request = urllib.request.Request(
+        url,
+        data=payload,
+        headers={
+            "Accept": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "User-Agent": PUBLIC_GEO_USER_AGENT,
+        },
+    )
+    with urllib.request.urlopen(request, timeout=45) as response:
+        return json.load(response)
+
+
+def location_query(address: str) -> str:
+    """Obtiene una localidad aproximada sin conservar coordenadas personales."""
+    postal_city = re.search(r"\b(\d{5})\s+([^,;|]+)", address)
+    if postal_city:
+        return f"{postal_city.group(1)} {postal_city.group(2).strip()}"
+    parts = [part.strip() for part in re.split(r"[,;|]", address) if part.strip()]
+    useful = [
+        part for part in parts
+        if not re.fullmatch(r"[\d\s\-]+", part)
+        and not re.search(r"\b(calle|carrer|avenida|avinguda|plaza|paseo|passeig|nº|numero)\b", part, re.I)
+    ]
+    return ", ".join(useful[-2:]) if useful else address.strip()
+
+
+def discover_public_competitors(source: dict) -> dict:
+    """Busca comercios de moda públicos en OSM; nunca rastrea perfiles personales."""
+    query = location_query(source.get("address", ""))
+    if not query:
+        return {
+            "status": "location_missing",
+            "location": "",
+            "businesses": [],
+            "evidence": "No había una localidad verificable en el Excel; no se han inventado competidores.",
+            "policy": "Solo se consultan fichas comerciales públicas de OpenStreetMap.",
+        }
+    cache_key = slugify(query)
+    if cache_key not in COMPETITOR_CACHE:
+        try:
+            geocode_url = (
+                "https://nominatim.openstreetmap.org/search?"
+                + urllib.parse.urlencode({"q": query, "format": "jsonv2", "limit": 1})
+            )
+            geocoded = request_public_json(geocode_url)
+            if not isinstance(geocoded, list) or not geocoded:
+                raise ValueError("Localidad no encontrada")
+            lat, lon = float(geocoded[0]["lat"]), float(geocoded[0]["lon"])
+            overpass_query = f"""
+                [out:json][timeout:30];
+                (
+                  nwr(around:6000,{lat},{lon})["shop"~"^(clothes|fashion|boutique)$"];
+                  nwr(around:6000,{lat},{lon})["craft"="tailor"];
+                );
+                out center tags;
+            """
+            encoded = urllib.parse.urlencode({"data": overpass_query}).encode()
+            result = request_public_json("https://overpass-api.de/api/interpreter", encoded)
+            elements = result.get("elements", []) if isinstance(result, dict) else []
+            public_businesses = []
+            seen: set[str] = set()
+            for element in elements:
+                tags = element.get("tags", {})
+                name = str(tags.get("name") or "").strip()
+                if not name or slugify(name) in seen:
+                    continue
+                seen.add(slugify(name))
+                public_businesses.append({
+                    "name": name,
+                    "category": tags.get("shop") or tags.get("craft") or "moda",
+                    "website": tags.get("website") or tags.get("contact:website") or "",
+                    "source": "OpenStreetMap",
+                })
+            COMPETITOR_CACHE[cache_key] = {
+                "status": "verified" if public_businesses else "not_found",
+                "location": query,
+                "businesses": public_businesses[:30],
+            }
+        except (OSError, ValueError, urllib.error.URLError):
+            COMPETITOR_CACHE[cache_key] = {
+                "status": "unavailable",
+                "location": query,
+                "businesses": [],
+            }
+    cached = COMPETITOR_CACHE[cache_key]
+    own_name = slugify(source.get("name", ""))
+    competitors = [
+        business for business in cached["businesses"]
+        if slugify(business["name"]) != own_name
+    ][:4]
+    return {
+        "status": "verified" if competitors else cached["status"],
+        "location": cached["location"],
+        "businesses": competitors,
+        "evidence": (
+            f"Se localizaron {len(competitors)} comercios públicos comparables alrededor de {cached['location']}."
+            if competitors
+            else f"No se pudieron confirmar comercios comparables alrededor de {cached['location']}."
+        ),
+        "policy": "Solo se consultan fichas comerciales públicas de OpenStreetMap; no se investigan personas ni cuentas privadas.",
+    }
+
+
+def build_outreach_message(source: dict, report: dict, competitors: dict, url: str) -> str:
+    findings = [*report.get("findability", []), *report.get("sales", [])]
+    actions = [str(item.get("action", "")).strip() for item in findings if item.get("action")]
+    priority = actions[0] if actions else "hacer más claro el camino desde la visita hasta la compra"
+    names = [item["name"] for item in competitors.get("businesses", [])[:2]]
+    comparison = (
+        f" También hemos comparado su presencia pública con comercios cercanos como {' y '.join(names)}."
+        if names
+        else ""
+    )
+    return (
+        f"Hola, hemos analizado la web de {source['name']} y hemos preparado un informe privado con mejoras "
+        f"concretas para vender más. La primera oportunidad detectada es {priority.rstrip('.').lower()}."
+        f"{comparison} Incluye una propuesta visual y un plan de redes de 30 días: {url} "
+        "Si te interesa, podemos explicártelo en una llamada breve y dejar las mejoras preparadas durante agosto."
+    )
 
 
 def download(url: str, target: Path) -> bool:
@@ -130,7 +255,7 @@ def update_excel(
     for item in completed:
         url = public_url(base_url, item["slug"])
         if published:
-            message = (
+            message = item.get("outreachMessage") or (
                 f"Hola, hemos preparado para {item['name']} un análisis personalizado con mejoras "
                 f"para vender más y una demostración del probador virtual: {url}"
             )
@@ -190,7 +315,7 @@ def wait_for_deployment(base_url: str, slug: str, timeout_seconds: int) -> bool:
     return False
 
 
-def build_frontend_business(source: dict, report: dict, result_path: str | None) -> dict:
+def build_frontend_business(source: dict, report: dict, result_path: str | None, competitors: dict) -> dict:
     try_on = report.get("tryOn")
     pages_analyzed = int(report.get("pagesAnalyzed") or 0)
     product = try_on.get("productName") if try_on else "una prenda real del catálogo"
@@ -230,6 +355,7 @@ def build_frontend_business(source: dict, report: dict, result_path: str | None)
                 "evidence": "La búsqueda de perfiles sociales todavía no se ha ejecutado para este informe.",
                 "policy": "Solo se utilizan enlaces públicos publicados por el propio negocio.",
             }),
+            "competitors": competitors,
             "captures": report.get("captures", []),
             "tryOn": analysis_try_on,
             "marketing": {
@@ -319,13 +445,25 @@ def main() -> None:
                 continue
             report = request_json(f"{args.api}/reports/{status['jobId']}/mira")
             result_public_path = None
-            if report.get("tryOn", {}).get("resultAvailable"):
+            if (report.get("tryOn") or {}).get("resultAvailable"):
                 asset = args.output.parent / "campaign-assets" / source["slug"] / "tryon-result.jpg"
                 if download(f"{args.api}/reports/{status['jobId']}/tryon-result", asset):
                     result_public_path = f"/campaign-assets/{source['slug']}/tryon-result.jpg"
-            frontend = build_frontend_business(source, report, result_public_path)
+            competitors = discover_public_competitors(source)
+            frontend = build_frontend_business(source, report, result_public_path, competitors)
             (args.output / f"{source['slug']}.json").write_text(json.dumps(frontend, ensure_ascii=False, indent=2), encoding="utf-8")
-            manifest["completed"].append({**source, "jobId": status["jobId"], "durationMs": status.get("durationMs")})
+            outreach_message = build_outreach_message(
+                source,
+                report,
+                competitors,
+                public_url(args.public_base_url, source["slug"]),
+            )
+            manifest["completed"].append({
+                **source,
+                "jobId": status["jobId"],
+                "durationMs": status.get("durationMs"),
+                "outreachMessage": outreach_message,
+            })
         manifest["remaining"] = len(pending)
         manifest["elapsedSeconds"] = round(time.time() - manifest["startedAt"])
         write_status()

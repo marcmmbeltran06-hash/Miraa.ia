@@ -322,6 +322,50 @@ function SocialGrowthPlan({ business, analysis }: { business: MiraBusiness; anal
   );
 }
 
+function CompetitorOpportunity({ business, analysis }: { business: MiraBusiness; analysis: PersonalizedAnalysis }) {
+  const comparison = analysis.competitors;
+  const competitors = comparison?.businesses ?? [];
+  return (
+    <section className="competitor-plan">
+      <div className="competitor-plan-heading">
+        <div>
+          <p className="report-kicker">Entorno competitivo público</p>
+          <h2>Qué puede hacer {business.name}<br />para destacar cerca de sus clientes.</h2>
+        </div>
+        <p>Comparamos únicamente comercios publicados como negocio en fuentes abiertas. No investigamos propietarios, empleados, seguidores ni cuentas personales.</p>
+      </div>
+
+      <div className={`competitor-result ${competitors.length ? 'verified' : 'pending'}`}>
+        <div>
+          <span>{competitors.length ? '✓' : '?'}</span>
+          <div><small>Comparación en {comparison?.location || business.city || 'la zona del negocio'}</small><b>{competitors.length ? `${competitors.length} referencias comerciales verificadas` : 'Comparación pendiente de datos suficientes'}</b><p>{comparison?.evidence ?? 'El informe actual todavía no contiene una búsqueda geográfica verificada.'}</p></div>
+        </div>
+      </div>
+
+      {competitors.length > 0 && (
+        <div className="competitor-grid">
+          {competitors.map((competitor) => (
+            <article key={`${competitor.name}-${competitor.category}`}>
+              <small>{competitor.category}</small>
+              <h3>{competitor.name}</h3>
+              <p>Revisaremos propuesta, claridad de compra, confianza, contenido y facilidad de contacto para encontrar una ventaja concreta.</p>
+              {competitor.website && <a href={competitor.website} target="_blank" rel="noreferrer">Ver ficha pública →</a>}
+            </article>
+          ))}
+        </div>
+      )}
+
+      <div className="competitor-actions">
+        <article><span>01</span><div><b>Explicar mejor la diferencia</b><p>Producto, selección, asesoramiento, entrega y garantías deben responder por qué comprar aquí y no en otra tienda.</p></div></article>
+        <article><span>02</span><div><b>Ganar la búsqueda local</b><p>Unificamos web, ficha comercial, categorías, localidad, horarios, fotografías y reseñas verificadas.</p></div></article>
+        <article><span>03</span><div><b>Reducir la duda antes de perder la venta</b><p>Mejoramos fichas, tallas, devoluciones, prueba visual y contacto contextual desde el producto.</p></div></article>
+        <article><span>04</span><div><b>Medir una ventaja real</b><p>Comparamos visibilidad, clics a producto, conversaciones y ventas; no métricas sociales sin relación con ingresos.</p></div></article>
+      </div>
+      <p className="social-policy">{comparison?.policy ?? 'Solo se emplean fichas comerciales públicas. Los nombres no se inventan cuando la fuente no ofrece resultados suficientes.'}</p>
+    </section>
+  );
+}
+
 function SalesApplications() {
   const applications = [
     ['01', 'Atraer a más personas', 'Mejoramos las páginas para que aparezcan cuando alguien busca exactamente los productos o servicios que vendes.'],
@@ -662,6 +706,7 @@ function ReportPage() {
 
         <OpenWpGrowthPlan business={business} analysis={analysis} />
         <SocialGrowthPlan business={business} analysis={analysis} />
+        <CompetitorOpportunity business={business} analysis={analysis} />
 
         <section className="proposal-intro" id="propuesta">
           <p className="report-kicker">Propuesta personalizada</p>
