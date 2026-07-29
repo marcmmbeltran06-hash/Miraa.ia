@@ -1567,6 +1567,42 @@ async function downloadSingleResource(
 /*  buildExport (kept for backward-compatible API endpoint calls)      */
 /* ------------------------------------------------------------------ */
 
+function discoverPublicSocialProfiles(report: SeoReport): Array<{ platform: string; url: string; sourcePage: string }> {
+  const platforms: Array<[string, RegExp]> = [
+    ['Instagram', /(^|\.)instagram\.com$/i],
+    ['Facebook', /(^|\.)facebook\.com$/i],
+    ['TikTok', /(^|\.)tiktok\.com$/i],
+    ['Pinterest', /(^|\.)pinterest\.[a-z.]+$/i],
+    ['YouTube', /(^|\.)youtube\.com$|(^|\.)youtu\.be$/i],
+    ['LinkedIn', /(^|\.)linkedin\.com$/i],
+    ['Threads', /(^|\.)threads\.net$/i],
+    ['X', /(^|\.)x\.com$|(^|\.)twitter\.com$/i],
+  ];
+  const excludedPaths = /\/(share|sharer|intent|login|dialog)\b/i;
+  const found = new Map<string, { platform: string; url: string; sourcePage: string }>();
+  for (const page of report.pages) {
+    const html = page.pageHtml ?? '';
+    for (const match of html.matchAll(/href\s*=\s*["'](https?:\/\/[^"'<>]+)["']/gi)) {
+      const raw = match[1].replaceAll('&amp;', '&');
+      try {
+        const url = new URL(raw);
+        const platform = platforms.find(([, hostPattern]) => hostPattern.test(url.hostname))?.[0];
+        if (!platform || excludedPaths.test(url.pathname)) continue;
+        url.hash = '';
+        const normalized = url.toString();
+        found.set(`${platform}:${normalized.toLowerCase()}`, {
+          platform,
+          url: normalized,
+          sourcePage: page.finalUrl ?? page.url,
+        });
+      } catch {
+        // Ignore malformed public links; never infer a profile from an invalid URL.
+      }
+    }
+  }
+  return [...found.values()].slice(0, 12);
+}
+
 export function buildExport(
   report: SeoReport,
   format: ExportFormat,
@@ -1576,6 +1612,7 @@ export function buildExport(
 ): ExportArtifact {
   if (format === 'mira') {
     const candidate = selectTryOnCandidate(report);
+    const socialProfiles = discoverPublicSocialProfiles(report);
     const resultPath = path.join(EXPORT_DIR, jobId, 'tryon-result.jpg');
     const sourceUrl = report.pages[0]?.finalUrl ?? report.pages[0]?.url ?? '';
     const sourceText = report.pages.map((page) => page.pageHtml ?? '').join(' ').toLowerCase();
@@ -1615,6 +1652,14 @@ export function buildExport(
       salesReadinessScore: Math.max(0, Math.min(100, 100 - (report.summary.brokenLinks * 8) - (report.summary.thinContentPages * 3) - (candidate ? 8 : 22))),
       findability: evidenceFindings.slice(0, 3),
       sales: salesFindings,
+      social: {
+        profiles: socialProfiles,
+        status: socialProfiles.length > 0 ? 'found_on_website' : 'not_found_on_crawled_pages',
+        evidence: socialProfiles.length > 0
+          ? `Se encontraron ${socialProfiles.length} enlaces sociales públicos en las páginas rastreadas.`
+          : 'No se encontraron enlaces sociales públicos en las páginas rastreadas; esto no demuestra que el negocio no tenga perfiles.',
+        policy: 'Solo se utilizan enlaces públicos publicados por el propio negocio. No se recopilan seguidores, relaciones ni datos privados.',
+      },
       tryOn: candidate ? {
         productName: candidate.productName,
         productPrice: candidate.price ?? 'Precio no detectado',

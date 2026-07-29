@@ -272,6 +272,56 @@ function OpenWpGrowthPlan({ business, analysis }: { business: MiraBusiness; anal
   );
 }
 
+function SocialGrowthPlan({ business, analysis }: { business: MiraBusiness; analysis: PersonalizedAnalysis }) {
+  const social = analysis.social;
+  const profiles = social?.profiles ?? [];
+  const featuredProduct = analysis.tryOn?.productName ?? 'uno de tus productos principales';
+  const detectedPlatforms = profiles.map((profile) => profile.platform).join(', ');
+  const weeks = [
+    { week: 'Semana 1', title: 'Preparar el perfil para convertir', actions: [`Unificar nombre, descripción, enlace y contacto de ${business.name}.`, 'Fijar tres contenidos: presentación, producto clave y cómo comprar.', 'Crear una llamada clara hacia la tienda o WhatsApp.'] },
+    { week: 'Semana 2', title: 'Contenido que resuelve dudas', actions: [`Mostrar ${featuredProduct} con uso, detalle y resultado.`, 'Publicar formato corto sobre talla, materiales, entrega o elección.', 'Convertir una pregunta frecuente en carrusel o vídeo.'] },
+    { week: 'Semana 3', title: 'Confianza y prueba real', actions: ['Mostrar proceso, equipo, tienda o preparación de pedidos.', 'Solicitar y reutilizar una opinión real con permiso.', 'Enlazar cada publicación con la ficha o categoría correspondiente.'] },
+    { week: 'Semana 4', title: 'Campaña de vuelta en septiembre', actions: ['Preparar una selección concreta, no un descuento genérico.', 'Publicar recordatorio, demostración y llamada final.', 'Comparar visitas, contactos y ventas generadas por cada pieza.'] },
+  ];
+
+  return (
+    <section className="social-growth">
+      <div className="social-growth-heading">
+        <div>
+          <p className="report-kicker">Redes sociales · plan conectado con la tienda</p>
+          <h2>Publicar con una intención:<br />llevar personas hasta la compra.</h2>
+        </div>
+        <p>No proponemos “publicar más” sin motivo. Conectamos producto, contenido, enlace y medición para descubrir qué formatos generan visitas, conversaciones y ventas.</p>
+      </div>
+
+      <div className={`social-discovery ${profiles.length > 0 ? 'found' : 'pending'}`}>
+        <div><span>{profiles.length > 0 ? '✓' : '?'}</span><div><small>Resultado del rastreo público</small><b>{profiles.length > 0 ? `Perfiles localizados: ${detectedPlatforms}` : 'Perfiles pendientes de localizar o validar'}</b><p>{social?.evidence ?? 'Este informe todavía no contiene una búsqueda social verificada. OpenWP la realizará al completar el rastreo.'}</p></div></div>
+        {profiles.length > 0 && <ul>{profiles.map((profile) => <li key={`${profile.platform}-${profile.url}`}><a href={profile.url} target="_blank" rel="noreferrer"><span>{profile.platform}</span><small>{profile.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</small></a></li>)}</ul>}
+      </div>
+
+      <div className="social-pillars">
+        <article><span>01</span><small>Producto</small><h3>Resolver una duda concreta</h3><p>Enseñar ajuste, detalle, uso y resultado de {featuredProduct}, enlazando con su ficha cuando exista.</p></article>
+        <article><span>02</span><small>Confianza</small><h3>Mostrar pruebas, no promesas</h3><p>Opiniones autorizadas, proceso, entregas, devoluciones y personas reales detrás de {business.name}.</p></article>
+        <article><span>03</span><small>Marca</small><h3>Ser reconocible</h3><p>Mantener una voz, formatos y estilo visual coherentes con la web y con el público del negocio.</p></article>
+        <article><span>04</span><small>Conversión</small><h3>Dar un siguiente paso</h3><p>Cada publicación conduce a producto, categoría, probador, WhatsApp o una acción que podamos medir.</p></article>
+      </div>
+
+      <div className="social-calendar">
+        <div className="social-calendar-intro"><p className="report-kicker">Calendario inicial · 30 días</p><h3>Doce contenidos con una función comercial diferente.</h3><p>El plan se adapta a las redes confirmadas. La publicación automática solo se activa después de que el negocio conecte sus cuentas mediante la autorización oficial de cada plataforma.</p></div>
+        <div className="social-weeks">{weeks.map((item) => <article key={item.week}><small>{item.week}</small><h4>{item.title}</h4><ul>{item.actions.map((action) => <li key={action}>{action}</li>)}</ul></article>)}</div>
+      </div>
+
+      <div className="social-measurement">
+        <div><b>Alcance útil</b><span>Personas que encajan con el producto</span></div>
+        <div><b>Visitas</b><span>Clics que llegan a la web</span></div>
+        <div><b>Conversaciones</b><span>WhatsApps y solicitudes recibidas</span></div>
+        <div><b>Ventas</b><span>Pedidos atribuibles y coste por venta</span></div>
+      </div>
+      <p className="social-policy">{social?.policy ?? 'Solo analizamos enlaces públicos publicados por el negocio. No recopilamos seguidores, relaciones ni información privada.'}</p>
+    </section>
+  );
+}
+
 function SalesApplications() {
   const applications = [
     ['01', 'Atraer a más personas', 'Mejoramos las páginas para que aparezcan cuando alguien busca exactamente los productos o servicios que vendes.'],
@@ -611,6 +661,7 @@ function ReportPage() {
         </section>
 
         <OpenWpGrowthPlan business={business} analysis={analysis} />
+        <SocialGrowthPlan business={business} analysis={analysis} />
 
         <section className="proposal-intro" id="propuesta">
           <p className="report-kicker">Propuesta personalizada</p>

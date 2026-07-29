@@ -21,6 +21,12 @@ export type PersonalizedAnalysis = {
   croScore: number | null;
   seo: ReportFinding[];
   cro: ReportFinding[];
+  social?: {
+    profiles: Array<{ platform: string; url: string; sourcePage?: string }>;
+    status: 'found_on_website' | 'not_found_on_crawled_pages' | 'not_analyzed';
+    evidence: string;
+    policy: string;
+  };
   captures: ReportCapture[];
   tryOn?: {
     productName: string;

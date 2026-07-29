@@ -224,6 +224,12 @@ def build_frontend_business(source: dict, report: dict, result_path: str | None)
             "croScore": report["salesReadinessScore"] if pages_analyzed > 0 else None,
             "seo": report.get("findability", []),
             "cro": report.get("sales", []),
+            "social": report.get("social", {
+                "profiles": [],
+                "status": "not_analyzed",
+                "evidence": "La búsqueda de perfiles sociales todavía no se ha ejecutado para este informe.",
+                "policy": "Solo se utilizan enlaces públicos publicados por el propio negocio.",
+            }),
             "captures": report.get("captures", []),
             "tryOn": analysis_try_on,
             "marketing": {
