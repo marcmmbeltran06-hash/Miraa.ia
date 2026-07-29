@@ -1,0 +1,85 @@
+{
+  "slug": "damat-tween-eci-vitoria-gasteiz-2",
+  "name": "DAMAT-TWEEN ECI Vitoria-Gasteiz",
+  "sector": "tiendas",
+  "website": "http://damat-tween.es/",
+  "phone": "+34 657 39 19 73",
+  "city": "Bake kalea, 2, 01004 Vitoria-Gasteiz, Araba",
+  "analysis": {
+    "summary": "Hemos analizado 1 página real de DAMAT-TWEEN ECI Vitoria-Gasteiz. El análisis técnico procede de la misma web comercial utilizada por esta sede.",
+    "pagesAnalyzed": 1,
+    "seoScore": 90,
+    "croScore": 90,
+    "seo": [
+      {
+        "title": "La portada no explica su oferta con un titular principal",
+        "detail": "El cliente y el buscador necesitan entender rápidamente qué vende la tienda.",
+        "evidence": "No se detectó un encabezado H1.",
+        "action": "Añadir un único titular principal orientado a la intención de compra.",
+        "level": "medium",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "cro": [
+      {
+        "title": "Las dudas comerciales pueden perderse al salir de la web",
+        "detail": "WhatsApp ayuda a recuperar consultas de talla, entrega o disponibilidad.",
+        "evidence": "No se detectó acceso contextual a WhatsApp.",
+        "action": "Añadir ayuda consentida vinculada a la prenda o página consultada.",
+        "level": "medium",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Vestido floral lavanda · demostración",
+      "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
+      "personImage": "/campaign-assets/generic-female-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-female-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-female-v2/result.jpg",
+      "resultKind": "generic_female"
+    },
+    "auditMethod": "http_fallback",
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta vuelve a una categoría o producto de la tienda.",
+          "decision": "Resolver una duda concreta mientras mantiene el interés.",
+          "message": "Hola, Lucía. ¿Quieres que te ayudemos con talla, disponibilidad o entrega?"
+        },
+        "cart": {
+          "signal": "La clienta inicia una compra y no la termina.",
+          "decision": "Ofrecer ayuda útil sin enviar promociones automáticas.",
+          "message": "Hola, Lucía. Si tienes alguna duda antes de terminar tu compra, te ayudamos."
+        },
+        "return": {
+          "signal": "La clienta regresa y ha aceptado recibir comunicaciones.",
+          "decision": "Mostrar novedades relacionadas con su interés real.",
+          "message": "Hola, Lucía. Tenemos novedades que pueden encajar contigo. ¿Quieres verlas?"
+        }
+      }
+    },
+    "competitors": {
+      "status": "verified",
+      "location": "Bake kalea, 2, 01004 Vitoria-Gasteiz, Araba",
+      "businesses": [
+        {
+          "name": "2Uves",
+          "category": "Tienda de ropa",
+          "website": "https://www.2uves.com/",
+          "source": "Listado comercial Mira"
+        },
+        {
+          "name": "BOSTON",
+          "category": "Tienda de ropa",
+          "website": "https://www.thebostonbrand.com/",
+          "source": "Listado comercial Mira"
+        }
+      ],
+      "evidence": "Durante el análisis hemos visto que DAMAT-TWEEN ECI Vitoria-Gasteiz comparte zona o compite digitalmente con 2Uves y BOSTON.",
+      "policy": "La comparación utiliza negocios comerciales del mismo listado, agrupados por zona, localidad, provincia o sector. No se investigan personas."
+    }
+  }
+}

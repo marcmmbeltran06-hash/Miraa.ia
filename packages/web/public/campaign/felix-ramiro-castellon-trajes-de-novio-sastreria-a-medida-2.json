@@ -1,0 +1,85 @@
+{
+  "slug": "felix-ramiro-castellon-trajes-de-novio-sastreria-a-medida-2",
+  "name": "Félix Ramiro Castellón - Trajes de novio, sastrería a medida",
+  "sector": "tiendas",
+  "website": "https://felixramiro.com/",
+  "phone": "+34 626 48 46 54",
+  "city": "Pº de Morella, 1, 12006 Castelló de la Plana, Castelló",
+  "analysis": {
+    "summary": "Hemos analizado 1 página real de Félix Ramiro Castellón - Trajes de novio, sastrería a medida. El análisis técnico procede de la misma web comercial utilizada por esta sede.",
+    "pagesAnalyzed": 1,
+    "seoScore": 100,
+    "croScore": 100,
+    "seo": [
+      {
+        "title": "La base de visibilidad está presente",
+        "detail": "El siguiente paso es ampliar el análisis a categorías y productos.",
+        "evidence": "Portada accesible con título: Félix Ramiro | Trajes de novio, ceremonia y sastrería a medida",
+        "action": "Auditar categorías, fichas y datos estructurados antes de publicar cambios.",
+        "level": "low",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "cro": [
+      {
+        "title": "Conviene medir qué llamadas generan ventas",
+        "detail": "La medición permite mejorar con datos y no por intuición.",
+        "evidence": "La revisión ligera confirma elementos comerciales básicos.",
+        "action": "Medir clics de producto, carrito, WhatsApp y solicitud de información.",
+        "level": "low",
+        "source": "auditoría HTTP"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Sobrecamisa azul marino · demostración",
+      "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
+      "personImage": "/campaign-assets/generic-male-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-male-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-male-v2/result.jpg",
+      "resultKind": "generic_male"
+    },
+    "auditMethod": "http_fallback",
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta vuelve a una categoría o producto de la tienda.",
+          "decision": "Resolver una duda concreta mientras mantiene el interés.",
+          "message": "Hola, Lucía. ¿Quieres que te ayudemos con talla, disponibilidad o entrega?"
+        },
+        "cart": {
+          "signal": "La clienta inicia una compra y no la termina.",
+          "decision": "Ofrecer ayuda útil sin enviar promociones automáticas.",
+          "message": "Hola, Lucía. Si tienes alguna duda antes de terminar tu compra, te ayudamos."
+        },
+        "return": {
+          "signal": "La clienta regresa y ha aceptado recibir comunicaciones.",
+          "decision": "Mostrar novedades relacionadas con su interés real.",
+          "message": "Hola, Lucía. Tenemos novedades que pueden encajar contigo. ¿Quieres verlas?"
+        }
+      }
+    },
+    "competitors": {
+      "status": "verified",
+      "location": "Pº de Morella, 1, 12006 Castelló de la Plana, Castelló",
+      "businesses": [
+        {
+          "name": "BOSTON",
+          "category": "Tienda de ropa",
+          "website": "https://www.thebostonbrand.com/",
+          "source": "Listado comercial Mira"
+        },
+        {
+          "name": "El refugio de los libros | Venta de Libros de Segunda Mano",
+          "category": "Tienda de ropa",
+          "website": "https://libreriaelrefugiodeloslibros.com/",
+          "source": "Listado comercial Mira"
+        }
+      ],
+      "evidence": "Durante el análisis hemos visto que Félix Ramiro Castellón - Trajes de novio, sastrería a medida comparte zona o compite digitalmente con BOSTON y El refugio de los libros | Venta de Libros de Segunda Mano.",
+      "policy": "La comparación utiliza negocios comerciales del mismo listado, agrupados por zona, localidad, provincia o sector. No se investigan personas."
+    }
+  }
+}

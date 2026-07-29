@@ -153,7 +153,7 @@ def build_outreach_message(source: dict, report: dict, competitors: dict, url: s
     priority = actions[0] if actions else "hacer más claro el camino desde la visita hasta la compra"
     names = [item["name"] for item in competitors.get("businesses", [])[:2]]
     comparison = (
-        f" También hemos comparado su presencia pública con comercios cercanos como {' y '.join(names)}."
+        f" Durante el análisis hemos visto que comparte zona o compite digitalmente con negocios como {' y '.join(names)}."
         if names
         else ""
     )

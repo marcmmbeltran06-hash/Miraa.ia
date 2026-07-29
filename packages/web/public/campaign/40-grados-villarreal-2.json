@@ -1,0 +1,109 @@
+{
+  "slug": "40-grados-villarreal-2",
+  "name": "40 GRADOS VILLARREAL",
+  "sector": "tiendas",
+  "website": "http://www.40grados.eu/",
+  "phone": "+34 651 71 97 79",
+  "city": "Carrer Major Sant Jaume, 33, 12540 Vila-real, Castelló",
+  "analysis": {
+    "summary": "Hemos analizado 7 páginas reales de 40 GRADOS VILLARREAL. El análisis técnico procede de la misma web comercial utilizada por esta sede.",
+    "pagesAnalyzed": 7,
+    "seoScore": 0,
+    "croScore": 78,
+    "seo": [
+      {
+        "title": "Page has no canonical URL",
+        "detail": "Esta mejora ayuda a presentar mejor la tienda y reducir fricción.",
+        "evidence": "CANONICAL_MISSING detectado en https://www.40grados.eu.",
+        "action": "Corregir canonical missing y volver a medir el resultado.",
+        "level": "medium",
+        "source": "crawler",
+        "order": 0
+      },
+      {
+        "title": "Page has no H1 heading",
+        "detail": "Esta mejora ayuda a presentar mejor la tienda y reducir fricción.",
+        "evidence": "H1_MISSING detectado en https://www.40grados.eu.",
+        "action": "Corregir h1 missing y volver a medir el resultado.",
+        "level": "medium",
+        "source": "crawler",
+        "order": 1
+      },
+      {
+        "title": "Open Graph tags are incomplete",
+        "detail": "Esta mejora ayuda a presentar mejor la tienda y reducir fricción.",
+        "evidence": "OPEN_GRAPH_INCOMPLETE detectado en https://www.40grados.eu.",
+        "action": "Corregir open graph incomplete y volver a medir el resultado.",
+        "level": "medium",
+        "source": "crawler",
+        "order": 2
+      }
+    ],
+    "cro": [
+      {
+        "title": "El catálogo necesita una ayuda de compra más visual",
+        "detail": "No hemos encontrado una prenda compatible con el probador en las páginas analizadas.",
+        "evidence": "No se detectó un producto compatible con imagen utilizable en la muestra rastreada.",
+        "action": "Revisar el catálogo completo antes de activar el probador.",
+        "level": "high"
+      },
+      {
+        "title": "La conversación comercial puede continuar después de la visita",
+        "detail": "Una atención contextual permite resolver dudas sin enviar mensajes genéricos.",
+        "evidence": "No se encontró un acceso contextual a WhatsApp en las páginas rastreadas.",
+        "action": "Conectar cada consulta consentida con la prenda y la página que originaron el interés.",
+        "level": "medium"
+      }
+    ],
+    "captures": [],
+    "tryOn": {
+      "productName": "Vestido floral lavanda · demostración",
+      "productPrice": "Demostración genérica · no utiliza un producto de esta tienda",
+      "personImage": "/campaign-assets/generic-female-v2/person.jpg",
+      "productImage": "/campaign-assets/generic-female-v2/product.jpg",
+      "resultImage": "/campaign-assets/generic-female-v2/result.jpg",
+      "resultKind": "generic_female"
+    },
+    "marketing": {
+      "customerName": "Lucía",
+      "customerInitials": "L",
+      "scenarios": {
+        "interest": {
+          "signal": "La clienta ha consultado varias veces una prenda real del catálogo.",
+          "decision": "Resolver la duda de talla mientras el interés sigue activo.",
+          "message": "Hola, Lucía. una prenda real del catálogo sigue en tu selección. ¿Quieres que te ayudemos con la talla?"
+        },
+        "cart": {
+          "signal": "Ha añadido una prenda real del catálogo al carrito y no ha terminado la compra.",
+          "decision": "Ofrecer ayuda útil sin recurrir automáticamente a un descuento.",
+          "message": "Hola, Lucía. Hemos guardado una prenda real del catálogo. Si dudas con la talla o la entrega, te ayudamos."
+        },
+        "return": {
+          "signal": "Ya compró anteriormente y ha aceptado recibir recomendaciones.",
+          "decision": "Mostrar novedades reales relacionadas con sus intereses.",
+          "message": "Hola, Lucía. Hemos preparado una selección de novedades que encaja con tu estilo. ¿Quieres verla?"
+        }
+      }
+    },
+    "competitors": {
+      "status": "verified",
+      "location": "Carrer Major Sant Jaume, 33, 12540 Vila-real, Castelló",
+      "businesses": [
+        {
+          "name": "Modas del Sur",
+          "category": "Tienda de ropa",
+          "website": "https://modasdelsur.com/",
+          "source": "Listado comercial Mira"
+        },
+        {
+          "name": "Complementos Fortuño",
+          "category": "Tienda de ropa",
+          "website": "http://www.fortunyo.com/",
+          "source": "Listado comercial Mira"
+        }
+      ],
+      "evidence": "Durante el análisis hemos visto que 40 GRADOS VILLARREAL comparte zona o compite digitalmente con Modas del Sur y Complementos Fortuño.",
+      "policy": "La comparación utiliza negocios comerciales del mismo listado, agrupados por zona, localidad, provincia o sector. No se investigan personas."
+    }
+  }
+}
