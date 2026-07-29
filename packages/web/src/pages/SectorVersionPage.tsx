@@ -14,30 +14,58 @@ function BrandMark() {
 }
 
 function EngagementTracker({ business }: { business: MiraBusiness }) {
-  const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
-  const endpoint = (import.meta.env.VITE_LEAD_ENDPOINT as string | undefined) ?? 'https://formspree.io/f/maqrvwvd';
+  const leadEndpoint = (import.meta.env.VITE_LEAD_ENDPOINT as string | undefined) ?? 'https://formspree.io/f/maqrvwvd';
+  const engagementEndpoint = (import.meta.env.VITE_ENGAGEMENT_ENDPOINT as string | undefined) ?? 'https://formspree.io/f/mbdnwrbg';
 
-  async function submit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    setSending(true);
-    setError('');
-    try {
-      const response = await fetch(endpoint, {
+  useEffect(() => {
+    let leadRequested = false;
+    const markLead = () => { leadRequested = true; };
+    window.addEventListener('mira:lead-clicked', markLead);
+    const timer = window.setTimeout(() => {
+      if (leadRequested) return;
+      void fetch(engagementEndpoint, {
         method: 'POST',
         headers: { accept: 'application/json', 'content-type': 'application/json' },
         body: JSON.stringify({
-          tipo: 'Solicitud rápida de información',
+          tipo: 'Visita de más de 30 segundos sin solicitar información',
           business: business.name,
           businessPhone: business.phone ?? 'No disponible',
           businessSlug: business.slug,
           sourceWebsite: business.website ?? 'No disponible',
-          contactName: data.get('contactName'),
-          phone: data.get('phone'),
           page: location.href,
+          seconds: 30,
+          occurredAt: new Date().toISOString(),
+          privacy: 'Medición sin cookies; aviso visible en la página',
+        }),
+        keepalive: true,
+      }).catch(() => undefined);
+    }, 30_000);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('mira:lead-clicked', markLead);
+    };
+  }, [business, engagementEndpoint]);
+
+  async function requestInformation() {
+    if (sending || sent) return;
+    setSending(true);
+    setError('');
+    try {
+      const response = await fetch(leadEndpoint, {
+        method: 'POST',
+        headers: { accept: 'application/json', 'content-type': 'application/json' },
+        body: JSON.stringify({
+          tipo: 'Solicitud de información con un clic',
+          business: business.name,
+          businessPhone: business.phone ?? 'No disponible',
+          businessSlug: business.slug,
+          sourceWebsite: business.website ?? 'No disponible',
+          page: location.href,
+          occurredAt: new Date().toISOString(),
+          message: `${business.name} con teléfono ${business.phone ?? 'no disponible'} ha pulsado “Quiero más información”.`,
         }),
       });
       if (!response.ok) throw new Error('Lead endpoint rejected the request');
@@ -51,34 +79,25 @@ function EngagementTracker({ business }: { business: MiraBusiness }) {
   }
 
   return (
-    <aside className={`analytics-consent quick-lead ${open ? 'open' : ''}`}>
-      {!open && !sent && <>
+    <aside className="analytics-consent quick-lead">
+      {!sent && <>
         <div><b>¿Quieres vender más con estas mejoras?</b><p>Te explicamos la propuesta preparada para {business.name}.</p></div>
-        <div><button className="primary" onClick={() => setOpen(true)}>Quiero más información</button></div>
+        <div><button className="primary" type="button" disabled={sending} onClick={() => void requestInformation()}>{sending ? 'Enviando…' : 'Quiero más información'}</button></div>
       </>}
-      {open && !sent && <form onSubmit={submit}>
-        <div><b>Te llamaremos para explicártelo</b><p>Indica quién eres y tu teléfono.</p></div>
-        <label>Nombre<input name="contactName" required autoComplete="name" /></label>
-        <label>Teléfono<input name="phone" type="tel" required autoComplete="tel" /></label>
-        <label className="quick-lead-consent"><input type="checkbox" required /> Acepto que Mira me contacte sobre esta propuesta.</label>
-        {error && <p className="lead-error" role="alert">{error}</p>}
-        <div className="quick-lead-actions"><button type="button" onClick={() => setOpen(false)}>Ahora no</button><button className="primary" disabled={sending}>{sending ? 'Enviando…' : 'Quiero que me llaméis'}</button></div>
-      </form>}
-      {sent && <div className="quick-lead-success"><span>✓</span><div><b>Solicitud recibida</b><p>Te llamaremos para explicarte las mejoras de {business.name}.</p></div></div>}
+      {error && <p className="lead-error" role="alert">{error}</p>}
+      {sent && <div className="quick-lead-success"><span>✓</span><div><b>Solicitud recibida</b><p>Te llamaremos en unos minutos.</p></div></div>}
     </aside>
   );
 }
 
 function LeadCapture({ business }: { business: MiraBusiness }) {
-  const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
   const endpoint = (import.meta.env.VITE_LEAD_ENDPOINT as string | undefined) ?? 'https://formspree.io/f/maqrvwvd';
 
-  async function submit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  async function requestInformation() {
+    if (sending || sent) return;
     setSending(true);
     setError('');
     try {
@@ -86,13 +105,14 @@ function LeadCapture({ business }: { business: MiraBusiness }) {
         method: 'POST',
         headers: { accept: 'application/json', 'content-type': 'application/json' },
         body: JSON.stringify({
+          tipo: 'Solicitud de información con un clic',
           business: business.name,
           businessPhone: business.phone ?? 'No disponible',
           businessSlug: business.slug,
-          sourceWebsite: business.website,
-          contactName: data.get('contactName'),
-          phone: data.get('phone'),
+          sourceWebsite: business.website ?? 'No disponible',
           page: location.href,
+          occurredAt: new Date().toISOString(),
+          message: `${business.name} con teléfono ${business.phone ?? 'no disponible'} ha pulsado “Quiero más información”.`,
         }),
       });
       if (!response.ok) throw new Error('Lead endpoint rejected the request');
@@ -109,17 +129,10 @@ function LeadCapture({ business }: { business: MiraBusiness }) {
     <section className="lead-section" id="contacto">
       <p className="report-kicker">¿Quieres aplicar estas mejoras?</p>
       <h2>Convierte este análisis en un plan de ventas para {business.name}.</h2>
-      {!open && <button onClick={() => setOpen(true)}>Soy de {business.name} y quiero más información</button>}
-      {open && !sent && (
-        <form onSubmit={submit}>
-          <label>Tu nombre<input name="contactName" required autoComplete="name" /></label>
-          <label>Teléfono<input name="phone" type="tel" required autoComplete="tel" /></label>
-          <label className="lead-consent"><input name="consent" type="checkbox" required /> Acepto que Mira me contacte para explicarme esta propuesta.</label>
-          {error && <p className="lead-error" role="alert">{error}</p>}
-          <button disabled={sending}>{sending ? 'Enviando…' : 'Quiero que me llaméis'}</button>
-        </form>
-      )}
-      {sent && <div className="lead-success"><span>✓</span><div><b>Solicitud recibida</b><p>Te llamaremos para explicarte las mejoras de {business.name}.</p></div></div>}
+      {!sent && <button type="button" disabled={sending} onClick={() => void requestInformation()}>{sending ? 'Enviando…' : `Soy de ${business.name} y quiero más información`}</button>}
+      {error && <p className="lead-error" role="alert">{error}</p>}
+      {sent && <div className="lead-success"><span>✓</span><div><b>Solicitud recibida</b><p>Te llamaremos en unos minutos.</p></div></div>}
+      <p className="measurement-note">Medición técnica sin cookies: registramos si esta propuesta permanece abierta más de 30 segundos para mejorar el seguimiento comercial.</p>
     </section>
   );
 }

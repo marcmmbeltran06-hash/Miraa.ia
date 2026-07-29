@@ -61,6 +61,7 @@
 .lead-section{padding:clamp(85px,11vw,150px) max(24px,8vw);text-align:center;background:var(--ink);color:#fff}
 .lead-section h2{max-width:850px;margin:18px auto 38px;font:600 clamp(40px,6vw,72px)/1.02 'Playfair Display',serif;letter-spacing:-.04em}
 .lead-section>button,.lead-section form>button{border:0;border-radius:100px;padding:17px 25px;background:var(--violet);color:#fff;font:600 14px/1.2 inherit;cursor:pointer}
+.lead-section>button:disabled,.analytics-consent button:disabled{cursor:wait;opacity:.7}
 .lead-section form{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:650px;margin:auto;text-align:left}
 .lead-section label{display:flex;flex-direction:column;gap:7px;color:#d7d3de;font-size:12px}
 .lead-section input:not([type=checkbox]){width:100%;padding:14px;border:1px solid #ffffff35;border-radius:9px;background:#ffffff0d;color:#fff;font:inherit}
@@ -70,6 +71,7 @@
 .lead-success{display:flex;align-items:center;justify-content:center;gap:15px;max-width:620px;margin:auto;padding:20px;border:1px solid #7eda9d55;border-radius:14px;background:#2f9b561c;text-align:left}
 .lead-success>span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#43a866}
 .lead-success p{margin:4px 0 0;color:#d8ded9}
+.measurement-note{max-width:680px;margin:24px auto 0;color:#8e8994;font-size:10px;line-height:1.55}
 .analytics-consent{position:fixed;z-index:1000;right:18px;bottom:18px;width:min(560px,calc(100% - 36px));display:flex;align-items:center;gap:20px;padding:18px;border:1px solid #e1ddeb;border-radius:14px;background:#fff;box-shadow:0 20px 60px #30244435;color:var(--ink)}
 .analytics-consent b{font-size:13px}.analytics-consent p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.5}
 .analytics-consent>div:last-child{display:flex;gap:7px;flex-shrink:0}.analytics-consent button{padding:9px 11px;border:1px solid var(--line);border-radius:7px;background:#fff;font:600 10px/1.2 inherit;cursor:pointer}.analytics-consent button.primary{border-color:var(--violet);background:var(--violet);color:#fff}
