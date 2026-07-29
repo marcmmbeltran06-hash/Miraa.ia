@@ -7,14 +7,21 @@ Este programa prepara una cola de revisión usando el Excel de Mira.
 - Lee `Teléfono`, `Texto junto mensaje` y `Estado informe`.
 - Abre WhatsApp Web con el número y el texto ya preparados.
 - Permite pausar, reanudar, omitir y marcar como enviado.
-- Respeta el horario configurado.
-- Espera el intervalo elegido antes de abrir el siguiente contacto.
+- Respeta la hora de inicio y de finalización configuradas.
+- Permite elegir un máximo de 1 a 60 aperturas por hora y distribuye la cola
+  durante esa hora.
 - Guarda el seguimiento en una copia nueva del Excel.
 
 ## Qué no hace
 
 No pulsa el botón **Enviar**, no imita actividad humana y no intenta evitar
 los controles de WhatsApp. Cada mensaje debe revisarse y confirmarse manualmente.
+
+El número configurado es un máximo de conversaciones abiertas por hora, no una
+garantía frente a bloqueos. Conviene empezar de forma prudente (por ejemplo,
+10–20 por hora), escribir solo a contactos pertinentes y detenerse si aparecen
+avisos o solicitudes de baja. **60 por minuto no es un límite seguro de
+WhatsApp Web.**
 
 ## Inicio
 

@@ -50,6 +50,8 @@ class WhatsAppQueueApp:
         self.position = 0
         self.paused = True
         self.pending_after: str | None = None
+        self.opened_times: list[dt.datetime] = []
+        self.last_opened_at: dt.datetime | None = None
 
         self.file_label = tk.StringVar(value="Selecciona el Excel de Mira")
         self.business_var = tk.StringVar(value="—")
@@ -58,7 +60,7 @@ class WhatsAppQueueApp:
         self.status_var = tk.StringVar(value="En pausa")
         self.start_var = tk.StringVar(value="09:30")
         self.end_var = tk.StringVar(value="19:30")
-        self.interval_var = tk.IntVar(value=45)
+        self.max_per_hour_var = tk.IntVar(value=15)
         self.only_published_var = tk.BooleanVar(value=True)
 
         self._build_ui()
@@ -93,9 +95,14 @@ class WhatsAppQueueApp:
         ttk.Entry(schedule, textvariable=self.start_var, width=9).grid(row=1, column=0, padx=(0, 14), sticky="w")
         ttk.Label(schedule, text="Hasta").grid(row=0, column=1, sticky="w")
         ttk.Entry(schedule, textvariable=self.end_var, width=9).grid(row=1, column=1, padx=(0, 14), sticky="w")
-        ttk.Label(schedule, text="Espera tras confirmar (segundos)").grid(row=0, column=2, sticky="w")
-        ttk.Spinbox(schedule, from_=10, to=600, textvariable=self.interval_var, width=10).grid(row=1, column=2, padx=(0, 14), sticky="w")
+        ttk.Label(schedule, text="Máximo por hora").grid(row=0, column=2, sticky="w")
+        ttk.Spinbox(schedule, from_=1, to=60, textvariable=self.max_per_hour_var, width=10).grid(row=1, column=2, padx=(0, 14), sticky="w")
         ttk.Checkbutton(schedule, text="Solo informes publicados", variable=self.only_published_var).grid(row=1, column=3, sticky="w")
+        ttk.Label(
+            schedule,
+            text="Recomendación prudente: 10–20 por hora. No existe un límite universal seguro.",
+            foreground="#786F82",
+        ).grid(row=2, column=0, columnspan=4, sticky="w", pady=(10, 0))
 
         card = ttk.LabelFrame(outer, text="Contacto actual", padding=18)
         card.pack(fill="both", expand=True)
@@ -203,6 +210,32 @@ class WhatsAppQueueApp:
         now = dt.datetime.now().time()
         return start <= now <= end if start <= end else now >= start or now <= end
 
+    def _hourly_limit(self) -> int | None:
+        try:
+            value = int(self.max_per_hour_var.get())
+        except (tk.TclError, ValueError):
+            messagebox.showerror("Ritmo incorrecto", "Indica un máximo entre 1 y 60 contactos por hora.")
+            return None
+        if not 1 <= value <= 60:
+            messagebox.showerror("Ritmo incorrecto", "Indica un máximo entre 1 y 60 contactos por hora.")
+            return None
+        return value
+
+    def _next_delay_seconds(self) -> int:
+        limit = self._hourly_limit()
+        if limit is None:
+            return 0
+        now = dt.datetime.now()
+        self.opened_times = [moment for moment in self.opened_times if now - moment < dt.timedelta(hours=1)]
+        minimum_spacing = 3600 / limit
+        spacing_wait = 0.0
+        if self.last_opened_at:
+            spacing_wait = max(0.0, minimum_spacing - (now - self.last_opened_at).total_seconds())
+        hourly_wait = 0.0
+        if len(self.opened_times) >= limit:
+            hourly_wait = max(0.0, 3600 - (now - self.opened_times[0]).total_seconds())
+        return int(max(spacing_wait, hourly_wait) + 0.999)
+
     def open_current(self) -> None:
         if self.paused:
             messagebox.showinfo("Cola en pausa", "Pulsa Reanudar antes de abrir el siguiente contacto.")
@@ -212,18 +245,30 @@ class WhatsAppQueueApp:
             return
         if self.position >= len(self.rows):
             return
+        wait_seconds = self._next_delay_seconds()
+        if wait_seconds:
+            self.status_var.set(f"Ritmo respetado · siguiente apertura en {wait_seconds} segundos")
+            self.pending_after = self.root.after(wait_seconds * 1000, self.open_current)
+            return
         item = self.rows[self.position]
         message = self.message_box.get("1.0", "end").strip()
         url = f"https://web.whatsapp.com/send?phone={item['phone']}&text={urllib.parse.quote(message)}"
         webbrowser.open(url, new=0)
-        self.status_var.set("Conversación abierta · revisa y pulsa Enviar en WhatsApp Web")
+        opened_at = dt.datetime.now()
+        self.opened_times.append(opened_at)
+        self.last_opened_at = opened_at
+        limit = self._hourly_limit() or 1
+        self.status_var.set(f"Conversación abierta · {len(self.opened_times)}/{limit} en la última hora · envío manual")
 
     def mark_sent(self) -> None:
         self._mark("Enviado")
         if not self.paused and self.position < len(self.rows):
-            delay = max(10, int(self.interval_var.get())) * 1000
-            self.status_var.set(f"Siguiente contacto preparado en {delay // 1000} segundos")
-            self.pending_after = self.root.after(delay, self.open_current)
+            delay = self._next_delay_seconds()
+            if delay:
+                self.status_var.set(f"Siguiente contacto preparado en {delay} segundos")
+                self.pending_after = self.root.after(delay * 1000, self.open_current)
+            else:
+                self.open_current()
 
     def skip_current(self) -> None:
         self._mark("Omitido")
@@ -250,6 +295,8 @@ class WhatsAppQueueApp:
             self.pending_after = None
         self.pause_button.configure(text="Reanudar" if self.paused else "Pausar")
         self.status_var.set("En pausa" if self.paused else "Cola activa · el botón Enviar sigue siendo manual")
+        if not self.paused and self.rows and self.position < len(self.rows):
+            self.open_current()
 
 
 def main() -> None:
