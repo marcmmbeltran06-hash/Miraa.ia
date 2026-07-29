@@ -192,6 +192,7 @@ def wait_for_deployment(base_url: str, slug: str, timeout_seconds: int) -> bool:
 
 def build_frontend_business(source: dict, report: dict, result_path: str | None) -> dict:
     try_on = report.get("tryOn")
+    pages_analyzed = int(report.get("pagesAnalyzed") or 0)
     product = try_on.get("productName") if try_on else "una prenda real del catálogo"
     analysis_try_on = None
     if try_on and result_path:
@@ -210,10 +211,17 @@ def build_frontend_business(source: dict, report: dict, result_path: str | None)
         "phone": source["phone"],
         "city": source["address"],
         "analysis": {
-            "summary": f"Hemos analizado {report['pagesAnalyzed']} páginas reales de {source['name']}. La propuesta se basa en los problemas y productos encontrados durante ese rastreo.",
-            "pagesAnalyzed": report["pagesAnalyzed"],
-            "seoScore": report["visibilityScore"],
-            "croScore": report["salesReadinessScore"],
+            "summary": (
+                f"Hemos analizado {pages_analyzed} páginas reales de {source['name']}. "
+                "La propuesta se basa en los problemas y productos encontrados durante ese rastreo."
+                if pages_analyzed > 0
+                else
+                f"El primer rastreo de {source['name']} no ha podido validar páginas suficientes. "
+                "No mostramos una puntuación artificial: proponemos completar el análisis antes de aplicar mejoras."
+            ),
+            "pagesAnalyzed": pages_analyzed,
+            "seoScore": report["visibilityScore"] if pages_analyzed > 0 else None,
+            "croScore": report["salesReadinessScore"] if pages_analyzed > 0 else None,
             "seo": report.get("findability", []),
             "cro": report.get("sales", []),
             "captures": report.get("captures", []),

@@ -13,6 +13,11 @@ function BrandMark() {
   return <span className="report-orb" aria-hidden="true" />;
 }
 
+function scoreLabel(score: number | null, pagesAnalyzed: number) {
+  if (pagesAnalyzed === 0 || score === null) return 'Pendiente';
+  return `${score}/100`;
+}
+
 function EngagementTracker({ business }: { business: MiraBusiness }) {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -198,6 +203,71 @@ function ApplicationDefinition() {
         <article><span>03</span><h3>Visualizamos</h3><p>Convertimos cada hallazgo prioritario en una mejora explicada y una captura que muestra cómo podría quedar.</p></article>
       </div>
       <div className="definition-note"><b>No es un informe genérico.</b> El nombre, las puntuaciones, evidencias, prioridades, recomendaciones y capturas pertenecen al negocio mostrado en este enlace.</div>
+    </section>
+  );
+}
+
+function OpenWpGrowthPlan({ business, analysis }: { business: MiraBusiness; analysis: PersonalizedAnalysis }) {
+  const validationAreas = [
+    { group: 'Visibilidad', title: 'Arquitectura e indexación', text: 'Revisamos categorías, filtros, canonicals, sitemap, duplicidades y páginas que compiten entre sí.' },
+    { group: 'Visibilidad', title: 'Búsquedas por producto e intención', text: 'Creamos rutas útiles por tipo de producto, necesidad, ocasión, ubicación y temporada.' },
+    { group: 'Visibilidad', title: 'Contenido y enlazado interno', text: 'Conectamos categorías, productos, guías y preguntas frecuentes para distribuir mejor la autoridad.' },
+    { group: 'Visibilidad', title: 'Imágenes y datos estructurados', text: 'Comprobamos peso, dimensiones, textos alternativos y marcado de productos, negocio y preguntas frecuentes.' },
+    { group: 'Conversión', title: 'Primera pantalla y propuesta de valor', text: 'Aclaramos qué vende el negocio, para quién y cuál es el siguiente paso principal desde móvil.' },
+    { group: 'Conversión', title: 'Fichas que resuelven dudas', text: 'Revisamos talla, ajuste, materiales, entrega, devoluciones, stock, variantes, confianza y prueba social.' },
+    { group: 'Conversión', title: 'Carrito y checkout reales', text: 'Probamos cantidades, cupones, gastos, formularios, errores, pago y confirmación del pedido.' },
+    { group: 'Conversión', title: 'Velocidad y experiencia móvil', text: 'Detectamos bloqueos, elementos que saltan, botones pequeños, textos cortados y recorridos lentos.' },
+    { group: 'Venta recurrente', title: 'WhatsApp contextual', text: 'Preparamos atención vinculada al producto y al momento de compra, siempre con el consentimiento adecuado.' },
+    { group: 'Venta recurrente', title: 'Recuperación de oportunidades', text: 'Diseñamos seguimiento para interés alto, carrito abandonado y clientes que pueden volver.' },
+    { group: 'Venta recurrente', title: 'Probador y asistencia visual', text: 'Evaluamos dónde una demostración visual puede reducir dudas de talla, estilo o resultado.' },
+    { group: 'Venta recurrente', title: 'Medición y pruebas', text: 'Definimos eventos y comparaciones para saber qué cambios generan contactos y ventas, sin inventar resultados.' },
+  ];
+  const detected = [...analysis.seo, ...analysis.cro];
+
+  return (
+    <section className="openwp-plan">
+      <div className="openwp-plan-heading">
+        <div>
+          <p className="report-kicker">OpenWP · análisis ampliado</p>
+          <h2>No nos quedamos en tres errores.<br />Revisamos el recorrido completo.</h2>
+        </div>
+        <p>OpenWP puede recorrer hasta 500 páginas, reconstruir la tienda en WordPress y WooCommerce y comprobar cada mejora en la web final. Una puntuación técnica alta no significa que ya no existan oportunidades comerciales.</p>
+      </div>
+
+      <div className="openwp-truth">
+        <span>{analysis.pagesAnalyzed > 0 ? analysis.pagesAnalyzed : '—'}</span>
+        <div><b>Páginas validadas en este primer análisis</b><p>{analysis.pagesAnalyzed > 0 ? `Las conclusiones detectadas de ${business.name} parten de estas páginas reales.` : 'El rastreo inicial no reunió páginas suficientes. Antes de implementar, completaremos el análisis y no fingiremos una puntuación.'}</p></div>
+      </div>
+
+      {detected.length > 0 && <div className="openwp-detected">
+        <div className="openwp-subheading"><span>01</span><div><b>Mejoras ya detectadas</b><p>Estas observaciones proceden del análisis disponible de {business.name}.</p></div></div>
+        <div className="openwp-detected-grid">
+          {detected.map((item) => <article key={`${item.title}-${item.action}`}>
+            <small>{item.level === 'high' ? 'Prioridad alta' : 'Prioridad media'}</small>
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+            <div><b>Qué haríamos</b><p>{item.action}</p></div>
+          </article>)}
+        </div>
+      </div>}
+
+      <div className="openwp-validation">
+        <div className="openwp-subheading"><span>02</span><div><b>Más oportunidades que comprobaremos</b><p>No las presentamos como errores confirmados hasta revisar las páginas correspondientes.</p></div></div>
+        <div className="openwp-validation-grid">
+          {validationAreas.map((item, index) => <article key={item.title}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <small>{item.group} · por validar</small>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>)}
+        </div>
+      </div>
+
+      <div className="september-outcome">
+        <p className="report-kicker">Objetivo septiembre</p>
+        <h3>Volver con una web mejor preparada para que te encuentren, te entiendan y terminen comprando.</h3>
+        <p>Durante agosto aplicamos, verificamos y documentamos. En septiembre medimos contactos y ventas para decidir los siguientes cambios con datos reales.</p>
+      </div>
     </section>
   );
 }
@@ -506,13 +576,13 @@ function ReportPage() {
             <span>{business.sector === 'tiendas' ? 'Tienda de moda' : 'Sastrería'}</span>
           </div>
           <div className="hero-meta score-meta">
-            <span className="pages-score"><b>{analysis.pagesAnalyzed}</b> páginas analizadas</span>
-            <span className="score-now"><small>Ahora · te encuentran</small><b>{analysis.seoScore}/100</b> visibilidad</span>
-            <span className="score-target"><small>Con Mira · objetivo</small><b>100/100</b> te encuentran</span>
-            <span className="score-now"><small>Ahora · te compran</small><b>{analysis.croScore}/100</b> capacidad de venta</span>
-            <span className="score-target"><small>Con Mira · objetivo</small><b>100/100</b> conviertes</span>
+            <span className="pages-score"><b>{analysis.pagesAnalyzed > 0 ? analysis.pagesAnalyzed : '—'}</b> {analysis.pagesAnalyzed > 0 ? 'páginas analizadas' : 'rastreo por completar'}</span>
+            <span className="score-now"><small>Control técnico · visibilidad</small><b>{scoreLabel(analysis.seoScore, analysis.pagesAnalyzed)}</b> muestra analizada</span>
+            <span className="score-target"><small>Plan OpenWP · visibilidad</small><b>12 áreas</b> para comprobar</span>
+            <span className="score-now"><small>Control técnico · compra</small><b>{scoreLabel(analysis.croScore, analysis.pagesAnalyzed)}</b> muestra analizada</span>
+            <span className="score-target"><small>Objetivo septiembre</small><b>Medir</b> contactos y ventas</span>
           </div>
-          <p className="score-disclaimer">100/100 representa el objetivo de optimización de la propuesta; el resultado final se valida después de implementar y medir las mejoras.</p>
+          <p className="score-disclaimer">Una puntuación técnica alta solo describe las comprobaciones realizadas sobre la muestra. No significa que la web sea perfecta ni demuestra un aumento de ventas.</p>
           <div className="scroll-note">Desliza para entender el análisis <span>↓</span></div>
         </section>
 
@@ -539,6 +609,8 @@ function ReportPage() {
             </div>
           </div>
         </section>
+
+        <OpenWpGrowthPlan business={business} analysis={analysis} />
 
         <section className="proposal-intro" id="propuesta">
           <p className="report-kicker">Propuesta personalizada</p>
@@ -578,7 +650,7 @@ export function VersionsIndexPage() {
           {miraBusinesses.filter((business) => business.sector === 'tiendas').map((business, index) => (
             <Link to={`/mira/${business.slug}`} key={business.slug}>
               <span>0{index + 1}</span><small>{business.sector === 'tiendas' ? 'Tienda de moda' : 'Sastrería'}</small>
-              <h2>{business.name}</h2><p>{business.analysis.pagesAnalyzed} páginas · Visibilidad {business.analysis.seoScore}/100 · Capacidad de venta {business.analysis.croScore}/100</p><b>→</b>
+              <h2>{business.name}</h2><p>{business.analysis.pagesAnalyzed} páginas · Visibilidad {scoreLabel(business.analysis.seoScore, business.analysis.pagesAnalyzed)} · Capacidad de venta {scoreLabel(business.analysis.croScore, business.analysis.pagesAnalyzed)}</p><b>→</b>
             </Link>
           ))}
         </div>

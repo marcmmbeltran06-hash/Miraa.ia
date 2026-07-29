@@ -17,8 +17,8 @@ export type ReportCapture = {
 export type PersonalizedAnalysis = {
   summary: string;
   pagesAnalyzed: number;
-  seoScore: number;
-  croScore: number;
+  seoScore: number | null;
+  croScore: number | null;
   seo: ReportFinding[];
   cro: ReportFinding[];
   captures: ReportCapture[];
