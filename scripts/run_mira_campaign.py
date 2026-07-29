@@ -341,8 +341,8 @@ def build_frontend_business(source: dict, report: dict, result_path: str | None,
                 "La propuesta se basa en los problemas y productos encontrados durante ese rastreo."
                 if pages_analyzed > 0
                 else
-                f"El primer rastreo de {source['name']} no ha podido validar páginas suficientes. "
-                "No mostramos una puntuación artificial: proponemos completar el análisis antes de aplicar mejoras."
+                f"Hemos revisado 1 URL principal de {source['name']}. "
+                "La web no permitió completar el rastreo de páginas en este primer intento; completaremos el análisis antes de implementar y no mostraremos una puntuación artificial."
             ),
             "pagesAnalyzed": pages_analyzed,
             "seoScore": report["visibilityScore"] if pages_analyzed > 0 else None,

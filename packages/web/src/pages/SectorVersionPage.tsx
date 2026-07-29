@@ -18,6 +18,17 @@ function scoreLabel(score: number | null, pagesAnalyzed: number) {
   return `${score}/100`;
 }
 
+function reviewLabel(pagesAnalyzed: number) {
+  return pagesAnalyzed > 0
+    ? `${pagesAnalyzed} ${pagesAnalyzed === 1 ? 'página analizada' : 'páginas analizadas'}`
+    : '1 URL principal revisada';
+}
+
+function verifiedSummary(business: MiraBusiness, analysis: PersonalizedAnalysis) {
+  if (analysis.pagesAnalyzed > 0) return analysis.summary;
+  return `Hemos revisado 1 URL principal de ${business.name}. La web no permitió completar el rastreo de páginas en este primer intento, por lo que las mejoras mostradas son oportunidades que validaremos antes de implementarlas.`;
+}
+
 function EngagementTracker({ business }: { business: MiraBusiness }) {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -144,7 +155,7 @@ function LeadCapture({ business, analysis }: { business: MiraBusiness; analysis:
       </div>
 
       <div className="august-process">
-        <article><span>01</span><div><b>Partimos de este informe</b><p>No aplicamos cambios genéricos: utilizamos los problemas y oportunidades detectados en {analysis.pagesAnalyzed} páginas de tu web.</p></div></article>
+        <article><span>01</span><div><b>Partimos de este informe</b><p>No aplicamos cambios genéricos: utilizamos la información verificada en {reviewLabel(analysis.pagesAnalyzed).toLowerCase()} y completamos el rastreo antes de implementar.</p></div></article>
         <article><span>02</span><div><b>Lo construimos en WordPress</b><p>Preparamos páginas, catálogo y mejoras comerciales sobre WordPress y WooCommerce, manteniendo la identidad del negocio.</p></div></article>
         <article><span>03</span><div><b>Comprobamos la compra completa</b><p>Revisamos móvil, productos, carrito, checkout, llamadas a la acción y visibilidad antes de considerar el trabajo terminado.</p></div></article>
         <article><span>04</span><div><b>Vuelves con todo preparado</b><p>Te entregamos las mejoras realizadas, lo que hemos verificado y los siguientes pasos para medir resultados reales.</p></div></article>
@@ -235,8 +246,8 @@ function OpenWpGrowthPlan({ business, analysis }: { business: MiraBusiness; anal
       </div>
 
       <div className="openwp-truth">
-        <span>{analysis.pagesAnalyzed > 0 ? analysis.pagesAnalyzed : '—'}</span>
-        <div><b>Páginas validadas en este primer análisis</b><p>{analysis.pagesAnalyzed > 0 ? `Las conclusiones detectadas de ${business.name} parten de estas páginas reales.` : 'El rastreo inicial no reunió páginas suficientes. Antes de implementar, completaremos el análisis y no fingiremos una puntuación.'}</p></div>
+        <span>{analysis.pagesAnalyzed > 0 ? analysis.pagesAnalyzed : 1}</span>
+        <div><b>{analysis.pagesAnalyzed > 0 ? 'Páginas validadas en este primer análisis' : 'URL principal revisada en este primer análisis'}</b><p>{analysis.pagesAnalyzed > 0 ? `Las conclusiones detectadas de ${business.name} parten de estas páginas reales.` : 'La URL se revisó, pero el rastreo no consiguió capturar páginas completas. Antes de implementar, completaremos el análisis y no fingiremos una puntuación.'}</p></div>
       </div>
 
       {detected.length > 0 && <div className="openwp-detected">
@@ -663,14 +674,14 @@ function ReportPage() {
           <p className="report-kicker">Hemos preparado este informe para mejorar la web de</p>
           <h1>{business.name}</h1>
           <p className="business-introduction">Hemos realizado un análisis exhaustivo de tu web para conseguir que <b>más personas te encuentren, entiendan tu propuesta y terminen comprando.</b> A continuación te mostramos qué frena hoy las ventas y cómo lo solucionaremos.</p>
-          <p className="business-summary">{analysis.summary}</p>
+          <p className="business-summary">{verifiedSummary(business, analysis)}</p>
           <div className="business-context">
             {business.website && <span>{business.website.replace('https://', '')}</span>}
             {business.city && <span>{business.city}</span>}
             <span>{business.sector === 'tiendas' ? 'Tienda de moda' : 'Sastrería'}</span>
           </div>
           <div className="hero-meta score-meta">
-            <span className="pages-score"><b>{analysis.pagesAnalyzed > 0 ? analysis.pagesAnalyzed : '—'}</b> {analysis.pagesAnalyzed > 0 ? 'páginas analizadas' : 'rastreo por completar'}</span>
+            <span className="pages-score"><b>{analysis.pagesAnalyzed > 0 ? analysis.pagesAnalyzed : 1}</b> {analysis.pagesAnalyzed > 0 ? (analysis.pagesAnalyzed === 1 ? 'página analizada' : 'páginas analizadas') : 'URL principal revisada'}</span>
             <span className="score-now"><small>Control técnico · visibilidad</small><b>{scoreLabel(analysis.seoScore, analysis.pagesAnalyzed)}</b> muestra analizada</span>
             <span className="score-target"><small>Plan OpenWP · visibilidad</small><b>12 áreas</b> para comprobar</span>
             <span className="score-now"><small>Control técnico · compra</small><b>{scoreLabel(analysis.croScore, analysis.pagesAnalyzed)}</b> muestra analizada</span>
@@ -746,7 +757,7 @@ export function VersionsIndexPage() {
           {miraBusinesses.filter((business) => business.sector === 'tiendas').map((business, index) => (
             <Link to={`/mira/${business.slug}`} key={business.slug}>
               <span>0{index + 1}</span><small>{business.sector === 'tiendas' ? 'Tienda de moda' : 'Sastrería'}</small>
-              <h2>{business.name}</h2><p>{business.analysis.pagesAnalyzed} páginas · Visibilidad {scoreLabel(business.analysis.seoScore, business.analysis.pagesAnalyzed)} · Capacidad de venta {scoreLabel(business.analysis.croScore, business.analysis.pagesAnalyzed)}</p><b>→</b>
+              <h2>{business.name}</h2><p>{reviewLabel(business.analysis.pagesAnalyzed)} · Visibilidad {scoreLabel(business.analysis.seoScore, business.analysis.pagesAnalyzed)} · Capacidad de venta {scoreLabel(business.analysis.croScore, business.analysis.pagesAnalyzed)}</p><b>→</b>
             </Link>
           ))}
         </div>
