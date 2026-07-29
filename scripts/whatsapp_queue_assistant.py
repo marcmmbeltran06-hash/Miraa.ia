@@ -36,6 +36,24 @@ def parse_clock(value: str) -> dt.time:
     return dt.datetime.strptime(value.strip(), "%H:%M").time()
 
 
+def prepare_message(value: object) -> str:
+    """Formaliza el mensaje y fuerza una vista previa social actualizada."""
+    message = str(value or "").strip()
+    message = re.sub(
+        r"\bSi te interesa,\s*podemos explicártelo en una llamada breve y dejar las mejoras preparadas durante agosto\.",
+        "Si le interesa, podemos explicárselo en una llamada breve y dejarle las mejoras preparadas durante agosto.",
+        message,
+        flags=re.IGNORECASE,
+    )
+    message = re.sub(
+        r"(https://www\.miraia\.space/[a-z0-9-]+)(?:\?v=\d+)?",
+        r"\1?v=4",
+        message,
+        flags=re.IGNORECASE,
+    )
+    return message
+
+
 class WhatsAppQueueApp:
     def __init__(self, root: tk.Tk, initial_file: Path | None = None) -> None:
         self.root = root
@@ -160,7 +178,7 @@ class WhatsAppQueueApp:
         rows = []
         for row in range(2, sheet.max_row + 1):
             phone = normalize_phone(sheet.cell(row, headers["teléfono"]).value)
-            message = str(sheet.cell(row, headers["texto junto mensaje"]).value or "").strip()
+            message = prepare_message(sheet.cell(row, headers["texto junto mensaje"]).value)
             report_status = str(sheet.cell(row, headers.get("estado informe", 0)).value or "") if headers.get("estado informe") else ""
             whatsapp_status = str(sheet.cell(row, status_column).value or "")
             if not phone or not message or whatsapp_status.lower() == "enviado":
