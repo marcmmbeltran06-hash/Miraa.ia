@@ -31,6 +31,7 @@ function EngagementTracker({ business }: { business: MiraBusiness }) {
         headers: { accept: 'application/json', 'content-type': 'application/json' },
         body: JSON.stringify({
           tipo: 'Visita de más de 30 segundos sin solicitar información',
+          campaign: 'Implementación agosto',
           business: business.name,
           businessPhone: business.phone ?? 'No disponible',
           businessSlug: business.slug,
@@ -59,6 +60,8 @@ function EngagementTracker({ business }: { business: MiraBusiness }) {
         headers: { accept: 'application/json', 'content-type': 'application/json' },
         body: JSON.stringify({
           tipo: 'Solicitud de información con un clic',
+          campaign: 'Implementación agosto',
+          source: 'Panel flotante',
           business: business.name,
           businessPhone: business.phone ?? 'No disponible',
           businessSlug: business.slug,
@@ -81,8 +84,8 @@ function EngagementTracker({ business }: { business: MiraBusiness }) {
   return (
     <aside className="analytics-consent quick-lead">
       {!sent && <>
-        <div><b>¿Quieres vender más con estas mejoras?</b><p>Te explicamos la propuesta preparada para {business.name}.</p></div>
-        <div><button className="primary" type="button" disabled={sending} onClick={() => void requestInformation()}>{sending ? 'Enviando…' : 'Quiero más información'}</button></div>
+        <div><b>Vuelve de vacaciones con la mejora preparada</b><p>Trabajamos durante agosto sobre la propuesta de {business.name}.</p></div>
+        <div><button className="primary" type="button" disabled={sending} onClick={() => void requestInformation()}>{sending ? 'Enviando…' : 'Reservar agosto'}</button></div>
       </>}
       {error && <p className="lead-error" role="alert">{error}</p>}
       {sent && <div className="quick-lead-success"><span>✓</span><div><b>Solicitud recibida</b><p>Te llamaremos en unos minutos.</p></div></div>}
@@ -90,7 +93,7 @@ function EngagementTracker({ business }: { business: MiraBusiness }) {
   );
 }
 
-function LeadCapture({ business }: { business: MiraBusiness }) {
+function LeadCapture({ business, analysis }: { business: MiraBusiness; analysis: PersonalizedAnalysis }) {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
@@ -106,6 +109,8 @@ function LeadCapture({ business }: { business: MiraBusiness }) {
         headers: { accept: 'application/json', 'content-type': 'application/json' },
         body: JSON.stringify({
           tipo: 'Solicitud de información con un clic',
+          campaign: 'Implementación agosto',
+          source: 'Oferta agosto',
           business: business.name,
           businessPhone: business.phone ?? 'No disponible',
           businessSlug: business.slug,
@@ -126,12 +131,40 @@ function LeadCapture({ business }: { business: MiraBusiness }) {
   }
 
   return (
-    <section className="lead-section" id="contacto">
-      <p className="report-kicker">¿Quieres aplicar estas mejoras?</p>
-      <h2>Convierte este análisis en un plan de ventas para {business.name}.</h2>
-      {!sent && <button type="button" disabled={sending} onClick={() => void requestInformation()}>{sending ? 'Enviando…' : `Soy de ${business.name} y quiero más información`}</button>}
+    <section className="lead-section august-offer" id="contacto">
+      <div className="august-offer-heading">
+        <p className="report-kicker">Plan agosto · implementación completa</p>
+        <h2>Tú descansas.<br />Nosotros preparamos la mejora de {business.name}.</h2>
+        <p>Trabajamos durante agosto para que, cuando vuelvas de vacaciones, tengas una tienda más clara, rápida y preparada para convertir más visitas en oportunidades de venta.</p>
+      </div>
+
+      <div className="august-process">
+        <article><span>01</span><div><b>Partimos de este informe</b><p>No aplicamos cambios genéricos: utilizamos los problemas y oportunidades detectados en {analysis.pagesAnalyzed} páginas de tu web.</p></div></article>
+        <article><span>02</span><div><b>Lo construimos en WordPress</b><p>Preparamos páginas, catálogo y mejoras comerciales sobre WordPress y WooCommerce, manteniendo la identidad del negocio.</p></div></article>
+        <article><span>03</span><div><b>Comprobamos la compra completa</b><p>Revisamos móvil, productos, carrito, checkout, llamadas a la acción y visibilidad antes de considerar el trabajo terminado.</p></div></article>
+        <article><span>04</span><div><b>Vuelves con todo preparado</b><p>Te entregamos las mejoras realizadas, lo que hemos verificado y los siguientes pasos para medir resultados reales.</p></div></article>
+      </div>
+
+      <div className="august-personalized">
+        <div>
+          <small>Primeras mejoras previstas para {business.name}</small>
+          <h3>Un plan basado en lo que hemos encontrado, no en promesas vacías.</h3>
+        </div>
+        <ul>
+          {[...analysis.seo.slice(0, 2), ...analysis.cro.slice(0, 2)].map((item) => (
+            <li key={`${item.title}-${item.action}`}><span>✓</span><div><b>{item.title}</b><p>{item.action}</p></div></li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="august-delivery">
+        <span>AGOSTO</span>
+        <div><b>Agenda de implementación abierta</b><p>Confirmaremos alcance, fechas y presupuesto antes de comenzar. No interrumpimos tu web sin tu autorización.</p></div>
+      </div>
+
+      {!sent && <button type="button" disabled={sending} onClick={() => void requestInformation()}>{sending ? 'Reservando…' : `Quiero preparar ${business.name} durante agosto`}</button>}
       {error && <p className="lead-error" role="alert">{error}</p>}
-      {sent && <div className="lead-success"><span>✓</span><div><b>Solicitud recibida</b><p>Te llamaremos en unos minutos.</p></div></div>}
+      {sent && <div className="lead-success"><span>✓</span><div><b>Solicitud recibida</b><p>Te llamaremos en unos minutos para reservar tu hueco de agosto.</p></div></div>}
       <p className="measurement-note">Medición técnica sin cookies: registramos si esta propuesta permanece abierta más de 30 segundos para mejorar el seguimiento comercial.</p>
     </section>
   );
@@ -484,6 +517,7 @@ function ReportPage() {
         </section>
 
         <ApplicationDefinition />
+        <LeadCapture business={business} analysis={analysis} />
         {analysis.tryOn && !floatingTryOnEnabled && <TryOnDemo demo={analysis.tryOn} businessName={business.name} />}
 
         <SalesApplications />
@@ -523,7 +557,6 @@ function ReportPage() {
         </section>
 
         {analysis.tryOn && <MarketingAutomation business={business} />}
-        <LeadCapture business={business} />
       </main>
     </div>
   );
