@@ -7,6 +7,8 @@ Este programa prepara una cola de revisión usando el Excel de Mira.
 - Lee `Teléfono`, `Texto junto mensaje` y `Estado informe`.
 - Abre WhatsApp Web con el número y el texto ya preparados.
 - Permite pausar, reanudar, omitir y marcar como enviado.
+- En Windows permite enviar el mensaje visible y continuar pulsando una sola
+  tecla: **F8**.
 - Respeta la hora de inicio y de finalización configuradas.
 - Permite elegir un máximo de 1 a 60 aperturas por hora y distribuye la cola
   durante esa hora.
@@ -14,8 +16,10 @@ Este programa prepara una cola de revisión usando el Excel de Mira.
 
 ## Qué no hace
 
-No pulsa el botón **Enviar**, no imita actividad humana y no intenta evitar
-los controles de WhatsApp. Cada mensaje debe revisarse y confirmarse manualmente.
+Cada mensaje debe revisarse y confirmarse individualmente. Con WhatsApp como
+ventana activa, **F8** equivale a esa confirmación: envía el mensaje visible,
+registra el resultado y prepara el siguiente. F8 se ignora si la ventana activa
+no es WhatsApp.
 
 El número configurado es un máximo de conversaciones abiertas por hora, no una
 garantía frente a bloqueos. Conviene empezar de forma prudente (por ejemplo,

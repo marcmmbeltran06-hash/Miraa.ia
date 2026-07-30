@@ -1,22 +1,32 @@
 #!/usr/bin/env python3
 """Cola local de revisión para WhatsApp Web.
 
-Abre cada conversación con el texto precargado. El usuario conserva siempre
-el control del botón Enviar. No automatiza clics ni simula comportamiento humano.
+Abre cada conversación con el texto precargado. Cada envío requiere una
+confirmación individual del usuario mediante F8.
 """
 
 from __future__ import annotations
 
 import argparse
+import ctypes
 import datetime as dt
 import re
+import sys
 import tkinter as tk
 import urllib.parse
 import webbrowser
+from ctypes import wintypes
 from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
 from openpyxl import load_workbook
+
+
+HOTKEY_ID = 0x4D49
+WM_HOTKEY = 0x0312
+VK_F8 = 0x77
+VK_RETURN = 0x0D
+KEYEVENTF_KEYUP = 0x0002
 
 
 def normalize_header(value: object) -> str:
@@ -70,6 +80,7 @@ class WhatsAppQueueApp:
         self.pending_after: str | None = None
         self.opened_times: list[dt.datetime] = []
         self.last_opened_at: dt.datetime | None = None
+        self.hotkey_registered = False
 
         self.file_label = tk.StringVar(value="Selecciona el Excel de Mira")
         self.business_var = tk.StringVar(value="—")
@@ -82,6 +93,8 @@ class WhatsAppQueueApp:
         self.only_published_var = tk.BooleanVar(value=True)
 
         self._build_ui()
+        self._register_hotkey()
+        self.root.protocol("WM_DELETE_WINDOW", self._close)
         if initial_file and initial_file.exists():
             self.load_excel(initial_file)
 
@@ -98,7 +111,7 @@ class WhatsAppQueueApp:
         ttk.Label(outer, text="Asistente de WhatsApp Mira", style="Title.TLabel").pack(anchor="w")
         ttk.Label(
             outer,
-            text="Abre cada conversación con el mensaje preparado. Revisa el texto y pulsa Enviar personalmente en WhatsApp Web.",
+            text="Abre cada conversación con el mensaje preparado. Revíselo y pulse F8 para enviar y continuar.",
             wraplength=860,
         ).pack(anchor="w", pady=(5, 18))
 
@@ -139,13 +152,65 @@ class WhatsAppQueueApp:
         ttk.Button(actions, text="Omitir", command=self.skip_current).pack(side="left")
         self.pause_button = ttk.Button(actions, text="Reanudar", command=self.toggle_pause)
         self.pause_button.pack(side="right")
+        ttk.Label(
+            outer,
+            text="F8  ·  ENVIAR MENSAJE VISIBLE Y PREPARAR EL SIGUIENTE",
+            font=("Segoe UI", 13, "bold"),
+            foreground="#6E44E8",
+        ).pack(anchor="w", pady=(8, 2))
         ttk.Label(outer, textvariable=self.status_var).pack(anchor="w")
         ttk.Label(
             outer,
-            text="Importante: utiliza esta cola únicamente con contactos empresariales pertinentes y respetando oposición, consentimiento y políticas de WhatsApp. El programa nunca pulsa Enviar.",
+            text="F8 solo funciona cuando WhatsApp es la ventana activa. Cada envío requiere que usted pulse F8. Utilice la cola únicamente con contactos pertinentes y respete solicitudes de baja.",
             foreground="#786F82",
             wraplength=860,
         ).pack(anchor="w", pady=(14, 0))
+
+    def _register_hotkey(self) -> None:
+        if sys.platform != "win32":
+            self.status_var.set("El atajo F8 solo está disponible en Windows")
+            return
+        self.hotkey_registered = bool(ctypes.windll.user32.RegisterHotKey(None, HOTKEY_ID, 0, VK_F8))
+        if self.hotkey_registered:
+            self.root.after(100, self._poll_hotkey)
+        else:
+            self.status_var.set("No se pudo activar F8. Cierre otro programa que esté usando esa tecla.")
+
+    def _poll_hotkey(self) -> None:
+        if not self.hotkey_registered:
+            return
+        message = wintypes.MSG()
+        while ctypes.windll.user32.PeekMessageW(ctypes.byref(message), None, WM_HOTKEY, WM_HOTKEY, 1):
+            if message.wParam == HOTKEY_ID:
+                self._confirm_with_f8()
+        self.root.after(100, self._poll_hotkey)
+
+    def _foreground_window_title(self) -> str:
+        window = ctypes.windll.user32.GetForegroundWindow()
+        length = ctypes.windll.user32.GetWindowTextLengthW(window)
+        buffer = ctypes.create_unicode_buffer(length + 1)
+        ctypes.windll.user32.GetWindowTextW(window, buffer, length + 1)
+        return buffer.value
+
+    def _confirm_with_f8(self) -> None:
+        if self.paused or self.position >= len(self.rows):
+            self.status_var.set("F8 ignorado: la cola está en pausa o terminada")
+            self.root.bell()
+            return
+        if "whatsapp" not in self._foreground_window_title().lower():
+            self.status_var.set("F8 ignorado: active primero la pestaña de WhatsApp")
+            self.root.bell()
+            return
+        ctypes.windll.user32.keybd_event(VK_RETURN, 0, 0, 0)
+        ctypes.windll.user32.keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0)
+        self.status_var.set("Envío confirmado con F8 · guardando seguimiento")
+        self.root.after(800, self.mark_sent)
+
+    def _close(self) -> None:
+        if self.hotkey_registered:
+            ctypes.windll.user32.UnregisterHotKey(None, HOTKEY_ID)
+            self.hotkey_registered = False
+        self.root.destroy()
 
     def choose_excel(self) -> None:
         selected = filedialog.askopenfilename(filetypes=[("Excel", "*.xlsx")])
@@ -276,7 +341,7 @@ class WhatsAppQueueApp:
         self.opened_times.append(opened_at)
         self.last_opened_at = opened_at
         limit = self._hourly_limit() or 1
-        self.status_var.set(f"Conversación abierta · {len(self.opened_times)}/{limit} en la última hora · envío manual")
+        self.status_var.set(f"Conversación abierta · {len(self.opened_times)}/{limit} en la última hora · pulse F8 para enviar")
 
     def mark_sent(self) -> None:
         self._mark("Enviado")
@@ -312,7 +377,7 @@ class WhatsAppQueueApp:
             self.root.after_cancel(self.pending_after)
             self.pending_after = None
         self.pause_button.configure(text="Reanudar" if self.paused else "Pausar")
-        self.status_var.set("En pausa" if self.paused else "Cola activa · el botón Enviar sigue siendo manual")
+        self.status_var.set("En pausa" if self.paused else "Cola activa · revise el mensaje y pulse F8 para enviarlo")
         if not self.paused and self.rows and self.position < len(self.rows):
             self.open_current()
 
