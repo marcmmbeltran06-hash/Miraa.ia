@@ -1,8 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm --filter @autowp/web run build",
+  "buildCommand": "node scripts/prepare_mira_home.mjs && pnpm --filter @autowp/web run build",
   "outputDirectory": "packages/web/dist",
   "routes": [
+    { "src": "/", "dest": "/mira-home.html" },
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "/index.html" }
   ]
